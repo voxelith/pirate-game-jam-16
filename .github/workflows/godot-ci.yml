@@ -1,0 +1,53 @@
+name: "godot-ci export"
+on: push
+
+
+env:
+  GODOT_VERSION: 4.3
+  EXPORT_NAME: pirate-game-jam
+  PROJECT_PATH: .
+  ITCHIO_NAME: voxelith/pirate-software-game-jame-16-entry
+
+jobs:
+  build-web:
+    name: Web Export
+    runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:4.3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Setup
+        run: |
+          mkdir -v -p ~/.local/share/godot/export_templates/
+          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+      - name: Web Build
+        run: |
+          mkdir -v -p build/web
+          EXPORT_DIR="$(readlink -f build)"
+          cd $PROJECT_PATH
+          godot --headless --verbose --export-release "Web" "$EXPORT_DIR/web/index.html"
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: web
+          path: build/web
+  
+  itchio-web:
+    needs: build-web
+    runs-on: ubuntu-latest
+    
+    container:
+      image: barichello/godot-ci:4.3
+    
+    steps:
+      - uses: actions/download-artifact@v4
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+        with:
+          name: web
+          path: build/web
+      - name: Itch.io Upload Web
+        run: butler push build/web $ITCHIO_NAME:web-stable
