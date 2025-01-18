@@ -9,7 +9,7 @@ uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_nearest;
 //uniform sampler2D NORMAL_TEXTURE : hint_normal_roughness_texture, filter_nearest;
 
 uniform float dither_strength : hint_range(0.0, 0.99, 0.01) = 0.99;
-uniform float edge_strength : hint_range(0.0, 1.0, 0.01) = 1.0;
+uniform float edge_strength : hint_range(0.0, 1.0, 0.01) = 0.0;
 
 uniform sampler2D PALETTE_TEXTURE: source_color, filter_nearest;
 
