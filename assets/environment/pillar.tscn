@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=4 uid="uid://cwwpmsexdn8a"]
 
-[ext_resource type="Material" uid="uid://c7juiw36lvl8i" path="res://shaders/basic_dither.tres" id="1_o4h0i"]
+[ext_resource type="Material" uid="uid://c7juiw36lvl8i" path="res://materials/basic_stone.tres" id="1_o4h0i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x4yal"]
 resource_name = "Material.001"

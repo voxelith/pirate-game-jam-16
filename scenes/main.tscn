@@ -1,27 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://cgb440m4f3nra"]
+[gd_scene load_steps=11 format=3 uid="uid://cgb440m4f3nra"]
 
 [ext_resource type="PackedScene" uid="uid://ciuh2o8xpgmvg" path="res://assets/main_viewport_container.tscn" id="1_6xtqw"]
-[ext_resource type="Shader" path="res://shaders/pixelart_stylizer_object.gdshader" id="2_6f11a"]
-[ext_resource type="Material" uid="uid://c7juiw36lvl8i" path="res://shaders/basic_dither.tres" id="2_pseu3"]
-[ext_resource type="Texture2D" uid="uid://dmwxnncpp2o5a" path="res://palettes/bw-6.png" id="3_fm1nw"]
+[ext_resource type="Material" uid="uid://bf1ajwinvt4td" path="res://materials/basic_green.tres" id="2_3vcfp"]
+[ext_resource type="Material" uid="uid://c7juiw36lvl8i" path="res://materials/basic_stone.tres" id="2_pseu3"]
+[ext_resource type="Material" uid="uid://cstpcrycja5wa" path="res://materials/basic_gold.tres" id="4_rblsg"]
 [ext_resource type="PackedScene" uid="uid://bqibs67j86o33" path="res://assets/player.tscn" id="4_vw1ur"]
-[ext_resource type="PackedScene" uid="uid://cwwpmsexdn8a" path="res://assets/pillar.tscn" id="5_1pt4q"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_moh5v"]
-render_priority = 0
-shader = ExtResource("2_6f11a")
-shader_parameter/dither_strength = 0.47
-shader_parameter/edge_strength = 1.0
-shader_parameter/PALETTE_TEXTURE = ExtResource("3_fm1nw")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_riexf"]
-next_pass = SubResource("ShaderMaterial_moh5v")
+[ext_resource type="PackedScene" uid="uid://cwwpmsexdn8a" path="res://assets/environment/pillar.tscn" id="5_1pt4q"]
+[ext_resource type="PackedScene" uid="uid://ddpaulnqle7sj" path="res://assets/interactables/gate.tscn" id="7_ueloh"]
+[ext_resource type="PackedScene" uid="uid://b64eqicswvic6" path="res://assets/enemies/azteroid.tscn" id="8_6ahe5"]
+[ext_resource type="PackedScene" uid="uid://ic7fspxmsosq" path="res://assets/interactables/chest.tscn" id="9_5mg8g"]
 
 [sub_resource type="Environment" id="Environment_fjecj"]
 background_mode = 1
 ambient_light_source = 1
 ambient_light_energy = 0.0
 reflected_light_source = 1
+glow_intensity = 0.0
+glow_bloom = 0.6
 
 [node name="Main" type="Node"]
 
@@ -34,7 +29,7 @@ offset_bottom = 512.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 use_collision = true
 size = Vector3(10, 1, 10)
-material = ExtResource("2_pseu3")
+material = ExtResource("2_3vcfp")
 
 [node name="Wall1" type="CSGBox3D" parent="MainViewportContainer/SubViewport" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, -0.5, 0)
@@ -49,32 +44,32 @@ size = Vector3(1, 3, 10)
 material = ExtResource("2_pseu3")
 
 [node name="Wall3" type="CSGBox3D" parent="MainViewportContainer/SubViewport" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -5.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, -0.5, -5.5)
 use_collision = true
-size = Vector3(10, 3, 1)
+size = Vector3(5, 3, 1)
 material = ExtResource("2_pseu3")
 
-[node name="Wall4" type="CSGBox3D" parent="MainViewportContainer/SubViewport" index="4"]
+[node name="Wall5" type="CSGBox3D" parent="MainViewportContainer/SubViewport" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, -0.5, -5.5)
+use_collision = true
+size = Vector3(5, 3, 1)
+material = ExtResource("2_pseu3")
+
+[node name="Wall4" type="CSGBox3D" parent="MainViewportContainer/SubViewport" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 5.5)
 use_collision = true
 size = Vector3(10, 3, 1)
 material = ExtResource("2_pseu3")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="MainViewportContainer/SubViewport" index="5"]
+[node name="CSGBox3D" type="CSGBox3D" parent="MainViewportContainer/SubViewport" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99905, 0.5, -1.08748)
 use_collision = true
-material = SubResource("StandardMaterial3D_riexf")
+material = ExtResource("4_rblsg")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="MainViewportContainer/SubViewport" index="6"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="MainViewportContainer/SubViewport" index="7"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -2.68164, 0.5, 0.989154)
 use_collision = true
-material = SubResource("StandardMaterial3D_riexf")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="MainViewportContainer/SubViewport" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.43775, 2.78797, 2.34691)
-light_energy = 3.0
-shadow_enabled = true
-omni_range = 20.888
+material = ExtResource("4_rblsg")
 
 [node name="Player" parent="MainViewportContainer/SubViewport" index="8" instance=ExtResource("4_vw1ur")]
 
@@ -89,5 +84,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
 
 [node name="pillar3" parent="." instance=ExtResource("5_1pt4q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
+
+[node name="gate" parent="." instance=ExtResource("7_ueloh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="azteroid" parent="." instance=ExtResource("8_6ahe5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
+
+[node name="chest2" parent="." instance=ExtResource("9_5mg8g")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 3.5, 0, 3.5)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+light_energy = 7.107
+shadow_enabled = true
+omni_range = 8.0
 
 [editable path="MainViewportContainer"]
