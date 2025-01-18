@@ -7,10 +7,11 @@ const FRICTION := 0.01
 const LOOK_SPEED := TAU / 11.25
 const LOOK_FRICTION := 0.008
 const MOUSE_SENSIVITY := 0.5
-const MOUSE_COOLDOWN := 1.0
+const MAX_MOUSE_MOVE := 100.0
+const MOUSE_COOLDOWN := 3.0
 
 const OCTAU = TAU / 8.0
-@export var look_spring: SpringFloat
+var look_spring := SpringFloat.new(1.0, 2.0, 0.0)
 
 var look_rotation := 0.0
 var mouse_dir := 0.0
@@ -22,12 +23,13 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		mouse_dir = -event.relative.x
+		mouse_dir = clamp(-event.relative.x * MOUSE_SENSIVITY, -MAX_MOUSE_MOVE, MAX_MOUSE_MOVE)
 		mouse_move_last = 0.0
 
 func _physics_process(delta: float) -> void:
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	#################
+	# PLAYER MOTION #
+	#################
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	var target = Vector3(0.0, velocity.y, 0.0)
@@ -43,15 +45,21 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("jump"):
 			velocity.y = JUMP_VELOCITY
 	
-	# Add player/camera rotation
-	var look_dir := Input.get_axis("look_left", "look_right")
-	if mouse_dir:
-		look_dir = mouse_dir * MOUSE_SENSIVITY
-		mouse_dir = 0.0
-	else:
-		look_dir *= look_dir * sign(look_dir)
+	#################
+	# CAMERA MOTION #
+	#################
 	
+	# Handle controller input
+	var look_dir := Input.get_axis("look_right", "look_left")
+	look_dir = look_dir * look_dir * sign(look_dir)
+	
+	# Handle mouse motion
+	if mouse_dir:
+		look_dir = mouse_dir
+		mouse_dir = 0.0
 	mouse_move_last += delta
+	
+	# If it has been long enough since a mouse cooldown, snap camera angle to 45 deg. increment
 	if mouse_move_last > MOUSE_COOLDOWN:
 		look_spring.target = round(look_rotation / OCTAU) * OCTAU
 	

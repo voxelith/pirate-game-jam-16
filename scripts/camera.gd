@@ -1,15 +1,7 @@
-@tool
 extends Camera3D
 
+@onready var target := $".."
 
-@export var post_processing := true:
-	set(p):
-		if p:
-			$Postprocess.show()
-			post_processing = p
-			var a = Vector3(-1, 1, 0).normalized()
-			var b = Vector3(1, 0, 0).normalized()
-			print("dot: ", a.dot(b))
-		else:
-			$Postprocess.hide()
-			post_processing = p
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	global_position = round(target.global_position * Globals.pixels_per_meter) / Globals.pixels_per_meter
