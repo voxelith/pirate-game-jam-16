@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bqibs67j86o33"]
+[gd_scene load_steps=8 format=3 uid="uid://bqibs67j86o33"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_muvjw"]
 [ext_resource type="Shader" path="res://shaders/pixelart_stylizer_object.gdshader" id="3_2hp4s"]
-[ext_resource type="Script" path="res://scripts/camera.gd" id="4_7repm"]
 [ext_resource type="Texture2D" uid="uid://dmwxnncpp2o5a" path="res://palettes/bw-6.png" id="4_ht1v3"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_effn3"]
@@ -14,7 +13,6 @@ render_priority = 0
 shader = ExtResource("3_2hp4s")
 shader_parameter/dither_strength = 0.99
 shader_parameter/edge_strength = 1.0
-shader_parameter/highlight_strength = 0.0
 shader_parameter/PALETTE_TEXTURE = ExtResource("4_ht1v3")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_htk2h"]
@@ -31,10 +29,12 @@ height = 0.75
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_muvjw")
 
-[node name="PlayerModel" type="MeshInstance3D" parent="."]
+[node name="PlayerModelTarget" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
+
+[node name="PlayerModel" type="MeshInstance3D" parent="PlayerModelTarget"]
 mesh = SubResource("CapsuleMesh_effn3")
-skeleton = NodePath("../../..")
+skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_htk2h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -52,4 +52,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.90735e-06)
 projection = 1
 current = true
 size = 2.0
-script = ExtResource("4_7repm")

@@ -10,7 +10,6 @@ uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_nearest;
 
 uniform float dither_strength : hint_range(0.0, 0.99, 0.01) = 0.99;
 uniform float edge_strength : hint_range(0.0, 1.0, 0.01) = 1.0;
-uniform float highlight_strength : hint_range(0.0, 1.0, 0.01) = 1.0;
 
 uniform sampler2D PALETTE_TEXTURE: source_color, filter_nearest;
 
@@ -123,30 +122,19 @@ void fragment() {
 	vec3 original_color = texture(SCREEN_TEXTURE, SCREEN_UV).rgb;
 	vec3 final = original_color;
 	float edge = 0.0;
-	float unedge = 0.0;
 	float d = getDepth(SCREEN_UV, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
 	{
 		float du = getDepth(SCREEN_UV+vec2(0., -1.)*e, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
 		float dr = getDepth(SCREEN_UV+vec2(1., 0.)*e, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
 		float dd = getDepth(SCREEN_UV+vec2(0., 1.)*e, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
 		float dl = getDepth(SCREEN_UV+vec2(-1., 0.)*e, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
-		float dur = getDepth(SCREEN_UV+vec2(1., -1.)*e, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
-		float ddr = getDepth(SCREEN_UV+vec2(1., 1.)*e, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
-		float ddl = getDepth(SCREEN_UV+vec2(-1., 1.)*e, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
-		float dul = getDepth(SCREEN_UV+vec2(-1., -1.)*e, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
 		edge += du - d;
 		edge += dd - d;
 		edge += dr - d;
 		edge += dl - d;
-		unedge += abs(du - d);
-		unedge += abs(dd - d);
-		unedge += abs(dr - d);
-		unedge += abs(dl - d);
 	}
-	float highlight = (edge / unedge) - clamp(edge * 10., 0., 10.);
 
 	final = mix(final, final * (1. - edge_strength), clamp(edge, 0.0, 1.0));
-	final = mix(final, final * (1. + highlight_strength), clamp(highlight, 0.0, 1.0));
 
 	vec3 colorA;
 	vec3 colorB;
@@ -156,14 +144,7 @@ void fragment() {
 
 	ivec2 pixelCoord = ivec2(SCREEN_UV * VIEWPORT_SIZE);
 	float ditherPattern = ditherChecker(pixelCoord);
-	//float ditherPattern = ditherRandom(pixelCoord) * 0.5;
-	//float ditherPattern = ditherRandomLines(pixelCoord, 2.);
-	//float ditherPattern = (ditherRandom(pixelCoord) + ditherLinesX(pixelCoord)) * 0.25;
-	//float ditherPattern = ditherCircuit(pixelCoord) * 0.9;
-	//float ditherPattern = 0.0;
 	bool ditherMask = (colorMix + (ditherPattern * dither_strength)) > 0.5;
-
-	float shadowMask = edge > 0.0 ? 1.0 : -1.0;
 
 	//ALBEDO = vec3(ditherPattern);
 	ALBEDO = mix(colorA, colorB, float(ditherMask));
