@@ -10,7 +10,7 @@ env:
 
 jobs:
   build-web:
-    name: Web Export
+    name: Web Build
     runs-on: ubuntu-latest
     container:
       image: barichello/godot-ci:4.3
@@ -36,6 +36,7 @@ jobs:
           path: build/web
   
   itchio-web:
+    name: Web Itch.io Upload
     needs: build-web
     runs-on: ubuntu-latest
     
@@ -44,10 +45,10 @@ jobs:
     
     steps:
       - uses: actions/download-artifact@v4
-        env:
-          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
         with:
           name: web
           path: build/web
       - name: Itch.io Upload Web
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
         run: butler push build/web $ITCHIO_NAME:web-stable
