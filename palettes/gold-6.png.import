@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dl8orrakagguu"
-path="res://.godot/imported/green-4.png-c587ac568f59aa1fbe31dbf9277ed4ce.ctex"
+uid="uid://7sjrlkexjcv8"
+path="res://.godot/imported/gold-6.png-92905141bcb4b4df1fe47277ae04155c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://palettes/green-4.png"
-dest_files=["res://.godot/imported/green-4.png-c587ac568f59aa1fbe31dbf9277ed4ce.ctex"]
+source_file="res://palettes/gold-6.png"
+dest_files=["res://.godot/imported/gold-6.png-92905141bcb4b4df1fe47277ae04155c.ctex"]
 
 [params]
 
