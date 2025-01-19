@@ -1,13 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://cgb440m4f3nra"]
+[gd_scene load_steps=10 format=3 uid="uid://cgb440m4f3nra"]
 
 [ext_resource type="PackedScene" uid="uid://ciuh2o8xpgmvg" path="res://assets/main_viewport_container.tscn" id="1_6xtqw"]
-[ext_resource type="Material" uid="uid://bf1ajwinvt4td" path="res://materials/basic_green.tres" id="2_3vcfp"]
 [ext_resource type="Material" uid="uid://c7juiw36lvl8i" path="res://materials/basic_stone.tres" id="2_pseu3"]
 [ext_resource type="Material" uid="uid://cstpcrycja5wa" path="res://materials/basic_gold.tres" id="4_rblsg"]
+[ext_resource type="Material" uid="uid://b3t0mas2inweg" path="res://materials/basic_brown.tres" id="4_tw71t"]
 [ext_resource type="PackedScene" uid="uid://bqibs67j86o33" path="res://assets/player.tscn" id="4_vw1ur"]
 [ext_resource type="PackedScene" uid="uid://cwwpmsexdn8a" path="res://assets/environment/pillar.tscn" id="5_1pt4q"]
 [ext_resource type="PackedScene" uid="uid://ddpaulnqle7sj" path="res://assets/interactables/gate.tscn" id="7_ueloh"]
-[ext_resource type="PackedScene" uid="uid://b64eqicswvic6" path="res://assets/enemies/azteroid.tscn" id="8_6ahe5"]
 [ext_resource type="PackedScene" uid="uid://ic7fspxmsosq" path="res://assets/interactables/chest.tscn" id="9_5mg8g"]
 
 [sub_resource type="Environment" id="Environment_fjecj"]
@@ -29,7 +28,7 @@ offset_bottom = 512.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 use_collision = true
 size = Vector3(10, 1, 10)
-material = ExtResource("2_3vcfp")
+material = ExtResource("2_pseu3")
 
 [node name="Wall1" type="CSGBox3D" parent="MainViewportContainer/SubViewport" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, -0.5, 0)
@@ -69,7 +68,7 @@ material = ExtResource("4_rblsg")
 [node name="CSGBox3D2" type="CSGBox3D" parent="MainViewportContainer/SubViewport" index="7"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -2.68164, 0.5, 0.989154)
 use_collision = true
-material = ExtResource("4_rblsg")
+material = ExtResource("4_tw71t")
 
 [node name="Player" parent="MainViewportContainer/SubViewport" index="8" instance=ExtResource("4_vw1ur")]
 
@@ -87,9 +86,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
 
 [node name="gate" parent="." instance=ExtResource("7_ueloh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
-
-[node name="azteroid" parent="." instance=ExtResource("8_6ahe5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
 
 [node name="chest2" parent="." instance=ExtResource("9_5mg8g")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 3.5, 0, 3.5)
