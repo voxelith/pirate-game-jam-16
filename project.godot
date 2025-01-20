@@ -28,6 +28,10 @@ window/size/viewport_height=640
 
 enabled=PackedStringArray("res://addons/spring/plugin.cfg")
 
+[global_group]
+
+destroyable="Anything that is destroyed during player activation"
+
 [importer_defaults]
 
 texture={

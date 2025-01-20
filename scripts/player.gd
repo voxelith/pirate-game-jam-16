@@ -17,6 +17,8 @@ var look_rotation := 0.0
 var mouse_dir := 0.0
 var mouse_move_last := 0.0
 
+@onready var reticle = $Reticle
+
 func _ready() -> void:
 	look_rotation = rotation.y
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -27,6 +29,19 @@ func _unhandled_input(event: InputEvent) -> void:
 		mouse_move_last = 0.0
 
 func _physics_process(delta: float) -> void:
+	###############
+	# RAY CASTING #
+	###############
+	var space_state = get_world_3d().direct_space_state
+	var origin := global_position;
+	var destroyables = get_tree().get_nodes_in_group("destroyable")
+	for destroyable in destroyables:
+		var query = PhysicsRayQueryParameters3D.create(origin, destroyable.global_position)
+		query.exclude = [self]
+		var result = space_state.intersect_ray(query)
+		if not result.is_empty():
+			reticle.global_position = result.position
+	
 	#################
 	# PLAYER MOTION #
 	#################
