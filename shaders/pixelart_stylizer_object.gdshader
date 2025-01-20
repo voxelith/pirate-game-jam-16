@@ -46,7 +46,7 @@ float atanNormA(float value) {
 
 float getDepth(vec2 screen_uv, sampler2D depth_texture, mat4 ipm){
     float depth = textureLod(depth_texture, screen_uv, 0.0).r;
-    vec4 upos = ipm * vec4(screen_uv * 2.0 - 1.0, depth, 1.0);
+    vec4 upos = ipm * vec4(vec3(screen_uv, depth) * 2.0 - 1.0, 1.0);
     vec3 pixel_position = upos.xyz / upos.w;
 	return -pixel_position.z;
 }
@@ -122,12 +122,13 @@ void fragment() {
 	vec3 original_color = texture(SCREEN_TEXTURE, SCREEN_UV).rgb;
 	vec3 final = original_color;
 	float edge = 0.0;
-	float d = getDepth(SCREEN_UV, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
+	mat4 ipm = inverse(PROJECTION_MATRIX);
+	float d = getDepth(SCREEN_UV, DEPTH_TEXTURE, ipm);
 	{
-		float du = getDepth(SCREEN_UV+vec2(0., -1.)*e, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
-		float dr = getDepth(SCREEN_UV+vec2(1., 0.)*e, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
-		float dd = getDepth(SCREEN_UV+vec2(0., 1.)*e, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
-		float dl = getDepth(SCREEN_UV+vec2(-1., 0.)*e, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
+		float du = getDepth(SCREEN_UV+vec2(0., -1.)*e, DEPTH_TEXTURE, ipm);
+		float dr = getDepth(SCREEN_UV+vec2(1., 0.)*e, DEPTH_TEXTURE, ipm);
+		float dd = getDepth(SCREEN_UV+vec2(0., 1.)*e, DEPTH_TEXTURE, ipm);
+		float dl = getDepth(SCREEN_UV+vec2(-1., 0.)*e, DEPTH_TEXTURE, ipm);
 		edge += du - d;
 		edge += dd - d;
 		edge += dr - d;
