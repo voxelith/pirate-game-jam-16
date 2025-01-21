@@ -12,5 +12,4 @@ shader_parameter/PALETTE_TEXTURE = ExtResource("2_k1juy")
 
 [resource]
 next_pass = SubResource("ShaderMaterial_emgg2")
-vertex_color_use_as_albedo = true
 albedo_color = Color(0.50103, 0.50103, 0.50103, 1)
