@@ -34,7 +34,7 @@ size = Vector3(0.564697, 0.43988, 0.494263)
 [sub_resource type="BoxShape3D" id="BoxShape3D_peubj"]
 size = Vector3(1.01782, 0.728729, 0.761597)
 
-[node name="desk" instance=ExtResource("1_sw3rg")]
+[node name="Desk" instance=ExtResource("1_sw3rg")]
 
 [node name="Desk" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_tg4ig")

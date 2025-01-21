@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://cwwpmsexdn8a"]
+[gd_scene load_steps=6 format=4 uid="uid://cwwpmsexdn8a"]
 
 [ext_resource type="Material" uid="uid://c7juiw36lvl8i" path="res://materials/basic_stone.tres" id="1_o4h0i"]
 
@@ -39,9 +39,18 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_l8837")
 
-[node name="pillar" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_n3kfv"]
+size = Vector3(1, 1.5, 1)
+
+[node name="Pillar" type="Node3D"]
 
 [node name="PillarA" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_kasm2")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("1_o4h0i")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.533, 0.75, 0)
+shape = SubResource("BoxShape3D_n3kfv")
