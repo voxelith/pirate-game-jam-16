@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://bxb4ll538buv0"]
+
+[ext_resource type="PackedScene" uid="uid://cmcwobrq1104p" path="res://assets/environment/lantern.glb" id="1_s1u5q"]
+[ext_resource type="Texture2D" uid="uid://clu86ynwb6m8p" path="res://palettes/stone-5.png" id="3_15upp"]
+[ext_resource type="Shader" path="res://shaders/pixelart_stylizer_object.gdshader" id="3_s7bu3"]
+[ext_resource type="Texture2D" uid="uid://7sjrlkexjcv8" path="res://palettes/gold-6.png" id="4_ox12v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_emgg2"]
+render_priority = 0
+shader = ExtResource("3_s7bu3")
+shader_parameter/dither_strength = 0.99
+shader_parameter/edge_strength = 1.0
+shader_parameter/PALETTE_TEXTURE = ExtResource("3_15upp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_57auc"]
+next_pass = SubResource("ShaderMaterial_emgg2")
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.50103, 0.50103, 0.50103, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r6iyp"]
+render_priority = 0
+shader = ExtResource("3_s7bu3")
+shader_parameter/dither_strength = 0.99
+shader_parameter/edge_strength = 1.0
+shader_parameter/PALETTE_TEXTURE = ExtResource("4_ox12v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhvyo"]
+next_pass = SubResource("ShaderMaterial_r6iyp")
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[node name="lantern" instance=ExtResource("1_s1u5q")]
+
+[node name="Lantern" parent="." index="0"]
+cast_shadow = 0
+surface_material_override/0 = SubResource("StandardMaterial3D_57auc")
+surface_material_override/1 = SubResource("StandardMaterial3D_vhvyo")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+light_energy = 0.2
+shadow_enabled = true
+omni_range = 30.0
