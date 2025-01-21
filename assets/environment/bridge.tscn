@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://c23rckq4lk2b4"]
+
+[ext_resource type="PackedScene" uid="uid://dbc2bt6bn3a27" path="res://assets/environment/bridge.glb" id="1_gvd3s"]
+[ext_resource type="Material" uid="uid://c7juiw36lvl8i" path="res://materials/basic_stone.tres" id="2_ixrxh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xrfmi"]
+size = Vector3(2, 0.5, 26)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tposc"]
+size = Vector3(0.428833, 0.789551, 26.844)
+
+[node name="Bridge" instance=ExtResource("1_gvd3s")]
+
+[node name="Bridge" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_ixrxh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+shape = SubResource("BoxShape3D_xrfmi")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19818, 0.214061, 0)
+shape = SubResource("BoxShape3D_tposc")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.198, 0.40565, 0)
+shape = SubResource("BoxShape3D_tposc")
