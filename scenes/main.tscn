@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cgb440m4f3nra"]
+[gd_scene load_steps=11 format=3 uid="uid://cgb440m4f3nra"]
 
 [ext_resource type="PackedScene" uid="uid://ciuh2o8xpgmvg" path="res://assets/main_viewport_container.tscn" id="1_6xtqw"]
 [ext_resource type="Material" uid="uid://c7juiw36lvl8i" path="res://materials/basic_stone.tres" id="2_pseu3"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cwwpmsexdn8a" path="res://assets/environment/pillar.tscn" id="5_1pt4q"]
 [ext_resource type="PackedScene" uid="uid://ddpaulnqle7sj" path="res://assets/interactables/gate.tscn" id="7_ueloh"]
 [ext_resource type="PackedScene" uid="uid://ic7fspxmsosq" path="res://assets/interactables/chest.tscn" id="9_5mg8g"]
+[ext_resource type="PackedScene" uid="uid://d352p1s1v1tcf" path="res://components/PlayerCountdown.tscn" id="9_h46ff"]
 
 [sub_resource type="Environment" id="Environment_fjecj"]
 background_mode = 1
@@ -95,5 +96,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 light_energy = 7.107
 shadow_enabled = true
 omni_range = 8.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayerCountdown" parent="CanvasLayer" instance=ExtResource("9_h46ff")]
+offset_left = 11.0
+offset_top = 7.0
+offset_right = 349.0
+offset_bottom = 100.0
+metadata/_edit_use_anchors_ = true
 
 [editable path="MainViewportContainer"]
