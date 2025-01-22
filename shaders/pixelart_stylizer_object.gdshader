@@ -57,10 +57,18 @@ float applyPalette(in vec3 pixelColor, out vec3 colorA, out vec3 colorB) {
 
 	float lengthA = 100.;
 	float lengthB = 100.;
+	
+	vec3 pixelSrgb = toSrgb(pixelColor);
+	
+	vec3 lowColor = texelFetch(PALETTE_TEXTURE, ivec2(0, 0), 0).rgb;
+	vec3 lowDelta = pixelColor - lowColor;
+	if((lowDelta.r < 0.) && (lowDelta.g < 0.) && (lowDelta.b < 0.)) {
+		colorA = colorB = lowColor;
+		return 0.;
+	}
 
 	for (int i = 0; i < numColors; i += 2){
-		float index = 1. / (2.*n) + float(i) / n;
-		vec3 currentColor = texture(PALETTE_TEXTURE, vec2(index,0.5)).rgb;
+		vec3 currentColor = texelFetch(PALETTE_TEXTURE, ivec2(i, 0), 0).rgb;
 		float currentLength = length(toSrgb(currentColor) - toSrgb(pixelColor));
 		if (currentLength < lengthA) {
 			lengthA = currentLength;

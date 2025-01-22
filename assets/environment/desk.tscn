@@ -1,0 +1,58 @@
+[gd_scene load_steps=12 format=3 uid="uid://bdroahcdlw3ki"]
+
+[ext_resource type="PackedScene" uid="uid://dbk15i1oesru6" path="res://assets/environment/desk.glb" id="1_sw3rg"]
+[ext_resource type="Shader" path="res://shaders/pixelart_stylizer_object.gdshader" id="2_r1d3x"]
+[ext_resource type="Texture2D" uid="uid://ms2wfj5w7qei" path="res://palettes/green-5.png" id="3_rnx5x"]
+[ext_resource type="Material" uid="uid://b3t0mas2inweg" path="res://materials/basic_brown.tres" id="4_b477e"]
+[ext_resource type="Texture2D" uid="uid://7sjrlkexjcv8" path="res://palettes/gold-6.png" id="5_helxx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qkeaq"]
+render_priority = 0
+shader = ExtResource("2_r1d3x")
+shader_parameter/dither_strength = 0.5
+shader_parameter/edge_strength = 1.0
+shader_parameter/PALETTE_TEXTURE = ExtResource("3_rnx5x")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tg4ig"]
+next_pass = SubResource("ShaderMaterial_qkeaq")
+albedo_color = Color(0.839949, 0.92696, 0.83668, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r61nf"]
+render_priority = 0
+shader = ExtResource("2_r1d3x")
+shader_parameter/dither_strength = 0.99
+shader_parameter/edge_strength = 1.0
+shader_parameter/PALETTE_TEXTURE = ExtResource("5_helxx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bkbmj"]
+next_pass = SubResource("ShaderMaterial_r61nf")
+albedo_color = Color(0.978681, 0.919962, 0.877069, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5tjdt"]
+size = Vector3(0.564697, 0.43988, 0.494263)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_peubj"]
+size = Vector3(1.01782, 0.728729, 0.761597)
+
+[node name="Desk" instance=ExtResource("1_sw3rg")]
+
+[node name="Desk" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_tg4ig")
+surface_material_override/1 = ExtResource("4_b477e")
+surface_material_override/2 = SubResource("StandardMaterial3D_bkbmj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00622559, 0.222015, 0.720886)
+shape = SubResource("BoxShape3D_5tjdt")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00622559, 0.36644, 0.00701904)
+shape = SubResource("BoxShape3D_peubj")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36972, 1.0276, -0.23867)
+light_energy = 0.5
+omni_range = 0.838
+omni_attenuation = 0.5

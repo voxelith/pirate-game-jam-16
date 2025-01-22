@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://ciag5okq6g7mu"]
+
+[ext_resource type="Texture2D" uid="uid://8tqb2mhxdvx0" path="res://textures/metal-plate-1x, albedo.png" id="1_v0et5"]
+[ext_resource type="Shader" path="res://shaders/pixelart_stylizer_object.gdshader" id="2_j60tc"]
+[ext_resource type="Texture2D" uid="uid://c74e35p0aw6a4" path="res://palettes/brown-6.png" id="3_l3s41"]
+[ext_resource type="Texture2D" uid="uid://b84qydiwv370e" path="res://textures/metal-plate-1x, normal.png" id="4_esm7i"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_med1e"]
+orientation = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g6wpf"]
+render_priority = 0
+shader = ExtResource("2_j60tc")
+shader_parameter/dither_strength = 0.99
+shader_parameter/edge_strength = 1.0
+shader_parameter/PALETTE_TEXTURE = ExtResource("3_l3s41")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7bxot"]
+next_pass = SubResource("ShaderMaterial_g6wpf")
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.496654, 0.496653, 0.496653, 1)
+albedo_texture = ExtResource("1_v0et5")
+roughness = 0.08
+normal_enabled = true
+normal_texture = ExtResource("4_esm7i")
+texture_filter = 0
+
+[node name="MetalPlate1x1" type="MeshInstance3D"]
+mesh = SubResource("QuadMesh_med1e")
+surface_material_override/0 = SubResource("StandardMaterial3D_7bxot")

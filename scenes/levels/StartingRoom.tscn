@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://bdg5gnd3o2cda"]
+
+[ext_resource type="PackedScene" uid="uid://cwwpmsexdn8a" path="res://assets/environment/pillar.tscn" id="1_u5e2u"]
+[ext_resource type="PackedScene" uid="uid://ddpaulnqle7sj" path="res://assets/interactables/gate.tscn" id="2_awxy5"]
+[ext_resource type="PackedScene" uid="uid://ic7fspxmsosq" path="res://assets/interactables/chest.tscn" id="3_o0gek"]
+[ext_resource type="Material" uid="uid://c7juiw36lvl8i" path="res://materials/basic_stone.tres" id="4_a3jfd"]
+[ext_resource type="Material" uid="uid://cstpcrycja5wa" path="res://materials/basic_gold.tres" id="5_55ht1"]
+[ext_resource type="Material" uid="uid://b3t0mas2inweg" path="res://materials/basic_brown.tres" id="6_4op76"]
+
+[node name="StartingRoom" type="Node"]
+
+[node name="pillar" parent="." instance=ExtResource("1_u5e2u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="pillar2" parent="." instance=ExtResource("1_u5e2u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
+
+[node name="pillar3" parent="." instance=ExtResource("1_u5e2u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
+
+[node name="gate" parent="." instance=ExtResource("2_awxy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="chest2" parent="." instance=ExtResource("3_o0gek")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 3.5, 0, 3.5)
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(10, 1, 10)
+material = ExtResource("4_a3jfd")
+
+[node name="Wall1" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, -0.5, 0)
+use_collision = true
+size = Vector3(1, 3, 10)
+material = ExtResource("4_a3jfd")
+
+[node name="Wall2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -0.5, 0)
+use_collision = true
+size = Vector3(1, 3, 10)
+material = ExtResource("4_a3jfd")
+
+[node name="Wall3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, -0.5, -5.5)
+use_collision = true
+size = Vector3(5, 3, 1)
+material = ExtResource("4_a3jfd")
+
+[node name="Wall5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, -0.5, -5.5)
+use_collision = true
+size = Vector3(5, 3, 1)
+material = ExtResource("4_a3jfd")
+
+[node name="Wall4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 5.5)
+use_collision = true
+size = Vector3(10, 3, 1)
+material = ExtResource("4_a3jfd")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99905, 0.5, -1.08748)
+use_collision = true
+material = ExtResource("5_55ht1")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -2.68164, 0.5, 0.989154)
+use_collision = true
+material = ExtResource("6_4op76")

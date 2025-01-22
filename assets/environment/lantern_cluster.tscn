@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bskjqfxlxso1x"]
+
+[ext_resource type="PackedScene" uid="uid://bxb4ll538buv0" path="res://assets/environment/lantern.tscn" id="1_686ow"]
+
+[node name="LanternCluster" type="Node3D"]
+
+[node name="lantern" parent="." instance=ExtResource("1_686ow")]
+
+[node name="lantern2" parent="." instance=ExtResource("1_686ow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.635826, -0.387469, 0.225244)
+
+[node name="lantern3" parent="." instance=ExtResource("1_686ow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.478126, 0.187924, -0.518657)

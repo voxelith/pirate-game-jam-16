@@ -1,15 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cgb440m4f3nra"]
+[gd_scene load_steps=4 format=3 uid="uid://cgb440m4f3nra"]
 
 [ext_resource type="PackedScene" uid="uid://ciuh2o8xpgmvg" path="res://assets/main_viewport_container.tscn" id="1_6xtqw"]
-[ext_resource type="Material" uid="uid://c7juiw36lvl8i" path="res://materials/basic_stone.tres" id="2_pseu3"]
-[ext_resource type="Material" uid="uid://cstpcrycja5wa" path="res://materials/basic_gold.tres" id="4_rblsg"]
-[ext_resource type="Material" uid="uid://b3t0mas2inweg" path="res://materials/basic_brown.tres" id="4_tw71t"]
 [ext_resource type="PackedScene" uid="uid://bqibs67j86o33" path="res://assets/player.tscn" id="4_vw1ur"]
-[ext_resource type="PackedScene" uid="uid://cwwpmsexdn8a" path="res://assets/environment/pillar.tscn" id="5_1pt4q"]
-[ext_resource type="PackedScene" uid="uid://ddpaulnqle7sj" path="res://assets/interactables/gate.tscn" id="7_ueloh"]
-[ext_resource type="PackedScene" uid="uid://ic7fspxmsosq" path="res://assets/interactables/chest.tscn" id="9_5mg8g"]
-[ext_resource type="PackedScene" uid="uid://d352p1s1v1tcf" path="res://components/PlayerCountdown.tscn" id="9_h46ff"]
-
 [sub_resource type="Environment" id="Environment_fjecj"]
 background_mode = 1
 ambient_light_source = 1
@@ -25,85 +17,15 @@ unique_name_in_owner = true
 offset_right = 512.0
 offset_bottom = 512.0
 
-[node name="Floor" type="CSGBox3D" parent="MainViewportContainer/SubViewport" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-use_collision = true
-size = Vector3(10, 1, 10)
-material = ExtResource("2_pseu3")
-
-[node name="Wall1" type="CSGBox3D" parent="MainViewportContainer/SubViewport" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, -0.5, 0)
-use_collision = true
-size = Vector3(1, 3, 10)
-material = ExtResource("2_pseu3")
-
-[node name="Wall2" type="CSGBox3D" parent="MainViewportContainer/SubViewport" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -0.5, 0)
-use_collision = true
-size = Vector3(1, 3, 10)
-material = ExtResource("2_pseu3")
-
-[node name="Wall3" type="CSGBox3D" parent="MainViewportContainer/SubViewport" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, -0.5, -5.5)
-use_collision = true
-size = Vector3(5, 3, 1)
-material = ExtResource("2_pseu3")
-
-[node name="Wall5" type="CSGBox3D" parent="MainViewportContainer/SubViewport" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, -0.5, -5.5)
-use_collision = true
-size = Vector3(5, 3, 1)
-material = ExtResource("2_pseu3")
-
-[node name="Wall4" type="CSGBox3D" parent="MainViewportContainer/SubViewport" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 5.5)
-use_collision = true
-size = Vector3(10, 3, 1)
-material = ExtResource("2_pseu3")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="MainViewportContainer/SubViewport" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99905, 0.5, -1.08748)
-use_collision = true
-material = ExtResource("4_rblsg")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="MainViewportContainer/SubViewport" index="7"]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -2.68164, 0.5, 0.989154)
-use_collision = true
-material = ExtResource("4_tw71t")
-
-[node name="Player" parent="MainViewportContainer/SubViewport" index="8" instance=ExtResource("4_vw1ur")]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="MainViewportContainer/SubViewport" index="9"]
-environment = SubResource("Environment_fjecj")
-
-[node name="pillar" parent="." instance=ExtResource("5_1pt4q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
-
-[node name="pillar2" parent="." instance=ExtResource("5_1pt4q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
-
-[node name="pillar3" parent="." instance=ExtResource("5_1pt4q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
-
-[node name="gate" parent="." instance=ExtResource("7_ueloh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
-
-[node name="chest2" parent="." instance=ExtResource("9_5mg8g")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 3.5, 0, 3.5)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="MainViewportContainer/SubViewport/SceneContents" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 light_energy = 7.107
 shadow_enabled = true
 omni_range = 8.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Player" parent="MainViewportContainer/SubViewport/SceneContents" index="1" instance=ExtResource("4_vw1ur")]
 
-[node name="PlayerCountdown" parent="CanvasLayer" instance=ExtResource("9_h46ff")]
-offset_left = 11.0
-offset_top = 7.0
-offset_right = 349.0
-offset_bottom = 100.0
-metadata/_edit_use_anchors_ = true
+[node name="WorldEnvironment" type="WorldEnvironment" parent="MainViewportContainer/SubViewport/SceneContents" index="2"]
+environment = SubResource("Environment_fjecj")
 
 [editable path="MainViewportContainer"]
