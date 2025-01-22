@@ -38,6 +38,7 @@ jobs:
   itchio-web:
     name: Web Itch.io Upload
     needs: build-web
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     
     container:
