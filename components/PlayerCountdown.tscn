@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d352p1s1v1tcf"]
+
+[ext_resource type="FontFile" uid="uid://bodcm4pp5ytw4" path="res://assets/Fusion Drive.ttf" id="1_vuyn7"]
+[ext_resource type="Script" path="res://scripts/player_countdown.gd" id="2_s65er"]
+
+[node name="PlayerCountdown" type="RichTextLabel"]
+offset_left = 4.0
+offset_top = 16.0
+offset_right = 342.0
+offset_bottom = 109.0
+theme_override_fonts/normal_font = ExtResource("1_vuyn7")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "T-0:00"
+script = ExtResource("2_s65er")
+
+[node name="Timer" type="Timer" parent="."]

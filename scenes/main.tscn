@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://ciuh2o8xpgmvg" path="res://assets/main_viewport_container.tscn" id="1_6xtqw"]
 [ext_resource type="PackedScene" uid="uid://bqibs67j86o33" path="res://assets/player.tscn" id="4_vw1ur"]
-
 [sub_resource type="Environment" id="Environment_fjecj"]
 background_mode = 1
 ambient_light_source = 1
