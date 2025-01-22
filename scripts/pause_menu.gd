@@ -4,7 +4,7 @@ extends Control
 
 func _ready():
 	$AnimationPlayer.play("RESET")
-	#pass
+	$CanvasLayer2/PanelContainer/VBoxContainer/Resume.grab_focus()
 
 func resume(): 
 	get_tree().paused = false
@@ -19,13 +19,14 @@ func pause():
 	mouse_filter = Control.MOUSE_FILTER_STOP
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey:
-		if event.is_action_pressed("pause_menu"):
+	if Input.is_action_just_pressed("pause_menu"):
 			get_viewport().set_input_as_handled()
 			if get_tree().paused:
 				resume()
 			else:
 				pause()
+	#if event is InputEventKey:
+		#if event.is_action_pressed("pause_menu"):
 
 func _on_resume_pressed() -> void:
 	resume()
