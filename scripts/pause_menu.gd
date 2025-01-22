@@ -1,32 +1,31 @@
 extends Control
 
 @onready var blur: AnimationPlayer = $AnimationPlayer
-@onready var resum_button: Button = find_child("Resume")
-@onready var quit_button: Button = find_child("Quit")
 
 func _ready():
 	$AnimationPlayer.play("RESET")
 	#pass
 
 func resume(): 
-	get_tree().paused = true
+	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	$AnimationPlayer.play_backwards("blur")
-	$PanelContainer.mouse_filter = $PanelContainer.MOUSE_FILTER_IGNORE
+	mouse_filter = Control.MOUSE_FILTER_PASS;
 
-func  pause():
-	get_tree().paused = false
+func pause():
+	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	$AnimationPlayer.play("blur")
+	mouse_filter = Control.MOUSE_FILTER_STOP
 
-func _process(delta:):
-	esc()
-
-func esc():
-	if Input.is_action_just_pressed("pause_menu") and get_tree().paused == false:
-		pause()
-	elif Input.is_action_just_pressed("pause_menu") and get_tree().paused == true:
-		resume()
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		if event.is_action_pressed("pause_menu"):
+			get_viewport().set_input_as_handled()
+			if get_tree().paused:
+				resume()
+			else:
+				pause()
 
 func _on_resume_pressed() -> void:
 	resume()

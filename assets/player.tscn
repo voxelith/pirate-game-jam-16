@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://bqibs67j86o33"]
+[gd_scene load_steps=13 format=3 uid="uid://bqibs67j86o33"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_muvjw"]
 [ext_resource type="Shader" path="res://shaders/pixelart_stylizer_object.gdshader" id="3_2hp4s"]
-[ext_resource type="PackedScene" uid="uid://bvtc472n443kt" path="res://assets/pause_menu.tscn" id="4_d36rn"]
 [ext_resource type="Texture2D" uid="uid://dmwxnncpp2o5a" path="res://palettes/bw-6.png" id="4_ht1v3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nw5lh"]
@@ -119,5 +118,3 @@ omni_attenuation = 0.5
 libraries = {
 "": SubResource("AnimationLibrary_3c0qm")
 }
-
-[node name="PauseMenu" parent="." instance=ExtResource("4_d36rn")]
