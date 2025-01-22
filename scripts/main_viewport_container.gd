@@ -11,3 +11,6 @@ func update_subviewport() -> void:
 func _ready() -> void:
 	update_subviewport()
 	get_viewport().size_changed.connect(update_subviewport)
+
+func pause():
+	%PauseMenu.pause()
