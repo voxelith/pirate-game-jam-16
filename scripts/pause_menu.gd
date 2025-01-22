@@ -3,36 +3,36 @@ extends Control
 @onready var blur: AnimationPlayer = $AnimationPlayer
 
 func _ready():
-	$AnimationPlayer.play("RESET")
-	$CanvasLayer2/PanelContainer/VBoxContainer/Resume.grab_focus()
+	$AnimationPlayer.play("RESET") #Play the "RESET" animation to set the initial state.
+	$CanvasLayer2/PanelContainer/VBoxContainer/Resume.grab_focus() #Set initial focus to the Resume button.
 
-func resume(): 
-	get_tree().paused = false
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	$AnimationPlayer.play_backwards("blur")
-	mouse_filter = Control.MOUSE_FILTER_PASS;
+func resume(): #Function to resume the game
+	get_tree().paused = false #Unpause the game
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) #Capture the mouse for gameplay
+	$AnimationPlayer.play_backwards("blur") #Play the blur animation in reverse to remove the blur effect
+	mouse_filter = Control.MOUSE_FILTER_PASS; #Allow mouse events to pass through the control
 
-func pause():
-	get_tree().paused = true
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	$AnimationPlayer.play("blur")
-	mouse_filter = Control.MOUSE_FILTER_STOP
+func pause(): #Function to pause the game
+	get_tree().paused = true #Pause the game
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE) #Make the mouse cursor visible
+	$AnimationPlayer.play("blur") #Play the blur animation to show the pause effect
+	mouse_filter = Control.MOUSE_FILTER_STOP #Stop mouse events from passing through the control
 
-func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("pause_menu"):
-			get_viewport().set_input_as_handled()
+func _input(event: InputEvent) -> void: #Handles player input
+	if Input.is_action_just_pressed("pause_menu"): #Checks if the pause menu action key was pressed
+			get_viewport().set_input_as_handled() #Mark input as handled to prevent further processsing
 			if get_tree().paused:
 				resume()
 			else:
 				pause()
-	#if event is InputEventKey:
-		#if event.is_action_pressed("pause_menu"):
+	#if event is InputEventKey: #can we delete this?
+		#if event.is_action_pressed("pause_menu"): #can we delet this?
 
-func _on_resume_pressed() -> void:
+func _on_resume_pressed() -> void: #Callback function when the resume button is pressed
 	resume()
 
-func _on_options_pressed() -> void:
-	pass # Replace with function body.
+func _on_options_pressed() -> void: #Callback function when the options button is pressed
+	pass #A placeholder for future options menu functionality. SOON! Maybe! :)
 
-func _on_quit_pressed() -> void:
+func _on_quit_pressed() -> void: #Callback function when the quit button is pressed
 	get_tree().quit()
