@@ -1,17 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://d352p1s1v1tcf"]
+[gd_scene load_steps=4 format=3 uid="uid://d352p1s1v1tcf"]
 
-[ext_resource type="FontFile" uid="uid://bodcm4pp5ytw4" path="res://assets/Fusion Drive.ttf" id="1_vuyn7"]
+[ext_resource type="Theme" uid="uid://buyj7atvoig18" path="res://assets/ui/theme.tres" id="1_76c4b"]
+[ext_resource type="Texture2D" uid="uid://bsfen6gtdptba" path="res://textures/sprites/countdown-frame.png" id="1_vllf5"]
 [ext_resource type="Script" path="res://scripts/player_countdown.gd" id="2_s65er"]
 
-[node name="PlayerCountdown" type="RichTextLabel"]
-offset_left = 4.0
-offset_top = 16.0
-offset_right = 342.0
-offset_bottom = 109.0
-theme_override_fonts/normal_font = ExtResource("1_vuyn7")
-theme_override_font_sizes/normal_font_size = 50
+[node name="PlayerCountdown" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -28.0
+offset_top = 3.0
+offset_right = 28.0
+offset_bottom = 19.0
+grow_horizontal = 2
+texture = ExtResource("1_vllf5")
+
+[node name="PlayerCountdown" type="RichTextLabel" parent="."]
+clip_contents = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -24.0
+offset_top = 7.0
+offset_right = 24.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme = ExtResource("1_76c4b")
+theme_override_colors/default_color = Color(0.952941, 0.784314, 0.576471, 1)
 bbcode_enabled = true
 text = "T-0:00"
 script = ExtResource("2_s65er")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="PlayerCountdown"]
