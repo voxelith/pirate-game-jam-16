@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://bknddqe3litfl"]
+
+[ext_resource type="Material" uid="uid://c7juiw36lvl8i" path="res://materials/basic_stone.tres" id="1_6hg0c"]
+[ext_resource type="PackedScene" uid="uid://dio13erlilci5" path="res://assets/enemies/denizen.tscn" id="2_40djr"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_audol"]
+vertices = PackedVector3Array(-9.5, 0.331067, 0, -7, 0.331067, 0, -7.25, 0.331067, -1.25, -9.5, 0.331067, -9.5, -3, 0.331067, -4.75, -3, 0.331067, -9.5, -1.75, 0.331067, -3, -4.5, 0.331067, -0.25, -1.5, 0.331067, 0.5, -1.75, 0.331067, -4, -0.75, 0.331067, 1.5, 9.5, 0.331067, 1.5, 9.5, 0.331067, -9.5, -6, 3.33107, -1, -5.75, 3.33107, -0.5, -4.5, 3.33107, -1.75, -5, 3.33107, -2, -7, 0.331067, 1.5, -9.5, 0.331067, 9.5, -1.75, 0.331067, 9.5, -1.75, 0.331067, 3, -1, 0.331067, 2.75, 9.5, 0.331067, 9.5)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 4), PackedInt32Array(4, 0, 5), PackedInt32Array(5, 0, 3), PackedInt32Array(8, 7, 6), PackedInt32Array(6, 9, 8), PackedInt32Array(8, 9, 10), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 12), PackedInt32Array(4, 5, 9), PackedInt32Array(9, 5, 12), PackedInt32Array(16, 15, 13), PackedInt32Array(13, 15, 14), PackedInt32Array(1, 17, 0), PackedInt32Array(0, 17, 18), PackedInt32Array(20, 19, 17), PackedInt32Array(17, 19, 18), PackedInt32Array(19, 20, 21), PackedInt32Array(21, 10, 19), PackedInt32Array(19, 10, 11), PackedInt32Array(19, 11, 22)]
+
+[sub_resource type="Curve3D" id="Curve3D_y42na"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.746668, -0.469167, -0.397159, 0, 0, 0, 0, 0, 0, 6.86511, -0.175454, -0.0998201, 0, 0, 0, 0, 0, 0, 7.56199, 0.191638, 2.67244, 0, 0, 0, 0, 0, 0, 4.51451, 0.415444, 4.52884, 0, 0, 0, 0, 0, 0, -1.26275, 0.378391, 5.93754, 0, 0, 0, 0, 0, 0, -4.69373, 0.364736, 5.27576, 0, 0, 0, 0, 0, 0, -7.32403, 0.104784, 2.86528, 0, 0, 0, 0, 0, 0, -8.11831, 0.12008, -0.462562, 0, 0, 0, 0, 0, 0, -5.88292, -0.0119469, -3.76306, 0, 0, 0, 0, 0, 0, -1.27079, -0.0940255, -7.55811, 0, 0, 0, 0, 0, 0, 1.82327, -0.237943, -7.94481),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 11
+
+[node name="NavTest" type="Node"]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_audol")
+
+[node name="Floor" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(20, 1, 20)
+material = ExtResource("1_6hg0c")
+
+[node name="Wall2" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(0.304183, 0, 0.952614, 0, 1, 0, -0.952614, 0, 0.304183, -3.98108, 0.831067, 1.10322)
+use_collision = true
+size = Vector3(1, 4, 5)
+material = ExtResource("1_6hg0c")
+
+[node name="Wall" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(0.690491, 0, -0.723341, 0, 1, 0, 0.723341, 0, 0.690491, -4.44079, 0.860852, -2.1022)
+use_collision = true
+size = Vector3(1, 4, 5)
+material = ExtResource("1_6hg0c")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.46631, 5.10084, 0)
+light_energy = 3.065
+shadow_enabled = true
+omni_range = 73.156
+
+[node name="Target" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.85441, 0, 0)
+
+[node name="Denizen" parent="." instance=ExtResource("2_40djr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.873217, 0, 0.467432)
+curious_distance = 3.0
+behavior = 1
+path_target = NodePath("../Path3D")
+
+[node name="Denizen2" parent="." instance=ExtResource("2_40djr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44138, 0, -1.81563)
+visible = false
+
+[node name="Denizen3" parent="." instance=ExtResource("2_40djr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.982327, 0, 3.48038)
+visible = false
+
+[node name="Denizen4" parent="." instance=ExtResource("2_40djr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80695, 0, -4.30585)
+visible = false
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.794894, 0)
+curve = SubResource("Curve3D_y42na")
