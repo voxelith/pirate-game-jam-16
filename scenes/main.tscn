@@ -6,7 +6,8 @@
 
 [sub_resource type="Environment" id="Environment_fjecj"]
 background_mode = 1
-ambient_light_source = 1
+background_color = Color(0.113725, 0.117647, 0.137255, 1)
+ambient_light_color = Color(0.113725, 0.117647, 0.137255, 1)
 ambient_light_energy = 0.0
 reflected_light_source = 1
 glow_intensity = 0.0
@@ -21,17 +22,11 @@ offset_bottom = 512.0
 
 [node name="PlayerCountdown" parent="MainViewportContainer/SubViewport/SceneContents" index="0" instance=ExtResource("9_h46ff")]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="MainViewportContainer/SubViewport/SceneContents" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
-light_energy = 7.107
-shadow_enabled = true
-omni_range = 8.0
-
-[node name="Player" parent="MainViewportContainer/SubViewport/SceneContents" index="2" instance=ExtResource("4_vw1ur")]
+[node name="Player" parent="MainViewportContainer/SubViewport/SceneContents" index="1" instance=ExtResource("4_vw1ur")]
 unique_name_in_owner = true
 process_mode = 1
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="MainViewportContainer/SubViewport/SceneContents" index="3"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="MainViewportContainer/SubViewport/SceneContents" index="2"]
 environment = SubResource("Environment_fjecj")
 
 [editable path="MainViewportContainer"]
