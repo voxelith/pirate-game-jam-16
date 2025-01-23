@@ -4,7 +4,7 @@ extends Control
 
 func _ready():
 	$AnimationPlayer.play("RESET") #Play the "RESET" animation to set the initial state.
-	$CanvasLayer2/PanelContainer/VBoxContainer/Resume.grab_focus() #Set initial focus to the Resume button.
+	$CanvasLayer2/PanelContainer/ButtonsLayout/Resume.grab_focus() #Set initial focus to the Resume button.
 
 func resume(): #Function to resume the game
 	get_tree().paused = false #Unpause the game
@@ -25,10 +25,6 @@ func _input(event: InputEvent) -> void: #Handles player input
 			resume()
 		else:
 			pause()
-	elif not get_tree().paused:
-		# In this case (game is running and the menu button was not pressed), discard input before it
-		# reaches the buttons
-		get_viewport().set_input_as_handled()
 	elif Input.is_action_just_pressed("ui_cancel"):
 		resume()
 

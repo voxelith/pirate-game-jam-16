@@ -29,6 +29,7 @@ omni_range = 8.0
 
 [node name="Player" parent="MainViewportContainer/SubViewport/SceneContents" index="2" instance=ExtResource("4_vw1ur")]
 unique_name_in_owner = true
+process_mode = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="MainViewportContainer/SubViewport/SceneContents" index="3"]
 environment = SubResource("Environment_fjecj")
