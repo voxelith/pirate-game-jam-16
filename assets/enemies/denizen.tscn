@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://dio13erlilci5"]
+
+[ext_resource type="Script" path="res://scripts/denizen.gd" id="1_0eqws"]
+[ext_resource type="Shader" path="res://shaders/pixelart_stylizer_object.gdshader" id="2_2dd06"]
+[ext_resource type="Texture2D" uid="uid://dmwxnncpp2o5a" path="res://palettes/bw-6.png" id="3_k1ooi"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_effn3"]
+radius = 0.25
+height = 0.75
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2opxv"]
+render_priority = 0
+shader = ExtResource("2_2dd06")
+shader_parameter/dither_strength = 0.99
+shader_parameter/edge_strength = 1.0
+shader_parameter/PALETTE_TEXTURE = ExtResource("3_k1ooi")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_htk2h"]
+next_pass = SubResource("ShaderMaterial_2opxv")
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.93, 0.279, 0.37665, 1)
+roughness = 0.15
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8e8v2"]
+radius = 0.25
+height = 0.75
+
+[node name="Denizen" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44138, 0, -0.263566)
+script = ExtResource("1_0eqws")
+
+[node name="DenizenModel" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
+mesh = SubResource("CapsuleMesh_effn3")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_htk2h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
+shape = SubResource("CapsuleShape3D_8e8v2")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+height = 0.25
+radius = 0.75
