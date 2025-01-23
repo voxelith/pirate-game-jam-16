@@ -27,3 +27,8 @@ func _ready() -> void:
 
 func pause():
 	%PauseMenu.pause()
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("pause_menu"): #Checks if the pause menu action key was pressed
+		get_viewport().set_input_as_handled()
+		%PauseMenu.pause()
