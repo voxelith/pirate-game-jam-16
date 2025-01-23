@@ -24,11 +24,3 @@ func _ready() -> void:
 	get_viewport().size_changed.connect(update_subviewport)
 	
 	change_level(preload("res://scenes/levels/NavTest.tscn"))
-
-func pause():
-	%PauseMenu.pause()
-
-func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("pause_menu"): #Checks if the pause menu action key was pressed
-		get_viewport().set_input_as_handled()
-		%PauseMenu.pause()

@@ -19,14 +19,13 @@ func pause(): #Function to pause the game
 	mouse_filter = Control.MOUSE_FILTER_STOP #Stop mouse events from passing through the control
 
 func _input(event: InputEvent) -> void: #Handles player input
-	if Input.is_action_just_pressed("pause_menu"): #Checks if the pause menu action key was pressed
+	if event.is_action_pressed("pause_menu"): #Checks if the pause menu action key was pressed
+		print(event)
 		get_viewport().set_input_as_handled() #Mark input as handled to prevent further processsing
 		if get_tree().paused:
 			resume()
 		else:
 			pause()
-	elif Input.is_action_just_pressed("ui_cancel"):
-		resume()
 
 func _on_resume_pressed() -> void: #Callback function when the resume button is pressed
 	resume()
