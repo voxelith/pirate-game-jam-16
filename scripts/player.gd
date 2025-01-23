@@ -27,12 +27,6 @@ func _input(event: InputEvent):
 	if event is InputEventMouseMotion:
 		mouse_dir = clamp(-event.relative.x * MOUSE_SENSIVITY, -MAX_MOUSE_MOVE, MAX_MOUSE_MOVE)
 		mouse_move_last = 0.0
-	elif event is InputEventKey:
-		if event.is_action_pressed("pause_menu"):
-			var mvc = get_tree().current_scene.get_node("%MainViewportContainer")
-			if mvc != null:
-				mvc.pause()
-			get_viewport().set_input_as_handled()
 
 func _physics_process(delta: float) -> void:
 	###############
