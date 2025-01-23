@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://budal3i8j0rs"]
+
+[ext_resource type="PackedScene" uid="uid://ch1ionoa0d15p" path="res://assets/environment/postal_box.glb" id="1_xdq0s"]
+[ext_resource type="Shader" path="res://shaders/pixelart_stylizer_object.gdshader" id="2_8vwml"]
+[ext_resource type="Texture2D" uid="uid://c74e35p0aw6a4" path="res://palettes/brown-6.png" id="3_6l00m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_emgg2"]
+render_priority = 0
+shader = ExtResource("2_8vwml")
+shader_parameter/dither_strength = 0.99
+shader_parameter/edge_strength = 1.0
+shader_parameter/PALETTE_TEXTURE = ExtResource("3_6l00m")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qngch"]
+next_pass = SubResource("ShaderMaterial_emgg2")
+diffuse_mode = 3
+albedo_color = Color(0.685308, 0.685307, 0.685308, 1)
+metallic = 1.0
+roughness = 0.65
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6gnld"]
+size = Vector3(0.75, 1.391, 0.75)
+
+[node name="PostalBox" instance=ExtResource("1_xdq0s")]
+
+[node name="Postal Box" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_qngch")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.698608, 0)
+shape = SubResource("BoxShape3D_6gnld")

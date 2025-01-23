@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://xde3nwf0knco"]
+
+[ext_resource type="PackedScene" uid="uid://dqg30uhtgf7qh" path="res://assets/environment/crate_small.glb" id="1_31rd1"]
+[ext_resource type="Material" uid="uid://d3esp33fbrjwr" path="res://materials/wood_brown.tres" id="2_w8qlj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tofks"]
+
+[node name="CrateSmall" instance=ExtResource("1_31rd1")]
+
+[node name="Crate, small" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_w8qlj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_tofks")

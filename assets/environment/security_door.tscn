@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://jki2by1dduha"]
+
+[ext_resource type="PackedScene" uid="uid://dwjuimlt22l6" path="res://assets/environment/security_door.glb" id="1_olknc"]
+[ext_resource type="Material" uid="uid://dm72p5fit2xrk" path="res://materials/metal_a_stone.tres" id="2_oxaox"]
+[ext_resource type="Material" uid="uid://dte2b6coymv3u" path="res://materials/metal_b_stone.tres" id="3_uuk07"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hcs4n"]
+size = Vector3(3.5, 2.5, 0.333)
+
+[node name="SecurityDoor" instance=ExtResource("1_olknc")]
+
+[node name="Security Door" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_oxaox")
+surface_material_override/1 = ExtResource("3_uuk07")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+shape = SubResource("BoxShape3D_hcs4n")

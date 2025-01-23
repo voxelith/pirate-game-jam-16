@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://cuwvk2k32qt2d"]
+
+[ext_resource type="PackedScene" uid="uid://d1ri1fkans84" path="res://assets/environment/lamp_globe.glb" id="1_vfwaw"]
+[ext_resource type="Material" uid="uid://nmhvgpbongh1" path="res://materials/shiny_stone.tres" id="2_rilbc"]
+[ext_resource type="Shader" path="res://shaders/pixelart_stylizer_object.gdshader" id="3_oa2ei"]
+[ext_resource type="Texture2D" uid="uid://7sjrlkexjcv8" path="res://palettes/gold-6.png" id="4_io0c4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r61nf"]
+render_priority = 0
+shader = ExtResource("3_oa2ei")
+shader_parameter/dither_strength = 0.99
+shader_parameter/edge_strength = 1.0
+shader_parameter/PALETTE_TEXTURE = ExtResource("4_io0c4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4srm1"]
+next_pass = SubResource("ShaderMaterial_r61nf")
+shading_mode = 0
+albedo_color = Color(0.754972, 0.754971, 0.754971, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0ow0b"]
+size = Vector3(0.25, 4, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rowq7"]
+size = Vector3(0.5, 4.536, 0.5)
+
+[node name="LampGlobe" instance=ExtResource("1_vfwaw")]
+
+[node name="Globe Lamp" parent="." index="0"]
+cast_shadow = 0
+surface_material_override/0 = ExtResource("2_rilbc")
+surface_material_override/1 = SubResource("StandardMaterial3D_4srm1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Globe Lamp" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+cast_shadow = 3
+mesh = SubResource("BoxMesh_0ow0b")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.26971, 0)
+shape = SubResource("BoxShape3D_rowq7")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.6744, 0)
+light_energy = 1.2
+shadow_enabled = true
+omni_range = 60.0

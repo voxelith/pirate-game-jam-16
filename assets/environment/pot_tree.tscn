@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://dq1p87s2f2f3x"]
+
+[ext_resource type="PackedScene" uid="uid://dotf7fq5vihkm" path="res://assets/environment/pot_tree.glb" id="1_37m0f"]
+[ext_resource type="Material" uid="uid://cstpcrycja5wa" path="res://materials/basic_gold.tres" id="2_r47x6"]
+[ext_resource type="Material" uid="uid://b3t0mas2inweg" path="res://materials/basic_brown.tres" id="3_nkhnp"]
+[ext_resource type="Material" uid="uid://bf1ajwinvt4td" path="res://materials/basic_green.tres" id="4_pjrdy"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_s4iav"]
+height = 1.5
+radius = 0.566267
+
+[node name="PotTree" instance=ExtResource("1_37m0f")]
+
+[node name="Plant Pot" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_r47x6")
+surface_material_override/1 = ExtResource("3_nkhnp")
+surface_material_override/2 = ExtResource("4_pjrdy")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("CylinderShape3D_s4iav")

@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://nmhvgpbongh1"]
+
+[ext_resource type="Shader" path="res://shaders/pixelart_stylizer_object.gdshader" id="1_3aavv"]
+[ext_resource type="Texture2D" uid="uid://clu86ynwb6m8p" path="res://palettes/stone-5.png" id="2_8t6wc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_emgg2"]
+render_priority = 0
+shader = ExtResource("1_3aavv")
+shader_parameter/dither_strength = 0.99
+shader_parameter/edge_strength = 1.0
+shader_parameter/PALETTE_TEXTURE = ExtResource("2_8t6wc")
+
+[resource]
+next_pass = SubResource("ShaderMaterial_emgg2")
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.347199, 0.347198, 0.347198, 1)
+roughness = 0.09

@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://0720iuwx0pgg"]
+
+[ext_resource type="PackedScene" uid="uid://c5muvdaa68hyq" path="res://assets/environment/phone_booth.glb" id="1_3a4cl"]
+[ext_resource type="Material" uid="uid://dgkixbn7yproa" path="res://materials/metal_a_gold.tres" id="2_ffvoa"]
+[ext_resource type="Material" uid="uid://c7juiw36lvl8i" path="res://materials/basic_stone.tres" id="3_n7ric"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1cbex"]
+size = Vector3(0.583008, 1.8775, 0.454102)
+
+[node name="PhoneBooth" instance=ExtResource("1_3a4cl")]
+
+[node name="Phone Booth" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_ffvoa")
+surface_material_override/1 = ExtResource("3_n7ric")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.935394, 0.104004)
+shape = SubResource("BoxShape3D_1cbex")

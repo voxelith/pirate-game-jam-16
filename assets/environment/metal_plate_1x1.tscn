@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ciag5okq6g7mu"]
+[gd_scene load_steps=8 format=3 uid="uid://btafuthro88iy"]
 
 [ext_resource type="Texture2D" uid="uid://8tqb2mhxdvx0" path="res://textures/metal-plate-1x, albedo.png" id="1_v0et5"]
 [ext_resource type="Shader" path="res://shaders/pixelart_stylizer_object.gdshader" id="2_j60tc"]
