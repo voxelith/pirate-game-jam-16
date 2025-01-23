@@ -32,10 +32,4 @@ omni_range = 8.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="MainViewportContainer/SubViewport/SceneContents" index="3"]
 environment = SubResource("Environment_fjecj")
 
-[node name="PlayerCountdown" parent="." instance=ExtResource("3_hv3jf")]
-offset_left = 12.0
-offset_top = 10.0
-offset_right = 350.0
-offset_bottom = 103.0
-
 [editable path="MainViewportContainer"]
