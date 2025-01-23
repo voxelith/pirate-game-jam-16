@@ -28,12 +28,21 @@ func install_sounds(node: Node) -> void:
 		if i is Button:
 			i.mouse_entered.connect( ui_sfx_play.bind(&"UI_Hover") )
 			i.pressed.connect( ui_sfx_play.bind(&"UI_Click") )
+			i.focus_entered.connect( ui_sfx_play.bind(&"UI_Hover") )
+
 		elif i is OptionButton:
 			i.mouse_entered.connect( ui_sfx_play.bind(&"UI_Hover") )
 			i.pressed.connect( ui_sfx_play.bind(&"UI_Click") )
+			i.focus_entered.connect( ui_sfx_play.bind(&"UI_Hover") )
+
 		elif i is TextureButton:
 			i.mouse_entered.connect( ui_sfx_play.bind(&"UI_Hover") )
 			i.pressed.connect( ui_sfx_play.bind(&"UI_Click") )
+			i.focus_entered.connect( ui_sfx_play.bind(&"UI_Hover") )
 
 func ui_sfx_play(sound : String) -> void:
 	sounds[sound].play()
+
+
+
+#Why are you reading my code? I promise you, I didn't steal all of it! Stop! How dare you judge me! :( 

@@ -36,3 +36,7 @@ func _on_options_pressed() -> void: #Callback function when the options button i
 
 func _on_quit_pressed() -> void: #Callback function when the quit button is pressed
 	get_tree().quit()
+
+
+
+#Don't look up this URL link! Trust me! https://youtu.be/dQw4w9WgXcQ?si=9WfgZOLFZqoAO7QQ
