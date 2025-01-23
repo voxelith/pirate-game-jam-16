@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cgb440m4f3nra"]
 
 [ext_resource type="PackedScene" uid="uid://ciuh2o8xpgmvg" path="res://assets/main_viewport_container.tscn" id="1_6xtqw"]
-[ext_resource type="PackedScene" uid="uid://d352p1s1v1tcf" path="res://components/PlayerCountdown.tscn" id="3_hv3jf"]
 [ext_resource type="PackedScene" uid="uid://bqibs67j86o33" path="res://assets/player.tscn" id="4_vw1ur"]
+[ext_resource type="PackedScene" uid="uid://d352p1s1v1tcf" path="res://components/PlayerCountdown.tscn" id="9_h46ff"]
 
 [sub_resource type="Environment" id="Environment_fjecj"]
 background_mode = 1
@@ -19,15 +19,17 @@ unique_name_in_owner = true
 offset_right = 512.0
 offset_bottom = 512.0
 
-[node name="OmniLight3D" type="OmniLight3D" parent="MainViewportContainer/SubViewport/SceneContents" index="0"]
+[node name="PlayerCountdown" parent="MainViewportContainer/SubViewport/SceneContents" index="0" instance=ExtResource("9_h46ff")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MainViewportContainer/SubViewport/SceneContents" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 light_energy = 7.107
 shadow_enabled = true
 omni_range = 8.0
 
-[node name="Player" parent="MainViewportContainer/SubViewport/SceneContents" index="1" instance=ExtResource("4_vw1ur")]
+[node name="Player" parent="MainViewportContainer/SubViewport/SceneContents" index="2" instance=ExtResource("4_vw1ur")]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="MainViewportContainer/SubViewport/SceneContents" index="2"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="MainViewportContainer/SubViewport/SceneContents" index="3"]
 environment = SubResource("Environment_fjecj")
 
 [node name="PlayerCountdown" parent="." instance=ExtResource("3_hv3jf")]
