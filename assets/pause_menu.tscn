@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvtc472n443kt"]
+[gd_scene load_steps=7 format=3 uid="uid://bvtc472n443kt"]
 
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_224kl"]
 [ext_resource type="Theme" uid="uid://buyj7atvoig18" path="res://assets/ui/theme.tres" id="1_qsy5g"]
+[ext_resource type="PackedScene" uid="uid://b8wfp2etl7cuf" path="res://assets/ui_sound.tscn" id="3_y1xxm"]
 
 [sub_resource type="Animation" id="Animation_k6h1o"]
 length = 0.001
@@ -126,6 +127,9 @@ text = "Quit"
 libraries = {
 "": SubResource("AnimationLibrary_02x0u")
 }
+
+[node name="UI_Sound" parent="." instance=ExtResource("3_y1xxm")]
+root_path = NodePath("../CanvasLayer2/PanelContainer/VBoxContainer")
 
 [connection signal="pressed" from="CanvasLayer2/PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="CanvasLayer2/PanelContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
