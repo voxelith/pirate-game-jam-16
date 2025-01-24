@@ -1,40 +1,152 @@
-[gd_scene load_steps=8 format=3 uid="uid://dio13erlilci5"]
+[gd_scene load_steps=13 format=3 uid="uid://sywwttipgos2"]
 
 [ext_resource type="Script" path="res://scripts/denizen.gd" id="1_0eqws"]
 [ext_resource type="Shader" path="res://shaders/pixelart_stylizer_object.gdshader" id="2_2dd06"]
-[ext_resource type="Texture2D" uid="uid://dmwxnncpp2o5a" path="res://palettes/bw-6.png" id="3_k1ooi"]
+[ext_resource type="Shader" path="res://shaders/vaporize.gdshader" id="2_v1cpu"]
+[ext_resource type="Texture2D" uid="uid://clu86ynwb6m8p" path="res://palettes/stone-5.png" id="4_8afo1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dul2i"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_v1cpu")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/opacity = 1.0
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_effn3"]
 radius = 0.25
 height = 0.75
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2opxv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_im3kx"]
 render_priority = 0
 shader = ExtResource("2_2dd06")
 shader_parameter/dither_strength = 0.99
 shader_parameter/edge_strength = 1.0
-shader_parameter/PALETTE_TEXTURE = ExtResource("3_k1ooi")
+shader_parameter/PALETTE_TEXTURE = ExtResource("4_8afo1")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_htk2h"]
-next_pass = SubResource("ShaderMaterial_2opxv")
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.93, 0.279, 0.37665, 1)
-roughness = 0.15
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ax56"]
+resource_local_to_scene = true
+next_pass = SubResource("ShaderMaterial_im3kx")
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.50103, 0.50103, 0.50103, 1)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8e8v2"]
 radius = 0.25
 height = 0.75
 
-[node name="Denizen" type="CharacterBody3D"]
+[sub_resource type="Animation" id="Animation_4bd2r"]
+resource_name = "vaporize"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DenizenModel:surface_material_override/0:emission_energy_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 5.0, 0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"update_vaporize_material"
+}, {
+"args": [],
+"method": &"do_death"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:vaporize_material:shader_parameter/opacity")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:vaporize_material:shader_parameter/color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_j8arr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DenizenModel:surface_material_override/0:emission_energy_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:vaporize_material:shader_parameter/opacity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:vaporize_material:shader_parameter/color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kxmfh"]
+_data = {
+"RESET": SubResource("Animation_j8arr"),
+"vaporize": SubResource("Animation_4bd2r")
+}
+
+[node name="Denizen" type="CharacterBody3D" groups=["destroyable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44138, 0, -0.263566)
 script = ExtResource("1_0eqws")
+vaporize_material = SubResource("ShaderMaterial_dul2i")
 
 [node name="DenizenModel" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
 mesh = SubResource("CapsuleMesh_effn3")
 skeleton = NodePath("../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_htk2h")
+surface_material_override/0 = SubResource("StandardMaterial3D_1ax56")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
@@ -43,3 +155,8 @@ shape = SubResource("CapsuleShape3D_8e8v2")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 height = 0.25
 radius = 0.75
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kxmfh")
+}

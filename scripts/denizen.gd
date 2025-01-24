@@ -4,7 +4,8 @@ enum Behavior {
 	STANDING,
 	PATH_FOLLOW,
 	CURIOUS,
-	PANIC
+	PANIC,
+	DEAD
 }
 
 @export_range(0.5, 10.0, 0.1) var normal_speed: float = 2.5
@@ -13,6 +14,7 @@ enum Behavior {
 @export var behavior: Behavior = Behavior.PANIC
 @export_node_path("Node3D") var standing_target
 @export_node_path("Path3D") var path_target
+@export var vaporize_material: Material
 
 const FLEE_DIST = 3.0
 const PATHOFF_DELTA = 0.01
@@ -20,6 +22,15 @@ var velocity_spring := SpringVector3.new(1.0, 2.0, 0.0)
 
 @onready var nav = $NavigationAgent3D
 @onready var moving_target = get_tree().current_scene.get_node("%Player")
+
+func trigger_vaporize():
+	if(behavior != Behavior.DEAD): $AnimationPlayer.play("vaporize");
+
+func update_vaporize_material():
+	$DenizenModel.set_surface_override_material(0, vaporize_material)
+
+func do_death():
+	behavior = Behavior.DEAD
 
 var last_offset := 0.0
 

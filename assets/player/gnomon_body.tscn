@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=3 uid="uid://bu2yk7fhrxsnt"]
+
+[ext_resource type="PackedScene" uid="uid://dcbapj6ompgnt" path="res://assets/player/gnomon-body.glb" id="1_gl3oy"]
+[ext_resource type="Texture2D" uid="uid://2hjdvsfgwant" path="res://assets/player/gnomon-head.png" id="2_45vnv"]
+[ext_resource type="Shader" path="res://shaders/pixelart_stylizer_object.gdshader" id="2_it0bv"]
+[ext_resource type="Texture2D" uid="uid://clu86ynwb6m8p" path="res://palettes/stone-5.png" id="3_ten3e"]
+[ext_resource type="Texture2D" uid="uid://cn4mnovtk0ly8" path="res://assets/player/gnomon-body_hoodie.png" id="4_g4qf3"]
+[ext_resource type="Material" uid="uid://cstpcrycja5wa" path="res://materials/basic_gold.tres" id="5_3v4en"]
+[ext_resource type="Script" path="res://scripts/gnomon_head.gd" id="7_4d7a1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vtaf4"]
+render_priority = 0
+shader = ExtResource("2_it0bv")
+shader_parameter/dither_strength = 0.99
+shader_parameter/edge_strength = 1.0
+shader_parameter/PALETTE_TEXTURE = ExtResource("3_ten3e")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_71agb"]
+next_pass = SubResource("ShaderMaterial_vtaf4")
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.256923, 0.256923, 0.256923, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yj3vq"]
+next_pass = ExtResource("5_3v4en")
+albedo_texture = ExtResource("4_g4qf3")
+
+[node name="GnomonBody" instance=ExtResource("1_gl3oy")]
+
+[node name="Armature" parent="." index="0"]
+transform = Transform3D(-0.05, 0, -4.37114e-09, 0, 0.05, 0, 4.37114e-09, 0, -0.05, 0, 0.3452, 0)
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/rotation = Quaternion(-2.98023e-08, 1.19209e-07, 1.05879e-22, 1)
+bones/2/rotation = Quaternion(4.71241e-08, 3.14363e-08, 0.151608, 0.988441)
+bones/3/rotation = Quaternion(1.81285e-09, 7.49536e-09, 0.00667648, 0.999978)
+bones/6/rotation = Quaternion(1.81286e-09, -7.49536e-09, -0.00667648, 0.999978)
+bones/9/rotation = Quaternion(-0.0609898, -0.0573005, -0.38652, 0.918477)
+bones/10/rotation = Quaternion(-0.132316, 0.00840036, 0.00231656, 0.991169)
+bones/12/rotation = Quaternion(-0.0609898, 0.0573005, 0.38652, 0.918477)
+bones/13/rotation = Quaternion(-0.132316, -0.00840036, -0.00231656, 0.991169)
+
+[node name="Cube_001" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_71agb")
+
+[node name="Cube_002" parent="Armature/Skeleton3D" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_yj3vq")
+
+[node name="Head" type="Sprite3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+cast_shadow = 0
+pixel_size = 0.02
+billboard = 1
+texture_filter = 2
+render_priority = 4
+texture = ExtResource("2_45vnv")
+hframes = 8
+script = ExtResource("7_4d7a1")

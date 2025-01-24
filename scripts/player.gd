@@ -18,6 +18,7 @@ var mouse_dir := 0.0
 var mouse_move_last := 0.0
 
 @onready var reticle = $Reticle
+@onready var anim = $AnimationPlayer
 
 func _ready() -> void:
 	look_rotation = rotation.y
@@ -29,19 +30,6 @@ func _input(event: InputEvent):
 		mouse_move_last = 0.0
 
 func _physics_process(delta: float) -> void:
-	###############
-	# RAY CASTING #
-	###############
-	var space_state = get_world_3d().direct_space_state
-	var origin := global_position;
-	var destroyables = get_tree().get_nodes_in_group("destroyable")
-	for destroyable in destroyables:
-		var query = PhysicsRayQueryParameters3D.create(origin, destroyable.global_position)
-		query.exclude = [self]
-		var result = space_state.intersect_ray(query)
-		if not result.is_empty():
-			reticle.global_position = result.position
-	
 	#################
 	# PLAYER MOTION #
 	#################
@@ -59,6 +47,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		if Input.is_action_just_pressed("jump"):
 			velocity.y = JUMP_VELOCITY
+	
+	$GnomonBody.rotation.y = atan2(velocity.x, velocity.z) - rotation.y
 	
 	#################
 	# CAMERA MOTION #
@@ -85,3 +75,21 @@ func _physics_process(delta: float) -> void:
 	rotation.y = look_rotation
 
 	move_and_slide()
+
+func trigger_purge():
+	anim.play("purge")
+
+func do_purge():
+	###############
+	# RAY CASTING #
+	###############
+	var space_state = get_world_3d().direct_space_state
+	var origin: Vector3 = $PurgeLight.global_position;
+	var destroyables = get_tree().get_nodes_in_group("destroyable")
+	for destroyable in destroyables:
+		var query = PhysicsRayQueryParameters3D.create(origin, destroyable.global_position)
+		query.exclude = [self]
+		var result = space_state.intersect_ray(query)
+		if not result.is_empty():
+			reticle.global_position = result.position
+			if result.collider.has_method("trigger_vaporize"): result.collider.trigger_vaporize()

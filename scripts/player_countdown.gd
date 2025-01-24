@@ -1,11 +1,16 @@
 extends RichTextLabel
 
-@export var time_left = 120
+@export var time_left: int = 10
+@export var interval: int = 15
 
+@onready var player = get_tree().current_scene.get_node("%Player")
 
 func _onTimerTick() -> void:
-	time_left -= 1
-
+	if time_left > 0:
+		time_left -= 1
+	else:
+		player.trigger_purge()
+		time_left = interval
 
 # Hook into this when damage is taken
 func applyDamage() -> void:
