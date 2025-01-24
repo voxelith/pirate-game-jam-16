@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://bqibs67j86o33"]
+[gd_scene load_steps=9 format=3 uid="uid://bqibs67j86o33"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_muvjw"]
-[ext_resource type="Shader" path="res://shaders/pixelart_stylizer_object.gdshader" id="3_2hp4s"]
-[ext_resource type="Texture2D" uid="uid://dmwxnncpp2o5a" path="res://palettes/bw-6.png" id="4_ht1v3"]
+[ext_resource type="PackedScene" uid="uid://bu2yk7fhrxsnt" path="res://assets/player/gnomon_body.tscn" id="4_0vcg8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nw5lh"]
 shading_mode = 0
@@ -11,24 +10,6 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_w1a6w"]
 radius = 0.1
 height = 0.2
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_effn3"]
-radius = 0.25
-height = 0.75
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2opxv"]
-render_priority = 0
-shader = ExtResource("3_2hp4s")
-shader_parameter/dither_strength = 0.99
-shader_parameter/edge_strength = 1.0
-shader_parameter/PALETTE_TEXTURE = ExtResource("4_ht1v3")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_htk2h"]
-next_pass = SubResource("ShaderMaterial_2opxv")
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.93, 0.279, 0.37665, 1)
-roughness = 0.15
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x2fxs"]
 radius = 0.25
@@ -64,6 +45,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0, 16.0, 0.0]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"do_purge"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3c0qm"]
 _data = {
@@ -80,13 +75,8 @@ material_override = SubResource("StandardMaterial3D_nw5lh")
 cast_shadow = 0
 mesh = SubResource("SphereMesh_w1a6w")
 
-[node name="PlayerModelTarget" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
-
-[node name="PlayerModel" type="MeshInstance3D" parent="PlayerModelTarget"]
-mesh = SubResource("CapsuleMesh_effn3")
-skeleton = NodePath("../../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_htk2h")
+[node name="GnomonBody" parent="." instance=ExtResource("4_0vcg8")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
@@ -104,9 +94,8 @@ projection = 1
 current = true
 size = 2.0
 
-[node name="PurgeLight" type="OmniLight3D" parent="." groups=["destroyable"]]
+[node name="PurgeLight" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-visible = false
 light_energy = 0.0
 shadow_enabled = true
 shadow_bias = 0.05

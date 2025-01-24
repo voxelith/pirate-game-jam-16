@@ -1,19 +1,48 @@
-[gd_scene load_steps=13 format=3 uid="uid://cdn4co2wwb341"]
+[gd_scene load_steps=17 format=3 uid="uid://doph7hrqu1npk"]
 
 [ext_resource type="Material" uid="uid://c7juiw36lvl8i" path="res://materials/basic_stone.tres" id="1_6hg0c"]
-[ext_resource type="PackedScene" path="res://assets/enemies/denizen.tscn" id="2_40djr"]
-[ext_resource type="PackedScene" path="res://assets/environment/postal_box.tscn" id="3_8ycp3"]
-[ext_resource type="PackedScene" path="res://assets/environment/security_door.tscn" id="3_xn5x4"]
-[ext_resource type="PackedScene" path="res://assets/environment/phone_booth.tscn" id="4_5yrki"]
-[ext_resource type="PackedScene" path="res://assets/environment/lamp_globe.tscn" id="4_y4804"]
-[ext_resource type="PackedScene" path="res://assets/environment/pot_tree.tscn" id="5_cyogk"]
-[ext_resource type="PackedScene" path="res://assets/environment/crate_small.tscn" id="7_vaw07"]
-[ext_resource type="PackedScene" path="res://assets/environment/crate_medium.tscn" id="8_wrkbp"]
+[ext_resource type="PackedScene" uid="uid://sywwttipgos2" path="res://assets/enemies/denizen.tscn" id="2_40djr"]
+[ext_resource type="PackedScene" uid="uid://budal3i8j0rs" path="res://assets/environment/postal_box.tscn" id="3_8ycp3"]
+[ext_resource type="PackedScene" uid="uid://jki2by1dduha" path="res://assets/environment/security_door.tscn" id="3_xn5x4"]
+[ext_resource type="PackedScene" uid="uid://0720iuwx0pgg" path="res://assets/environment/phone_booth.tscn" id="4_5yrki"]
+[ext_resource type="PackedScene" uid="uid://cuwvk2k32qt2d" path="res://assets/environment/lamp_globe.tscn" id="4_y4804"]
+[ext_resource type="PackedScene" uid="uid://dq1p87s2f2f3x" path="res://assets/environment/pot_tree.tscn" id="5_cyogk"]
+[ext_resource type="PackedScene" uid="uid://xde3nwf0knco" path="res://assets/environment/crate_small.tscn" id="7_vaw07"]
+[ext_resource type="PackedScene" uid="uid://dbqej2atgrug1" path="res://assets/environment/crate_medium.tscn" id="8_wrkbp"]
+[ext_resource type="Shader" path="res://shaders/vaporize.gdshader" id="10_4osid"]
 [ext_resource type="PackedScene" uid="uid://setd0kv2njcy" path="res://assets/interactables/pressure_plate.tscn" id="10_vc5su"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_audol"]
 vertices = PackedVector3Array(-9.5, 0.331067, 0, -7, 0.331067, 0, -7.25, 0.331067, -1.25, -9.5, 0.331067, -9.5, -3, 0.331067, -4.75, -3, 0.331067, -9.5, 6.25, 0.331067, 1, 6.5, 0.331067, 1.75, 7.75, 0.331067, 1.75, 4.75, 0.331067, 2.75, 5, 0.331067, 2.75, 5, 0.331067, 1, 8, 0.331067, 2.75, 9.5, 0.331067, 2.75, 0.25, 0.331067, 0, 0.75, 0.331067, 0.75, 2.5, 0.331067, 1.25, 2.25, 0.331067, 2.75, -1.75, 0.331067, -4, -2.25, 0.331067, 0.5, 9.5, 0.331067, -9.5, -6, 3.33107, -1, -5.75, 3.33107, -0.5, -4.5, 3.33107, -1.75, -5, 3.33107, -2, -7, 0.331067, 1.5, -9.5, 0.331067, 9.5, -1.5, 0.331067, 3.75, -1.5, 0.331067, 3, -1.5, 0.331067, 9.5, -0.5, 1.83107, 2.5, -0.5, 1.83107, 3.25, 0.25, 1.83107, 2.75, 0, 1.83107, 2.25, 4.75, 0.331067, 4.25, 6.25, 0.331067, 3.75, 6, 0.331067, 2.75, 9.5, 0.331067, 9.5, -1, 0.331067, 4.25, 7.75, 0.331067, 3.75)
 polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 4), PackedInt32Array(4, 0, 5), PackedInt32Array(5, 0, 3), PackedInt32Array(8, 7, 6), PackedInt32Array(11, 10, 9), PackedInt32Array(13, 12, 8), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 11), PackedInt32Array(17, 16, 9), PackedInt32Array(9, 16, 11), PackedInt32Array(8, 6, 18), PackedInt32Array(14, 19, 18), PackedInt32Array(13, 8, 20), PackedInt32Array(20, 8, 18), PackedInt32Array(20, 18, 5), PackedInt32Array(18, 4, 5), PackedInt32Array(11, 14, 6), PackedInt32Array(6, 14, 18), PackedInt32Array(24, 23, 21), PackedInt32Array(21, 23, 22), PackedInt32Array(1, 25, 0), PackedInt32Array(0, 25, 26), PackedInt32Array(25, 28, 27), PackedInt32Array(27, 29, 25), PackedInt32Array(25, 29, 26), PackedInt32Array(33, 32, 30), PackedInt32Array(30, 32, 31), PackedInt32Array(34, 9, 10), PackedInt32Array(36, 35, 10), PackedInt32Array(10, 35, 34), PackedInt32Array(38, 34, 29), PackedInt32Array(29, 34, 37), PackedInt32Array(12, 13, 39), PackedInt32Array(39, 13, 37), PackedInt32Array(35, 39, 34), PackedInt32Array(34, 39, 37), PackedInt32Array(38, 29, 27)]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_05gku"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("10_4osid")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/opacity = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6hk2x"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("10_4osid")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/opacity = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iocbq"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("10_4osid")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/opacity = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5s7jx"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("10_4osid")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/opacity = 1.0
 
 [sub_resource type="Curve3D" id="Curve3D_y42na"]
 _data = {
@@ -77,17 +106,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.873217, 0, 0.467432)
 curious_distance = 3.0
 behavior = 1
 path_target = NodePath("../Path3D")
+vaporize_material = SubResource("ShaderMaterial_05gku")
 
 [node name="Denizen2" parent="." instance=ExtResource("2_40djr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44138, 0, -1.81563)
 curious_distance = 3.0
 behavior = 2
+vaporize_material = SubResource("ShaderMaterial_6hk2x")
 
 [node name="Denizen3" parent="." instance=ExtResource("2_40djr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.982327, 0, 3.48038)
+vaporize_material = SubResource("ShaderMaterial_iocbq")
 
 [node name="Denizen4" parent="." instance=ExtResource("2_40djr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80695, 0, -4.30585)
+vaporize_material = SubResource("ShaderMaterial_5s7jx")
 
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.794894, 0)
