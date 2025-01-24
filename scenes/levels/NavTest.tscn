@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://doph7hrqu1npk"]
+[gd_scene load_steps=18 format=3 uid="uid://doph7hrqu1npk"]
 
 [ext_resource type="Material" uid="uid://c7juiw36lvl8i" path="res://materials/basic_stone.tres" id="1_6hg0c"]
 [ext_resource type="PackedScene" uid="uid://sywwttipgos2" path="res://assets/enemies/denizen.tscn" id="2_40djr"]
