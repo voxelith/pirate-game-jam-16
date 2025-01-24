@@ -19,6 +19,7 @@ var mouse_move_last := 0.0
 
 @onready var reticle = $Reticle
 @onready var anim = $AnimationPlayer
+@onready var body_anim = $GnomonBody.find_child("AnimationTree")
 
 func _ready() -> void:
 	look_rotation = rotation.y
@@ -73,6 +74,7 @@ func _physics_process(delta: float) -> void:
 	
 	look_rotation = look_spring.update(delta)
 	rotation.y = look_rotation
+	body_anim.set("parameters/Blend2/blend_amount", velocity.length() / SPEED)
 
 	move_and_slide()
 
