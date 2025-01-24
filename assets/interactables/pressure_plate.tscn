@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://setd0kv2njcy"]
+
+[ext_resource type="Script" path="res://assets/interactables/pressure_plate.gd" id="1_xbt2r"]
+[ext_resource type="Material" uid="uid://dm72p5fit2xrk" path="res://materials/metal_a_stone.tres" id="2_y73op"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pwgdo"]
+material = ExtResource("2_y73op")
+size = Vector3(1, 0.05, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lsvvx"]
+data = PackedVector3Array(-0.5, 0.0125, 0.5, 0.5, 0.0125, 0.5, -0.5, -0.0125, 0.5, 0.5, 0.0125, 0.5, 0.5, -0.0125, 0.5, -0.5, -0.0125, 0.5, 0.5, 0.0125, -0.5, -0.5, 0.0125, -0.5, 0.5, -0.0125, -0.5, -0.5, 0.0125, -0.5, -0.5, -0.0125, -0.5, 0.5, -0.0125, -0.5, 0.5, 0.0125, 0.5, 0.5, 0.0125, -0.5, 0.5, -0.0125, 0.5, 0.5, 0.0125, -0.5, 0.5, -0.0125, -0.5, 0.5, -0.0125, 0.5, -0.5, 0.0125, -0.5, -0.5, 0.0125, 0.5, -0.5, -0.0125, -0.5, -0.5, 0.0125, 0.5, -0.5, -0.0125, 0.5, -0.5, -0.0125, -0.5, 0.5, 0.0125, 0.5, -0.5, 0.0125, 0.5, 0.5, 0.0125, -0.5, -0.5, 0.0125, 0.5, -0.5, 0.0125, -0.5, 0.5, 0.0125, -0.5, -0.5, -0.0125, 0.5, 0.5, -0.0125, 0.5, -0.5, -0.0125, -0.5, 0.5, -0.0125, 0.5, 0.5, -0.0125, -0.5, -0.5, -0.0125, -0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kmtac"]
+size = Vector3(1, 0.01, 1)
+
+[node name="PressurePlate" type="Node3D"]
+script = ExtResource("1_xbt2r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0242066, 0)
+mesh = SubResource("BoxMesh_pwgdo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_lsvvx")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.552078, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.497458, 0)
+shape = SubResource("BoxShape3D_kmtac")

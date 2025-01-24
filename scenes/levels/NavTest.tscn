@@ -1,14 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://doph7hrqu1npk"]
+[gd_scene load_steps=13 format=3 uid="uid://cdn4co2wwb341"]
 
 [ext_resource type="Material" uid="uid://c7juiw36lvl8i" path="res://materials/basic_stone.tres" id="1_6hg0c"]
 [ext_resource type="PackedScene" path="res://assets/enemies/denizen.tscn" id="2_40djr"]
-[ext_resource type="PackedScene" uid="uid://budal3i8j0rs" path="res://assets/environment/postal_box.tscn" id="3_8ycp3"]
-[ext_resource type="PackedScene" uid="uid://jki2by1dduha" path="res://assets/environment/security_door.tscn" id="3_xn5x4"]
-[ext_resource type="PackedScene" uid="uid://0720iuwx0pgg" path="res://assets/environment/phone_booth.tscn" id="4_5yrki"]
-[ext_resource type="PackedScene" uid="uid://cuwvk2k32qt2d" path="res://assets/environment/lamp_globe.tscn" id="4_y4804"]
-[ext_resource type="PackedScene" uid="uid://dq1p87s2f2f3x" path="res://assets/environment/pot_tree.tscn" id="5_cyogk"]
-[ext_resource type="PackedScene" uid="uid://xde3nwf0knco" path="res://assets/environment/crate_small.tscn" id="7_vaw07"]
-[ext_resource type="PackedScene" uid="uid://dbqej2atgrug1" path="res://assets/environment/crate_medium.tscn" id="8_wrkbp"]
+[ext_resource type="PackedScene" path="res://assets/environment/postal_box.tscn" id="3_8ycp3"]
+[ext_resource type="PackedScene" path="res://assets/environment/security_door.tscn" id="3_xn5x4"]
+[ext_resource type="PackedScene" path="res://assets/environment/phone_booth.tscn" id="4_5yrki"]
+[ext_resource type="PackedScene" path="res://assets/environment/lamp_globe.tscn" id="4_y4804"]
+[ext_resource type="PackedScene" path="res://assets/environment/pot_tree.tscn" id="5_cyogk"]
+[ext_resource type="PackedScene" path="res://assets/environment/crate_small.tscn" id="7_vaw07"]
+[ext_resource type="PackedScene" path="res://assets/environment/crate_medium.tscn" id="8_wrkbp"]
+[ext_resource type="PackedScene" uid="uid://setd0kv2njcy" path="res://assets/interactables/pressure_plate.tscn" id="10_vc5su"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_audol"]
 vertices = PackedVector3Array(-9.5, 0.331067, 0, -7, 0.331067, 0, -7.25, 0.331067, -1.25, -9.5, 0.331067, -9.5, -3, 0.331067, -4.75, -3, 0.331067, -9.5, 6.25, 0.331067, 1, 6.5, 0.331067, 1.75, 7.75, 0.331067, 1.75, 4.75, 0.331067, 2.75, 5, 0.331067, 2.75, 5, 0.331067, 1, 8, 0.331067, 2.75, 9.5, 0.331067, 2.75, 0.25, 0.331067, 0, 0.75, 0.331067, 0.75, 2.5, 0.331067, 1.25, 2.25, 0.331067, 2.75, -1.75, 0.331067, -4, -2.25, 0.331067, 0.5, 9.5, 0.331067, -9.5, -6, 3.33107, -1, -5.75, 3.33107, -0.5, -4.5, 3.33107, -1.75, -5, 3.33107, -2, -7, 0.331067, 1.5, -9.5, 0.331067, 9.5, -1.5, 0.331067, 3.75, -1.5, 0.331067, 3, -1.5, 0.331067, 9.5, -0.5, 1.83107, 2.5, -0.5, 1.83107, 3.25, 0.25, 1.83107, 2.75, 0, 1.83107, 2.25, 4.75, 0.331067, 4.25, 6.25, 0.331067, 3.75, 6, 0.331067, 2.75, 9.5, 0.331067, 9.5, -1, 0.331067, 4.25, 7.75, 0.331067, 3.75)
@@ -91,3 +92,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80695, 0, -4.30585)
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.794894, 0)
 curve = SubResource("Curve3D_y42na")
+
+[node name="PressurePlate" parent="." instance=ExtResource("10_vc5su")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.205506, 0.0241496, -1.50588)
