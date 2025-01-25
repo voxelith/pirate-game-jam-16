@@ -20,7 +20,6 @@ func pause(): #Function to pause the game
 
 func _input(event: InputEvent) -> void: #Handles player input
 	if event.is_action_pressed("pause_menu"): #Checks if the pause menu action key was pressed
-		print(event)
 		get_viewport().set_input_as_handled() #Mark input as handled to prevent further processsing
 		if get_tree().paused:
 			resume()
