@@ -12,8 +12,8 @@ radius = 0.1
 height = 0.2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x2fxs"]
-radius = 0.25
-height = 0.75
+radius = 0.4
+height = 1.4
 
 [sub_resource type="Animation" id="Animation_34cn6"]
 length = 0.001
@@ -79,7 +79,7 @@ mesh = SubResource("SphereMesh_w1a6w")
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.675, 0)
 shape = SubResource("CapsuleShape3D_x2fxs")
 
 [node name="CameraRig" type="Node3D" parent="."]
@@ -100,7 +100,7 @@ light_energy = 0.0
 shadow_enabled = true
 shadow_bias = 0.05
 shadow_transmittance_bias = 0.01
-omni_range = 100.0
+omni_range = 50.0
 omni_attenuation = 0.5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
