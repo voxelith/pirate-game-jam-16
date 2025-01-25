@@ -235,15 +235,15 @@ node_connections = [&"Add2", 0, &"Blend2", &"Add2", 1, &"Animation 3", &"Blend2"
 transform = Transform3D(-0.05, 0, -4.37114e-09, 0, 0.05, 0, 4.37114e-09, 0, -0.05, 0, 0.3452, 0)
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/0/rotation = Quaternion(-3.1524e-08, -0.162649, 6.12103e-09, 0.986684)
-bones/2/rotation = Quaternion(-0.191211, -0.233847, 0.458084, 0.83601)
-bones/3/rotation = Quaternion(-0.39681, -0.157312, 0.00603776, 0.9043)
-bones/5/rotation = Quaternion(0.191211, -0.233847, -0.458084, 0.83601)
-bones/6/rotation = Quaternion(-0.155426, 0.042125, -0.00390036, 0.986941)
-bones/9/rotation = Quaternion(0.170078, -0.186214, -0.353247, 0.900897)
-bones/10/rotation = Quaternion(-0.571071, 0.0645911, 0.00101514, 0.818355)
-bones/12/rotation = Quaternion(-0.331543, -0.102242, 0.389904, 0.852995)
-bones/13/rotation = Quaternion(-0.571197, -0.0646075, -0.00101467, 0.818266)
+bones/0/rotation = Quaternion(-3.07648e-08, -0.169273, 2.43612e-09, 0.985569)
+bones/2/rotation = Quaternion(-0.206478, -0.25252, 0.454249, 0.829011)
+bones/3/rotation = Quaternion(-0.347632, -0.137816, 0.00619216, 0.927427)
+bones/5/rotation = Quaternion(0.206478, -0.25252, -0.454249, 0.829011)
+bones/6/rotation = Quaternion(-0.134311, 0.0321619, -0.0037026, 0.99041)
+bones/9/rotation = Quaternion(0.190319, -0.197186, -0.349008, 0.896153)
+bones/10/rotation = Quaternion(-0.471823, 0.0516944, 0.00136855, 0.880176)
+bones/12/rotation = Quaternion(-0.351071, -0.114157, 0.388495, 0.844268)
+bones/13/rotation = Quaternion(-0.506812, -0.0562259, -0.00124874, 0.86022)
 
 [node name="Cube_001" parent="Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("2_h5xnv")
@@ -275,6 +275,8 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/Add2/add_amount = 1.0
 parameters/Blend2/blend_amount = 1.0
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
-light_energy = 0.2
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, -8.74228e-08)
+light_energy = 1.5
+shadow_enabled = true
+spot_angle = 35.0

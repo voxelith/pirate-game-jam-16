@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode unshaded, fog_disabled;
+render_mode unshaded, fog_disabled, cull_disabled, shadows_disabled;
 
 // MIT License. Made by Leo Peltola
 // Inspired by https://threejs.org/examples/webgl_postprocessing_pixel.html
