@@ -27,7 +27,8 @@ func trigger_vaporize():
 	if(behavior != Behavior.DEAD): $AnimationPlayer.play("vaporize");
 
 func update_vaporize_material():
-	$DenizenModel.set_surface_override_material(0, vaporize_material)
+	# $DenizenModel.set_surface_override_material(0, vaporize_material)
+	pass
 
 func do_death():
 	behavior = Behavior.DEAD
@@ -88,4 +89,6 @@ func _physics_process(delta: float) -> void:
 	velocity_spring.target = velocity_target
 	velocity = velocity_spring.update(delta)
 
+	$DenizenBodyMedium.rotation.y = atan2(velocity.x, velocity.z) - rotation.y
+	
 	move_and_slide()
