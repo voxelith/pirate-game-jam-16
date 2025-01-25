@@ -4,8 +4,8 @@ extends Node
 
 #the audio player instances
 @onready var sounds = {
-	&"UI_Hover" : AudioStreamPlayer.new(),
-	&"UI_Click" : AudioStreamPlayer.new(),
+	&"blip-focus" : AudioStreamPlayer.new(),
+	&"blip-confirm" : AudioStreamPlayer.new(),
 	}
 
 func _ready() -> void:
@@ -13,7 +13,7 @@ func _ready() -> void:
 
 	#the set up for audio stream players and load sound files
 	for i in sounds.keys():
-		sounds[i].stream = load("res://assets/ui/" + str(i) + ".wav")
+		sounds[i].stream = load("res://sfx/" + str(i) + ".ogg")
 		#assign output mixer bus
 		sounds[i].bus = &"Sfx"
 		#adds them to the scene tree
@@ -26,19 +26,19 @@ func _ready() -> void:
 func install_sounds(node: Node) -> void:
 	for i in node.get_children():
 		if i is Button:
-			i.mouse_entered.connect( ui_sfx_play.bind(&"UI_Hover") )
-			i.pressed.connect( ui_sfx_play.bind(&"UI_Click") )
-			i.focus_entered.connect( ui_sfx_play.bind(&"UI_Hover") )
+			i.mouse_entered.connect( ui_sfx_play.bind(&"blip-focus") )
+			i.pressed.connect( ui_sfx_play.bind(&"blip-confirm") )
+			i.focus_entered.connect( ui_sfx_play.bind(&"blip-focus") )
 
 		elif i is OptionButton:
-			i.mouse_entered.connect( ui_sfx_play.bind(&"UI_Hover") )
-			i.pressed.connect( ui_sfx_play.bind(&"UI_Click") )
-			i.focus_entered.connect( ui_sfx_play.bind(&"UI_Hover") )
+			i.mouse_entered.connect( ui_sfx_play.bind(&"blip-focus") )
+			i.pressed.connect( ui_sfx_play.bind(&"blip-confirm") )
+			i.focus_entered.connect( ui_sfx_play.bind(&"blip-focus") )
 
 		elif i is TextureButton:
-			i.mouse_entered.connect( ui_sfx_play.bind(&"UI_Hover") )
-			i.pressed.connect( ui_sfx_play.bind(&"UI_Click") )
-			i.focus_entered.connect( ui_sfx_play.bind(&"UI_Hover") )
+			i.mouse_entered.connect( ui_sfx_play.bind(&"blip-focus") )
+			i.pressed.connect( ui_sfx_play.bind(&"blip-confirm") )
+			i.focus_entered.connect( ui_sfx_play.bind(&"blip-focus") )
 
 func ui_sfx_play(sound : String) -> void:
 	sounds[sound].play()
