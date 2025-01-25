@@ -22,6 +22,6 @@ func _ready() -> void:
 	$Timer.start()
 
 
-func _process(delta: float) -> void:
-	text = "T-%d:%02d" % [time_left / 60, time_left % 60]
+func _process(_delta: float) -> void:
+	text = "T-%d:%02d" % [int(time_left / 60.), time_left % 60]
 	pass
