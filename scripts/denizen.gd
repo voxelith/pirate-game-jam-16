@@ -20,6 +20,7 @@ enum Behavior {
 const FLEE_DIST = 3.0
 const PATHOFF_DELTA = 0.01
 var velocity_spring := SpringVector3.new(1.0, 2.0, 0.0)
+var nav_distance_threshold := 1.0
 
 @onready var nav = $NavigationAgent3D
 @onready var moving_target = get_tree().current_scene.get_node("%Player")
@@ -43,18 +44,28 @@ var last_offset := 0.0
 func _ready():
 	if cloak_material != null:
 		cloak.set_surface_override_material(0, cloak_material)
+	
+	# Make the navigation server happy
+	set_physics_process(false)
+	call_deferred("actor_setup")
+
+func actor_setup():
+	# Wait for the first physics frame so the NavigationServer can sync.
+	await get_tree().physics_frame
+	set_physics_process(true)
+
+var current_target_position: Vector3
 
 func _physics_process(delta: float) -> void:
 	var velocity_target := Vector3.ZERO
+	var current_speed := 0.0
+	
 	if behavior == Behavior.STANDING:
 		var stand: Node3D = get_node(standing_target)
 		if stand != null:
-			nav.target_position = stand.global_position
-			var direction: Vector3 = nav.get_next_path_position() - global_position
-			direction = direction.normalized()
-			direction.y = 0.
-			
-			velocity_target = direction * normal_speed
+			current_target_position = stand.global_position
+		current_speed = normal_speed
+	
 	elif behavior == Behavior.PATH_FOLLOW:
 		var path: Path3D = get_node(path_target)
 		if path != null:
@@ -64,41 +75,37 @@ func _physics_process(delta: float) -> void:
 			last_offset = offset
 			var path_coord = path.transform * path.curve.samplef(offset)
 			
-			nav.target_position = path_coord
-			
-			var direction: Vector3 = nav.get_next_path_position() - global_position
-			direction = direction.normalized()
-			direction.y = 0.
-			
-			velocity_target = direction * normal_speed
+			current_target_position = path_coord
+			current_speed = normal_speed
 	
 	elif behavior == Behavior.CURIOUS:
 		var curious_direction: Vector3 = global_position - moving_target.global_position
 		var current_dist = curious_direction.length();
 		var walk_direction = curious_direction.normalized() * (curious_distance - current_dist)
 		
-		nav.target_position = global_position + walk_direction
-		
-		var direction: Vector3 = nav.get_next_path_position() - global_position
-		direction = direction.normalized()
-		direction.y = 0.
-		
-		velocity_target = direction * normal_speed
+		current_target_position = global_position + walk_direction
+		current_speed = normal_speed
 	
 	elif behavior == Behavior.PANIC:
 		var flee_direction: Vector3 = (global_position - moving_target.global_position).normalized() * FLEE_DIST
-		nav.target_position = global_position + flee_direction
-	
-		var direction: Vector3 = nav.get_next_path_position() - global_position
-		direction = direction.normalized()
-		direction.y = 0.
 		
-		velocity_target = direction * panic_speed
+		current_target_position = global_position + flee_direction
+		current_speed = panic_speed
 	
 	elif behavior == Behavior.DEAD:
 		velocity = Vector3i.ZERO
 		move_and_slide()
 		return
+	
+	var direction := Vector3.ZERO
+	if (nav.target_position - current_target_position).length() > nav_distance_threshold:
+		nav.target_position = current_target_position
+	
+	direction = nav.get_next_path_position() - global_position
+	direction = direction.normalized()
+	direction.y = 0.
+	
+	velocity_target = direction * current_speed
 	
 	velocity_spring.target = velocity_target
 	velocity = velocity_spring.update(delta)
