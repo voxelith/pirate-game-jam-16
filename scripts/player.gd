@@ -74,7 +74,7 @@ func _physics_process(delta: float) -> void:
 	
 	look_rotation = look_spring.update(delta)
 	rotation.y = look_rotation
-	body_anim.set("parameters/Blend2/blend_amount", velocity.length() / SPEED)
+	body_anim.set("parameters/Blend2/blend_amount", (velocity * Vector3(1., 0., 1.)).length() / SPEED)
 
 	move_and_slide()
 

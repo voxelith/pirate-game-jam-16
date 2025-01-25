@@ -15,6 +15,7 @@ enum Behavior {
 @export_node_path("Node3D") var standing_target
 @export_node_path("Path3D") var path_target
 @export var vaporize_material: Material
+@export var cloak_material: Material
 
 const FLEE_DIST = 3.0
 const PATHOFF_DELTA = 0.01
@@ -25,15 +26,23 @@ var velocity_spring := SpringVector3.new(1.0, 2.0, 0.0)
 
 func trigger_vaporize():
 	if(behavior != Behavior.DEAD): $AnimationPlayer.play("vaporize");
+	$AnimationTree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
+@onready var body = %BodyMesh
+@onready var cloak = %CloakMesh
 func update_vaporize_material():
-	# $DenizenModel.set_surface_override_material(0, vaporize_material)
-	pass
+	body.set_surface_override_material(0, vaporize_material)
+	cloak.set_surface_override_material(0, vaporize_material)
 
 func do_death():
 	behavior = Behavior.DEAD
+	$CollisionShape3D.disabled = true
 
 var last_offset := 0.0
+
+func _ready():
+	if cloak_material != null:
+		cloak.set_surface_override_material(0, cloak_material)
 
 func _physics_process(delta: float) -> void:
 	var velocity_target := Vector3.ZERO
@@ -86,9 +95,14 @@ func _physics_process(delta: float) -> void:
 		
 		velocity_target = direction * panic_speed
 	
+	elif behavior == Behavior.DEAD:
+		velocity = Vector3i.ZERO
+		move_and_slide()
+		return
+	
 	velocity_spring.target = velocity_target
 	velocity = velocity_spring.update(delta)
-
+	$AnimationTree.set("parameters/Blend2/blend_amount", (velocity * Vector3(1., 0., 1.)).length() / panic_speed)
 	$DenizenBodyMedium.rotation.y = atan2(velocity.x, velocity.z) - rotation.y
 	
 	move_and_slide()

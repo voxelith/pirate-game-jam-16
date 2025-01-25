@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bu2yk7fhrxsnt"]
+[gd_scene load_steps=23 format=3 uid="uid://bu2yk7fhrxsnt"]
 
 [ext_resource type="PackedScene" uid="uid://dcbapj6ompgnt" path="res://assets/player/gnomon-body.glb" id="1_gl3oy"]
 [ext_resource type="Texture2D" uid="uid://2hjdvsfgwant" path="res://assets/player/gnomon-head.png" id="2_45vnv"]
@@ -21,9 +21,42 @@ next_pass = SubResource("ShaderMaterial_dwut1")
 shading_mode = 0
 albedo_texture = ExtResource("4_g4qf3")
 
+[sub_resource type="Animation" id="Animation_k0uvd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:blink_stage")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_udqju"]
 _data = {
-"ArmatureAction": ExtResource("8_wam5i")
+"ArmatureAction": ExtResource("8_wam5i"),
+"RESET": SubResource("Animation_k0uvd")
+}
+
+[sub_resource type="Animation" id="Animation_wgi3e"]
+resource_name = "blink"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:blink_stage")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.266667, 2, 2.06667, 2.26667, 5, 5.06667, 5.26667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 2, 0, 0, 2, 0, 0, 2, 0]
 }
 
 [sub_resource type="Animation" id="Animation_quevm"]
@@ -163,12 +196,18 @@ tracks/8/keys = PackedFloat32Array(0, 1, -0.545358, -0.0612368, -0.00111085, 0.8
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7rl6r"]
 _data = {
+"blink": SubResource("Animation_wgi3e"),
 "idle": SubResource("Animation_quevm"),
 "walk": SubResource("Animation_gplcy")
 }
 
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_ivsxq"]
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6tlew"]
 animation = &"gnomon_new_animations/idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_25svg"]
+animation = &"gnomon_new_animations/blink"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rsab0"]
 animation = &"gnomon_new_animations/walk"
@@ -176,14 +215,19 @@ animation = &"gnomon_new_animations/walk"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_pr0in"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_va44h"]
-graph_offset = Vector2(-460.995, 76.9395)
+graph_offset = Vector2(-425.696, 54.4885)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_ivsxq")
+nodes/Add2/position = Vector2(288.889, 177.778)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_rsab0")
 nodes/Animation/position = Vector2(-288.889, 288.889)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_6tlew")
 "nodes/Animation 2/position" = Vector2(-288.889, 155.556)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_25svg")
+"nodes/Animation 3/position" = Vector2(-266.667, 444.444)
 nodes/Blend2/node = SubResource("AnimationNodeBlend2_pr0in")
 nodes/Blend2/position = Vector2(88.8889, 155.556)
-node_connections = [&"Blend2", 0, &"Animation 2", &"Blend2", 1, &"Animation", &"output", 0, &"Blend2"]
+nodes/output/position = Vector2(488.889, 133.333)
+node_connections = [&"Add2", 0, &"Blend2", &"Add2", 1, &"Animation 3", &"Blend2", 0, &"Animation 2", &"Blend2", 1, &"Animation", &"output", 0, &"Add2"]
 
 [node name="GnomonBody" instance=ExtResource("1_gl3oy")]
 
@@ -191,32 +235,21 @@ node_connections = [&"Blend2", 0, &"Animation 2", &"Blend2", 1, &"Animation", &"
 transform = Transform3D(-0.05, 0, -4.37114e-09, 0, 0.05, 0, 4.37114e-09, 0, -0.05, 0, 0.3452, 0)
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/0/rotation = Quaternion(-3.11171e-08, -0.106336, -4.04973e-09, 0.99433)
-bones/2/rotation = Quaternion(-0.0505106, -0.0617736, 0.478999, 0.874181)
-bones/3/rotation = Quaternion(-0.529522, -0.209925, 0.00548751, 0.821893)
-bones/5/rotation = Quaternion(0.0505107, -0.0617737, -0.478999, 0.874181)
-bones/6/rotation = Quaternion(-0.484346, 0.192014, -0.00569871, 0.853526)
-bones/9/rotation = Quaternion(-0.0182908, -0.0816185, -0.382424, 0.920193)
-bones/10/rotation = Quaternion(-0.65221, 0.0752454, 0.000691113, 0.754294)
-bones/12/rotation = Quaternion(-0.150496, 0.0055901, 0.392068, 0.907526)
-bones/13/rotation = Quaternion(-0.738834, -0.0867642, -0.000299432, 0.668278)
+bones/0/rotation = Quaternion(-3.1524e-08, -0.162649, 6.12103e-09, 0.986684)
+bones/2/rotation = Quaternion(-0.191211, -0.233847, 0.458084, 0.83601)
+bones/3/rotation = Quaternion(-0.39681, -0.157312, 0.00603776, 0.9043)
+bones/5/rotation = Quaternion(0.191211, -0.233847, -0.458084, 0.83601)
+bones/6/rotation = Quaternion(-0.155426, 0.042125, -0.00390036, 0.986941)
+bones/9/rotation = Quaternion(0.170078, -0.186214, -0.353247, 0.900897)
+bones/10/rotation = Quaternion(-0.571071, 0.0645911, 0.00101514, 0.818355)
+bones/12/rotation = Quaternion(-0.331543, -0.102242, 0.389904, 0.852995)
+bones/13/rotation = Quaternion(-0.571197, -0.0646075, -0.00101467, 0.818266)
 
 [node name="Cube_001" parent="Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("2_h5xnv")
 
 [node name="Cube_002" parent="Armature/Skeleton3D" index="1"]
 surface_material_override/0 = SubResource("StandardMaterial3D_hmc26")
-
-[node name="Head" type="Sprite3D" parent="Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
-cast_shadow = 0
-pixel_size = 0.02
-billboard = 1
-texture_filter = 2
-render_priority = 4
-texture = ExtResource("2_45vnv")
-hframes = 8
-script = ExtResource("7_4d7a1")
 
 [node name="AnimationPlayer" parent="." index="1"]
 libraries = {
@@ -227,17 +260,19 @@ libraries = {
 [node name="Head" type="Sprite3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 cast_shadow = 0
-pixel_size = 0.02
+pixel_size = 0.0209
 billboard = 1
 texture_filter = 2
 render_priority = 4
 texture = ExtResource("2_45vnv")
 hframes = 8
+vframes = 3
 script = ExtResource("7_4d7a1")
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="3"]
 tree_root = SubResource("AnimationNodeBlendTree_va44h")
 anim_player = NodePath("../AnimationPlayer")
+parameters/Add2/add_amount = 1.0
 parameters/Blend2/blend_amount = 1.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." index="4"]
