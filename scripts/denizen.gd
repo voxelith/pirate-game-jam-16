@@ -61,10 +61,11 @@ func _physics_process(delta: float) -> void:
 	var current_speed := 0.0
 	
 	if behavior == Behavior.STANDING:
-		var stand: Node3D = get_node(standing_target)
-		if stand != null:
-			current_target_position = stand.global_position
-		current_speed = normal_speed
+		if standing_target != null:
+			var stand: Node3D = get_node(standing_target)
+			if stand != null:
+				current_target_position = stand.global_position
+			current_speed = normal_speed
 	
 	elif behavior == Behavior.PATH_FOLLOW:
 		var path: Path3D = get_node(path_target)
@@ -110,6 +111,8 @@ func _physics_process(delta: float) -> void:
 	velocity_spring.target = velocity_target
 	velocity = velocity_spring.update(delta)
 	$AnimationTree.set("parameters/Blend2/blend_amount", (velocity * Vector3(1., 0., 1.)).length() / panic_speed)
-	$DenizenBodyMedium.rotation.y = atan2(velocity.x, velocity.z) - rotation.y
+	
+	if(velocity.length() > 0.1):
+		$DenizenBodyMedium.rotation.y = atan2(velocity.x, velocity.z) - rotation.y
 	
 	move_and_slide()
