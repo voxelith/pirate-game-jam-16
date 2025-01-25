@@ -24,3 +24,4 @@ func _ready() -> void:
 	get_viewport().size_changed.connect(update_subviewport)
 	
 	change_level(preload("res://scenes/levels/town_square.tscn"))
+	#change_level(preload("res://scenes/levels/LevelLayOut.tscn")) #This is for testing.
