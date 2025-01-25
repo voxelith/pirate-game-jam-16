@@ -1,7 +1,7 @@
 extends RichTextLabel
 
-@export var time_left: int = 10
-@export var interval: int = 15
+@export var time_left: int = 30
+@export var interval: int = 30
 
 @onready var player = get_tree().current_scene.get_node("%Player")
 

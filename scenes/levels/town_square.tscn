@@ -1,0 +1,342 @@
+[gd_scene load_steps=28 format=3 uid="uid://bwspqq6alkqdr"]
+
+[ext_resource type="Material" uid="uid://c7juiw36lvl8i" path="res://materials/basic_stone.tres" id="1_386wp"]
+[ext_resource type="PackedScene" uid="uid://cuwvk2k32qt2d" path="res://assets/environment/lamp_globe.tscn" id="2_6350f"]
+[ext_resource type="Material" uid="uid://bf1ajwinvt4td" path="res://materials/basic_green.tres" id="2_m5fp4"]
+[ext_resource type="PackedScene" uid="uid://dq1p87s2f2f3x" path="res://assets/environment/pot_tree.tscn" id="4_vlpwx"]
+[ext_resource type="PackedScene" uid="uid://sywwttipgos2" path="res://assets/enemies/denizen.tscn" id="5_2mh57"]
+[ext_resource type="Shader" path="res://shaders/vaporize.gdshader" id="6_hp7r6"]
+[ext_resource type="Material" uid="uid://brfgknlm3r0qg" path="res://materials/denizen_cloak_green.tres" id="7_p5r7t"]
+[ext_resource type="Material" uid="uid://cnhhkdi6wsi66" path="res://materials/denizen_cloak_stone.tres" id="8_88ot6"]
+[ext_resource type="Material" uid="uid://cstpcrycja5wa" path="res://materials/basic_gold.tres" id="9_npx4b"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_8o884"]
+vertices = PackedVector3Array(-31.5, 0.5, -27, -27.75, 0.5, -27, -27.75, 0.5, -27.5, -27, 0.5, -27.75, -27, 0.5, -31.5, -31.5, 0.5, -31.5, 7.75, 0.5, -17.25, 7.5, 0.5, -17.75, 6.5, 0.5, -17.5, 6.25, 0.5, -15.25, 8.5, 0.5, -15.5, 8.5, 0.5, -17.25, 6.75, 0.5, -6.5, 8.25, 0.5, -7.75, 7.5, 0.5, -8.5, 5.25, 0.5, -6.5, 5.75, 0.5, -13, 5.5, 0.5, -14.25, -5.5, 0.5, -6.75, -2, 0.5, -2.5, 2.5, 0.5, -2.5, 7.5, 0.5, -24.25, 8.25, 0.5, -25, 10.25, 0.5, -31.5, 7.5, 0.5, -12.75, 5.75, 0.5, -18.25, 5.75, 0.5, -19.75, -26.25, 0.5, -27.5, -6.5, 0.5, -6.75, -27.5, 0.5, -26.25, -31.5, 0.5, -6, 6.25, 0.5, -20.25, 7.5, 0.5, -20.25, -26.5, 0.5, -26.25, 5.5, 0.5, -5.25, -5.25, 0.5, -5.75, -6.75, 0.5, -6, 10.25, 0.5, -25, 15.25, 0.5, -24, 17, 0.5, -23.75, 17.25, 0.5, -25, 15, 0.5, -25, 19.25, 0.5, -31.5, 19.25, 0.5, -25, 24.25, 0.5, -24.75, 24.5, 0.5, -25.75, 25.5, 0.5, -25.75, 25.75, 0.5, -25.25, 26, 0.5, -31.5, 25.75, 0.5, -25, 31.5, 0.5, -25, 31.5, 0.5, -31.5, 23.5, 0.5, -17.25, 23.5, 0.5, -15.5, 24.75, 0.5, -15.25, 24.75, 0.5, -17.75, 25.5, 0.5, -24.25, 24.75, 0.5, -8.75, 31.5, 0.5, -8.25, 24.75, 0.5, -24.25, 24.25, 0.5, -8.25, 15.25, 0.5, -9, 17, 0.5, -8.75, 17.25, 0.5, -10, 15, 0.5, -10, 22.5, 0.5, -15.25, 22.5, 0.5, -17.5, 22.5, 0.5, -22.75, 17.25, 0.5, -22.75, 9.75, 0.5, -15.25, 9.75, 0.5, -17.75, 14.75, 0.5, -22.75, 9.75, 0.5, -22.75, 9.75, 0.5, -10, 22.5, 0.5, -10, 17, 0.5, -7.25, 14.5, 0.5, -6.25, 18, 0.5, -6, 6.5, 0.5, -5.25, 12.75, 0.5, -6.25, 12.25, 0.5, -7.75, 6.75, 0.5, 5.5, 6.75, 0.5, 6.5, 23.75, 0.5, -7.75, 19.75, 0.5, -7.75, 19.25, 0.5, -6.25, 2.75, 0.5, 2, 5.75, 0.5, 5.25, 6, 0.5, 31.5, 31.5, 0.5, 31.5, 6, 0.5, 6.75, -2.5, 0.5, -2.25, -5.5, 0.5, -5.25, -6.75, 0.5, 6, -6.5, 0.5, 5.25, -6.5, 0.5, -5.25, -31.5, 0.5, 6, -5.5, 0.5, 5.25, -2.5, 0.5, 2.5, -0.5, 4.5, -0.5, -0.5, 4.5, 0.5, 0.5, 4.5, 0.5, 0.5, 4.5, -0.5, -0.25, 1.5, -0.25, -0.25, 1.5, 0.5, 0.5, 1.5, 0.5, 0.5, 1.5, -0.25, 5.25, 0.5, 5.5, 2.25, 0.5, 2.75, 5.25, 0.5, 6.5, -5.25, 0.5, 6.5, -6, 0.5, 6.75, -6, 0.5, 31.5, -6.75, 0.5, 6.5, -31.5, 0.5, 31.5)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(3, 2, 4), PackedInt32Array(4, 2, 5), PackedInt32Array(5, 2, 0), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 10), PackedInt32Array(8, 10, 9), PackedInt32Array(6, 11, 10), PackedInt32Array(14, 13, 12), PackedInt32Array(16, 15, 17), PackedInt32Array(17, 15, 20), PackedInt32Array(17, 20, 19), PackedInt32Array(17, 19, 18), PackedInt32Array(23, 22, 21), PackedInt32Array(12, 15, 14), PackedInt32Array(14, 15, 24), PackedInt32Array(24, 15, 16), PackedInt32Array(8, 9, 25), PackedInt32Array(25, 9, 17), PackedInt32Array(21, 26, 23), PackedInt32Array(23, 26, 28), PackedInt32Array(23, 28, 27), PackedInt32Array(23, 27, 4), PackedInt32Array(1, 29, 0), PackedInt32Array(0, 29, 30), PackedInt32Array(27, 3, 4), PackedInt32Array(21, 32, 31), PackedInt32Array(28, 33, 27), PackedInt32Array(26, 21, 31), PackedInt32Array(15, 34, 20), PackedInt32Array(19, 35, 18), PackedInt32Array(25, 17, 26), PackedInt32Array(26, 17, 18), PackedInt32Array(26, 18, 28), PackedInt32Array(29, 33, 30), PackedInt32Array(30, 33, 28), PackedInt32Array(30, 28, 36), PackedInt32Array(23, 37, 22), PackedInt32Array(40, 39, 38), PackedInt32Array(38, 41, 40), PackedInt32Array(40, 41, 42), PackedInt32Array(42, 43, 40), PackedInt32Array(37, 23, 41), PackedInt32Array(41, 23, 42), PackedInt32Array(45, 44, 43), PackedInt32Array(48, 47, 46), PackedInt32Array(48, 46, 45), PackedInt32Array(43, 42, 45), PackedInt32Array(45, 42, 48), PackedInt32Array(49, 47, 50), PackedInt32Array(50, 47, 48), PackedInt32Array(50, 48, 51), PackedInt32Array(53, 52, 54), PackedInt32Array(54, 52, 55), PackedInt32Array(54, 55, 56), PackedInt32Array(49, 50, 56), PackedInt32Array(56, 50, 54), PackedInt32Array(54, 50, 57), PackedInt32Array(57, 50, 58), PackedInt32Array(55, 59, 56), PackedInt32Array(57, 58, 60), PackedInt32Array(61, 64, 62), PackedInt32Array(62, 64, 63), PackedInt32Array(52, 53, 65), PackedInt32Array(68, 67, 66), PackedInt32Array(52, 65, 66), PackedInt32Array(66, 65, 63), PackedInt32Array(10, 11, 69), PackedInt32Array(69, 11, 70), PackedInt32Array(39, 68, 38), PackedInt32Array(38, 68, 71), PackedInt32Array(64, 69, 63), PackedInt32Array(63, 69, 70), PackedInt32Array(63, 70, 68), PackedInt32Array(63, 68, 66), PackedInt32Array(70, 71, 68), PackedInt32Array(70, 72, 71), PackedInt32Array(64, 73, 69), PackedInt32Array(65, 74, 63), PackedInt32Array(61, 62, 75), PackedInt32Array(77, 76, 75), PackedInt32Array(75, 76, 61), PackedInt32Array(12, 13, 78), PackedInt32Array(78, 13, 80), PackedInt32Array(78, 80, 79), PackedInt32Array(82, 81, 77), PackedInt32Array(83, 85, 84), PackedInt32Array(85, 83, 58), PackedInt32Array(20, 34, 78), PackedInt32Array(79, 76, 77), PackedInt32Array(81, 87, 86), PackedInt32Array(85, 58, 77), PackedInt32Array(77, 58, 82), PackedInt32Array(82, 58, 88), PackedInt32Array(88, 58, 89), PackedInt32Array(83, 60, 58), PackedInt32Array(20, 78, 86), PackedInt32Array(86, 78, 81), PackedInt32Array(81, 78, 79), PackedInt32Array(81, 79, 77), PackedInt32Array(88, 90, 82), PackedInt32Array(92, 35, 91), PackedInt32Array(91, 35, 19), PackedInt32Array(94, 93, 95), PackedInt32Array(95, 93, 36), PackedInt32Array(36, 93, 96), PackedInt32Array(36, 96, 30), PackedInt32Array(97, 94, 98), PackedInt32Array(98, 94, 91), PackedInt32Array(91, 94, 92), PackedInt32Array(92, 94, 95), PackedInt32Array(102, 101, 99), PackedInt32Array(99, 101, 100), PackedInt32Array(106, 105, 103), PackedInt32Array(103, 105, 104), PackedInt32Array(107, 108, 87), PackedInt32Array(87, 108, 86), PackedInt32Array(109, 90, 110), PackedInt32Array(110, 90, 111), PackedInt32Array(111, 90, 88), PackedInt32Array(111, 88, 112), PackedInt32Array(107, 109, 108), PackedInt32Array(108, 109, 98), PackedInt32Array(98, 109, 97), PackedInt32Array(97, 109, 110), PackedInt32Array(96, 93, 113), PackedInt32Array(111, 112, 113), PackedInt32Array(113, 112, 114), PackedInt32Array(113, 114, 96)]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_behaw"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_hp7r6")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0msow"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_hp7r6")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dbx2r"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_hp7r6")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6l6is"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_hp7r6")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tebik"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_hp7r6")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rm0gl"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_hp7r6")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u45ww"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_hp7r6")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xuru1"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_hp7r6")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_quwjp"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_hp7r6")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c8t45"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_hp7r6")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jo2ln"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_hp7r6")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qjipy"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_hp7r6")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1gph3"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_hp7r6")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="Curve3D" id="Curve3D_0mak3"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 33, 1, 3, 0, 0, 0, 0, 0, 0, 18, 1, 1, 0, 0, 0, 0, 0, 0, 10, 1, 3, 0, 0, 0, 0, 0, 0, 2, 1, 8, 0, 0, 0, 0, 0, 0, -7, 1, 1, 0, 0, 0, 0, 0, 0, -19, 1, 0, 0, 0, 0, 0, 0, 0, -35, 1, -1),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gvsl7"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_hp7r6")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ibv81"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_hp7r6")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p8duj"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_hp7r6")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/opacity = 0.0
+
+[node name="TownSquare" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_8o884")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(64, 1, 64)
+material = ExtResource("1_386wp")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D"]
+use_collision = true
+size = Vector3(4, 2, 4)
+material = ExtResource("1_386wp")
+
+[node name="Hedge" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0.5, -12)
+use_collision = true
+size = Vector3(1, 2, 6)
+material = ExtResource("2_m5fp4")
+
+[node name="Hedge2" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0.5, -21)
+use_collision = true
+size = Vector3(1, 2, 6)
+material = ExtResource("2_m5fp4")
+
+[node name="Hedge7" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5, 0.5, -12)
+use_collision = true
+size = Vector3(1, 2, 6)
+material = ExtResource("2_m5fp4")
+
+[node name="Hedge8" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5, 0.5, -21)
+use_collision = true
+size = Vector3(1, 2, 6)
+material = ExtResource("2_m5fp4")
+
+[node name="Hedge3" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.5, 0.5, -9)
+use_collision = true
+size = Vector3(1, 2, 6)
+material = ExtResource("2_m5fp4")
+
+[node name="Hedge4" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20.5, 0.5, -9)
+use_collision = true
+size = Vector3(1, 2, 6)
+material = ExtResource("2_m5fp4")
+
+[node name="Hedge5" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.5, 0.5, -24)
+use_collision = true
+size = Vector3(1, 2, 6)
+material = ExtResource("2_m5fp4")
+
+[node name="Hedge6" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20.5, 0.5, -24)
+use_collision = true
+size = Vector3(1, 2, 6)
+material = ExtResource("2_m5fp4")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+use_collision = true
+size = Vector3(2, 5, 2)
+material = ExtResource("1_386wp")
+
+[node name="LampGlobe" parent="NavigationRegion3D" instance=ExtResource("2_6350f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -6)
+
+[node name="LampGlobe2" parent="NavigationRegion3D" instance=ExtResource("2_6350f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -6)
+
+[node name="LampGlobe3" parent="NavigationRegion3D" instance=ExtResource("2_6350f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
+
+[node name="LampGlobe4" parent="NavigationRegion3D" instance=ExtResource("2_6350f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6)
+
+[node name="LampGlobe5" parent="NavigationRegion3D" instance=ExtResource("2_6350f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -25)
+
+[node name="LampGlobe6" parent="NavigationRegion3D" instance=ExtResource("2_6350f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, -27)
+
+[node name="PotTree" parent="NavigationRegion3D" instance=ExtResource("4_vlpwx")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 7, 0, -14)
+
+[node name="PotTree2" parent="NavigationRegion3D" instance=ExtResource("4_vlpwx")]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 7, 0, -19)
+
+[node name="PotTree3" parent="NavigationRegion3D" instance=ExtResource("4_vlpwx")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 13.5, 0, -7.5)
+
+[node name="PotTree4" parent="NavigationRegion3D" instance=ExtResource("4_vlpwx")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 18.5, 0, -7.5)
+
+[node name="MonumentGroupA" type="Node3D" parent="."]
+
+[node name="Denizen4" parent="MonumentGroupA" instance=ExtResource("5_2mh57")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 3.88763, 0, -2.85355)
+behavior = 0
+vaporize_material = SubResource("ShaderMaterial_behaw")
+
+[node name="Denizen5" parent="MonumentGroupA" instance=ExtResource("5_2mh57")]
+transform = Transform3D(0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, 0.34202, 5.11237, 0, -2.14645)
+behavior = 0
+vaporize_material = SubResource("ShaderMaterial_0msow")
+cloak_material = ExtResource("7_p5r7t")
+
+[node name="Denizen9" parent="MonumentGroupA" instance=ExtResource("5_2mh57")]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -3.85355, 0, -0.887628)
+behavior = 0
+vaporize_material = SubResource("ShaderMaterial_dbx2r")
+
+[node name="Denizen10" parent="MonumentGroupA" instance=ExtResource("5_2mh57")]
+transform = Transform3D(0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, -4.14645, 0, -2.11237)
+behavior = 0
+vaporize_material = SubResource("ShaderMaterial_6l6is")
+cloak_material = ExtResource("1_386wp")
+
+[node name="Denizen6" parent="MonumentGroupA" instance=ExtResource("5_2mh57")]
+transform = Transform3D(-0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, -0.939693, 4.61237, 0, -0.546446)
+behavior = 0
+vaporize_material = SubResource("ShaderMaterial_tebik")
+cloak_material = ExtResource("7_p5r7t")
+
+[node name="Denizen7" parent="MonumentGroupA" instance=ExtResource("5_2mh57")]
+transform = Transform3D(-0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, -0.984808, 3.61237, 0, 0.453554)
+behavior = 0
+vaporize_material = SubResource("ShaderMaterial_rm0gl")
+cloak_material = ExtResource("7_p5r7t")
+
+[node name="Denizen8" parent="MonumentGroupA" instance=ExtResource("5_2mh57")]
+transform = Transform3D(0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, -2.38763, 0, 2.45355)
+behavior = 0
+vaporize_material = SubResource("ShaderMaterial_u45ww")
+cloak_material = ExtResource("7_p5r7t")
+
+[node name="Denizen11" parent="MonumentGroupA" instance=ExtResource("5_2mh57")]
+transform = Transform3D(-0.573577, 0, 0.819152, 0, 1, 0, -0.819152, 0, -0.573577, -5.07621, 0, 4.0176)
+behavior = 0
+vaporize_material = SubResource("ShaderMaterial_xuru1")
+cloak_material = ExtResource("8_88ot6")
+
+[node name="Denizen12" parent="MonumentGroupA" instance=ExtResource("5_2mh57")]
+transform = Transform3D(-0.0871558, 0, 0.996195, 0, 1, 0, -0.996195, 0, -0.0871558, -6.30095, 0, 3.31049)
+behavior = 0
+vaporize_material = SubResource("ShaderMaterial_quwjp")
+cloak_material = ExtResource("7_p5r7t")
+
+[node name="Denizen13" parent="MonumentGroupA" instance=ExtResource("5_2mh57")]
+transform = Transform3D(0.422618, 0, 0.906308, 0, 1, 0, -0.906308, 0, 0.422618, -4.78572, 0, -4.96743)
+behavior = 0
+vaporize_material = SubResource("ShaderMaterial_c8t45")
+cloak_material = ExtResource("7_p5r7t")
+
+[node name="HedgeDenizensA" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -13)
+
+[node name="Denizen" parent="HedgeDenizensA" instance=ExtResource("5_2mh57")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 1, 0, 3)
+behavior = 0
+vaporize_material = SubResource("ShaderMaterial_jo2ln")
+
+[node name="Denizen2" parent="HedgeDenizensA" instance=ExtResource("5_2mh57")]
+transform = Transform3D(0.573576, 0, -0.819152, 0, 1, 0, 0.819152, 0, 0.573576, 2, 0, 2)
+behavior = 0
+vaporize_material = SubResource("ShaderMaterial_qjipy")
+cloak_material = ExtResource("7_p5r7t")
+
+[node name="Denizen3" parent="HedgeDenizensA" instance=ExtResource("5_2mh57")]
+transform = Transform3D(0.819152, 0, 0.573576, 0, 1, 0, -0.573576, 0, 0.819152, -9, 0, -8)
+behavior = 0
+vaporize_material = SubResource("ShaderMaterial_1gph3")
+cloak_material = ExtResource("7_p5r7t")
+
+[node name="PathA" type="Path3D" parent="."]
+curve = SubResource("Curve3D_0mak3")
+
+[node name="Denizen4" parent="PathA" instance=ExtResource("5_2mh57")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 2)
+behavior = 1
+path_target = NodePath("..")
+vaporize_material = SubResource("ShaderMaterial_gvsl7")
+cloak_material = ExtResource("1_386wp")
+
+[node name="Denizen5" parent="PathA" instance=ExtResource("5_2mh57")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 2)
+normal_speed = 2.0
+panic_speed = 5.0
+behavior = 1
+path_target = NodePath("..")
+vaporize_material = SubResource("ShaderMaterial_ibv81")
+cloak_material = ExtResource("9_npx4b")
+
+[node name="Denizen6" parent="PathA" instance=ExtResource("5_2mh57")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 4)
+normal_speed = 3.0
+behavior = 1
+path_target = NodePath("..")
+vaporize_material = SubResource("ShaderMaterial_p8duj")
+cloak_material = ExtResource("8_88ot6")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://doph7hrqu1npk"]
+[gd_scene load_steps=23 format=3 uid="uid://doph7hrqu1npk"]
 
 [ext_resource type="Material" uid="uid://c7juiw36lvl8i" path="res://materials/basic_stone.tres" id="1_6hg0c"]
 [ext_resource type="PackedScene" uid="uid://sywwttipgos2" path="res://assets/enemies/denizen.tscn" id="2_40djr"]
@@ -13,11 +13,18 @@
 [ext_resource type="PackedScene" path="res://assets/interactables/pressure_plate.tscn" id="10_vc5su"]
 [ext_resource type="Shader" path="res://shaders/pixelart_stylizer_object.gdshader" id="11_hyafv"]
 [ext_resource type="Texture2D" uid="uid://clu86ynwb6m8p" path="res://palettes/stone-5.png" id="11_s6iiq"]
-[ext_resource type="Material" uid="uid://82bfisuo46mc" path="res://materials/denizen_cloak_green.tres" id="12_4sysp"]
+[ext_resource type="Material" uid="uid://brfgknlm3r0qg" path="res://materials/denizen_cloak_green.tres" id="12_4sysp"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_audol"]
 vertices = PackedVector3Array(-9.5, 0.331067, 0, -7, 0.331067, 0, -7.25, 0.331067, -1.25, -9.5, 0.331067, -9.5, -3, 0.331067, -4.75, -3, 0.331067, -9.5, 6.25, 0.331067, 1, 6.5, 0.331067, 1.75, 7.75, 0.331067, 1.75, 4.75, 0.331067, 2.75, 5, 0.331067, 2.75, 5, 0.331067, 1, 8, 0.331067, 2.75, 9.5, 0.331067, 2.75, 0.25, 0.331067, 0, 0.75, 0.331067, 0.75, 2.5, 0.331067, 1.25, 2.25, 0.331067, 2.75, -1.75, 0.331067, -4, -2.25, 0.331067, 0.5, 9.5, 0.331067, -9.5, -6, 3.33107, -1, -5.75, 3.33107, -0.5, -4.5, 3.33107, -1.75, -5, 3.33107, -2, -7, 0.331067, 1.5, -9.5, 0.331067, 9.5, -1.5, 0.331067, 3.75, -1.5, 0.331067, 3, -1.5, 0.331067, 9.5, -0.5, 1.83107, 2.5, -0.5, 1.83107, 3.25, 0.25, 1.83107, 2.75, 0, 1.83107, 2.25, 4.75, 0.331067, 4.25, 6.25, 0.331067, 3.75, 6, 0.331067, 2.75, 9.5, 0.331067, 9.5, -1, 0.331067, 4.25, 7.75, 0.331067, 3.75)
 polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 4), PackedInt32Array(4, 0, 5), PackedInt32Array(5, 0, 3), PackedInt32Array(8, 7, 6), PackedInt32Array(11, 10, 9), PackedInt32Array(13, 12, 8), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 11), PackedInt32Array(17, 16, 9), PackedInt32Array(9, 16, 11), PackedInt32Array(8, 6, 18), PackedInt32Array(14, 19, 18), PackedInt32Array(13, 8, 20), PackedInt32Array(20, 8, 18), PackedInt32Array(20, 18, 5), PackedInt32Array(18, 4, 5), PackedInt32Array(11, 14, 6), PackedInt32Array(6, 14, 18), PackedInt32Array(24, 23, 21), PackedInt32Array(21, 23, 22), PackedInt32Array(1, 25, 0), PackedInt32Array(0, 25, 26), PackedInt32Array(25, 28, 27), PackedInt32Array(27, 29, 25), PackedInt32Array(25, 29, 26), PackedInt32Array(33, 32, 30), PackedInt32Array(30, 32, 31), PackedInt32Array(34, 9, 10), PackedInt32Array(36, 35, 10), PackedInt32Array(10, 35, 34), PackedInt32Array(38, 34, 29), PackedInt32Array(29, 34, 37), PackedInt32Array(12, 13, 39), PackedInt32Array(39, 13, 37), PackedInt32Array(35, 39, 34), PackedInt32Array(34, 39, 37), PackedInt32Array(38, 29, 27)]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6eljq"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("10_4osid")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/opacity = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pp267"]
 render_priority = 0
@@ -115,6 +122,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.873217, 0, 0.467432)
 curious_distance = 2.0
 behavior = 2
 path_target = NodePath("../Path3D")
+vaporize_material = SubResource("ShaderMaterial_6eljq")
 cloak_material = SubResource("StandardMaterial3D_bpgyn")
 
 [node name="Denizen2" parent="." instance=ExtResource("2_40djr")]
