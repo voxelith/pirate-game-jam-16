@@ -9,8 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://xde3nwf0knco" path="res://assets/environment/crate_small.tscn" id="7_e6y6i"]
 [ext_resource type="PackedScene" uid="uid://dbqej2atgrug1" path="res://assets/environment/crate_medium.tscn" id="8_dfaag"]
 [ext_resource type="PackedScene" uid="uid://sywwttipgos2" path="res://assets/enemies/denizen.tscn" id="9_n5cme"]
-[ext_resource type="Shader" path="res://shaders/vaporize.gdshader" id="10_i08ty"]
-
+[ext_resource type="Shader" path="res://shaders/vaporize.gdshader" id="10_i3uym"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_audol"]
 vertices = PackedVector3Array(6.50106, 4.62292, -5.61997, 26.0011, 4.62292, -5.61997, 6.50106, 4.62292, -5.86997, -1.24894, 4.62292, -5.61997, -0.99894, 4.62292, -1.36997, -0.74894, 4.62292, -5.36997, 6.00106, 4.62292, -5.36997, 6.00106, 4.62292, 1.88003, 6.00106, 4.62292, -6.11997, 4.25106, 4.62292, -5.61997, 0.75106, 4.62292, -5.61997, -0.74894, 4.62292, -6.11997, -0.99894, 4.62292, -6.11997, -0.74894, 4.62292, -11.12, -1.24894, 4.62292, -11.37, 5.75106, 4.62292, -11.37, 6.50106, 4.62292, -11.37, -22.2489, 4.62292, -11.62, -21.7489, 4.62292, -5.86997, -21.7489, 4.62292, -5.61997, -14.7489, 4.62292, -11.37, -14.4989, 4.37292, -9.86997, -13.7489, 4.37292, -9.86997, -13.4989, 4.62292, -11.37, -21.9989, 4.62292, -11.12, -22.2489, 4.62292, -3.61997, 38.5011, 4.62292, -11.37, -20.9989, 1.12292, -9.36997, -21.9989, 1.12292, -9.11997, -21.9989, 1.12292, -8.11997, -20.9989, 1.12292, -7.86997, -16.7489, 1.12292, -8.86997, -20.9989, 1.12292, -6.86997, -11.9989, 1.12292, -6.86997, -11.9989, 1.12292, -8.86997, -16.9989, 1.12292, -10.37, -20.9989, 1.12292, -10.37, -15.9989, 2.62292, -10.37, -15.9989, 2.62292, -9.86997, -15.4989, 2.62292, -9.86997, -15.4989, 2.62292, -10.37, 5.00106, 1.12292, -7.61997, 6.00106, 1.12292, -7.86997, 6.00106, 1.12292, -8.61997, 5.00106, 1.12292, -8.86997, -1.99894, 1.12292, -6.86997, -1.74894, 1.12292, -7.61997, -1.74894, 1.12292, -8.61997, 3.50106, 1.12292, -6.86997, 5.00106, 1.12292, -6.86997, 1.75106, 1.12292, -6.61997, 1.75106, 1.12292, -5.61997, 3.25106, 1.12292, -5.61997, 0.00106049, 1.12292, -7.61997, 0.25106, 1.12292, -10.37, 0.00106049, 1.12292, -8.61997, 0.25106, 1.12292, -6.86997, -11.4989, 1.12292, -9.11997, -3.49894, 1.12292, -9.11997, 5.00106, 1.12292, -10.37, -3.49894, 1.12292, -10.37, -11.4989, 1.12292, -10.37, -2.49894, 2.62292, -10.37, -2.49894, 2.62292, -9.86997, -1.99894, 2.62292, -9.86997, -1.99894, 2.62292, -10.37, 7.00106, 1.12292, -7.86997, 7.25106, 1.12292, -8.86997, 24.7511, 1.12292, -10.37, 7.25106, 1.12292, -10.37, 7.25106, 1.12292, -6.86997, 24.7511, 1.12292, -6.86997, 7.25106, 1.12292, 2.63003, 6.25106, 1.12292, 2.88003, 6.25106, 1.12292, 5.38003, 7.25106, 1.12292, 5.63003, 26.7511, 1.12292, -4.61997, 27.0011, 1.12292, -6.61997, 37.7511, 1.12292, -10.37, 37.5011, 1.12292, 13.88, 7.25106, 1.12292, 13.63, 7.25106, 1.12292, -4.61997, 3.50106, 1.12292, -4.61997, 1.50106, 1.12292, -4.61997, 0.25106, 1.12292, -4.61997, 0.25106, 1.12292, -0.619968, -0.99894, 1.12292, -0.369968, -0.99894, 1.12292, 1.63003, 0.25106, 1.12292, 1.88003, 5.25106, 1.12292, 5.38003, 5.00106, 1.12292, 2.63003, 5.00106, 1.12292, -4.61997, 5.00106, 1.12292, 6.38003, 0.25106, 1.12292, 6.38003, -14.2489, 1.12292, 7.63003, -12.7489, 1.12292, 7.63003, -12.4989, 1.12292, 6.38003, -14.4989, 1.12292, 6.38003, -20.9989, 1.12292, -4.61997, -21.2489, 1.12292, 6.38003, -1.99894, 1.12292, 1.88003, -1.99894, 1.12292, -0.619968, -1.99894, 1.12292, 6.38003, -1.99894, 1.12292, -4.61997, -22.2489, 4.62292, 7.88003, -15.2489, 4.37292, 7.63003, -22.2489, 4.62292, 7.13003, -22.4989, 4.62292, -3.36997, -22.4989, 4.62292, 35.13, -0.49894, 4.62292, 7.38003, -0.74894, 4.62292, 2.63003, -1.24894, 4.62292, 7.38003, 5.75106, 4.62292, 7.63003, 6.25106, 4.62292, 14.38, 6.25106, 4.62292, 6.38003, 5.75106, 4.62292, 7.38003, -11.7489, 4.37292, 7.38003, -12.4989, 1.12292, 8.63003, -14.4989, 1.12292, 8.63003, 6.25106, 1.12292, 15.38, 5.00106, 1.12292, 15.13, -15.9989, 1.12292, 26.63, -21.4989, 1.12292, 48.13, 6.25106, 1.12292, 48.38, -17.9989, 1.12292, 26.88, -18.2489, 1.12292, 26.38, -21.2489, 1.12292, 26.38, -16.7489, 1.12292, 8.63003, -16.7489, 1.12292, 11.88, -15.7489, 1.12292, 12.13, 5.00106, 1.12292, 8.63003, -17.9989, 1.12292, 12.13, -21.2489, 1.12292, 8.63003, 7.25106, 1.12292, 15.13, 37.2511, 1.12292, 48.63, -22.4989, 4.62292, 49.38, -2.49894, 4.62292, 49.38, -22.2489, 4.62292, 49.13, -22.7489, 4.62292, 35.38, 38.0011, 4.62292, 49.38, 38.5011, 4.62292, 49.63, 38.5011, 4.62292, 36.38)
@@ -41,34 +40,6 @@ shader_parameter/opacity = 1.0
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("10_i3uym")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/opacity = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o3fqo"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("10_i08ty")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/opacity = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5j0m5"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("10_i08ty")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/opacity = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_llvy6"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("10_i08ty")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/opacity = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_eu5rb"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("10_i08ty")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/opacity = 1.0
 
@@ -264,21 +235,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.8487, 1.33594, 19.3808)
 curious_distance = 3.0
 behavior = 1
 path_target = NodePath("../Path3D")
-vaporize_material = SubResource("ShaderMaterial_o3fqo")
+vaporize_material = SubResource("ShaderMaterial_eln3j")
 
 [node name="Denizen2" parent="." instance=ExtResource("9_n5cme")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.4168, 1.33594, 17.0978)
 curious_distance = 3.0
 behavior = 2
-vaporize_material = SubResource("ShaderMaterial_5j0m5")
+vaporize_material = SubResource("ShaderMaterial_ify68")
 
 [node name="Denizen3" parent="." instance=ExtResource("9_n5cme")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.04306, 1.33594, 22.3938)
-vaporize_material = SubResource("ShaderMaterial_llvy6")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.9578, 1.33594, 22.3938)
+vaporize_material = SubResource("ShaderMaterial_wd5rn")
 
 [node name="Denizen4" parent="." instance=ExtResource("9_n5cme")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.21844, 1.33594, 14.6075)
-vaporize_material = SubResource("ShaderMaterial_eu5rb")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7824, 1.33594, 14.6075)
+vaporize_material = SubResource("ShaderMaterial_eus4i")
 
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.06614, 2.13083, 21.7272)
