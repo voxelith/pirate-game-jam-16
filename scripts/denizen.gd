@@ -20,7 +20,7 @@ enum Behavior {
 const FLEE_DIST = 3.0
 const PATHOFF_DELTA = 0.01
 var velocity_spring := SpringVector3.new(1.0, 2.0, 0.0)
-var nav_distance_threshold := 1.0
+var nav_distance_threshold := 2.0
 
 @onready var nav = $NavigationAgent3D
 @onready var moving_target = get_tree().current_scene.get_node("%Player")
@@ -58,7 +58,7 @@ var current_target_position: Vector3
 
 func _physics_process(delta: float) -> void:
 	var velocity_target := Vector3.ZERO
-	var current_speed := 0.0
+	var current_speed: float = 0.0
 	
 	if behavior == Behavior.STANDING:
 		if standing_target != null:
@@ -70,11 +70,11 @@ func _physics_process(delta: float) -> void:
 	elif behavior == Behavior.PATH_FOLLOW:
 		var path: Path3D = get_node(path_target)
 		if path != null:
-			var current_offset = path.curve.get_closest_offset(global_position * path.transform)
-			var offset = clamp(current_offset, last_offset, last_offset + PATHOFF_DELTA)
+			var current_offset := path.curve.get_closest_offset(global_position * path.transform)
+			var offset: float = clamp(current_offset, last_offset, last_offset + PATHOFF_DELTA)
 			
 			last_offset = offset
-			var path_coord = path.transform * path.curve.samplef(offset)
+			var path_coord := path.transform * path.curve.samplef(offset)
 			
 			current_target_position = path_coord
 			current_speed = normal_speed
