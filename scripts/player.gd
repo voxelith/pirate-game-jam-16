@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const SPEED := 3.5
+const SPEED := 5.0
 const JUMP_VELOCITY := 3
 const FRICTION := 0.01
 
@@ -45,9 +45,6 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	else:
-		if Input.is_action_just_pressed("jump"):
-			velocity.y = JUMP_VELOCITY
 	
 	$GnomonBody.rotation.y = atan2(velocity.x, velocity.z) - rotation.y
 	
