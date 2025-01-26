@@ -4,7 +4,6 @@ extends Control
 
 func _ready():
 	$AnimationPlayer.play("RESET") #Play the "RESET" animation to set the initial state.
-	$CanvasLayer2/PanelContainer/ButtonsLayout/Resume.grab_focus() #Set initial focus to the Resume button.
 
 func resume(): #Function to resume the game
 	get_tree().paused = false #Unpause the game
@@ -14,6 +13,7 @@ func resume(): #Function to resume the game
 
 func pause(): #Function to pause the game
 	get_tree().paused = true #Pause the game
+	$CanvasLayer2/PanelContainer/ButtonsLayout/Resume.grab_focus()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE) #Make the mouse cursor visible
 	$AnimationPlayer.play("blur") #Play the blur animation to show the pause effect
 	mouse_filter = Control.MOUSE_FILTER_STOP #Stop mouse events from passing through the control
