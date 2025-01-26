@@ -29,4 +29,6 @@ process_mode = 1
 [node name="WorldEnvironment" type="WorldEnvironment" parent="MainViewportContainer/SubViewport/SceneContents" index="2"]
 environment = SubResource("Environment_fjecj")
 
+[connection signal="destroyed_npcs" from="MainViewportContainer/SubViewport/SceneContents/Player" to="MainViewportContainer" method="_on_player_destroyed_npcs"]
+
 [editable path="MainViewportContainer"]

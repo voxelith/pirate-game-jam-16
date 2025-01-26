@@ -21,6 +21,10 @@ var mouse_move_last := 0.0
 @onready var anim = $AnimationPlayer
 @onready var body_anim = $GnomonBody.find_child("AnimationTree")
 
+var destroyed_count: int = 0
+
+signal destroyed_npcs
+
 func _ready() -> void:
 	look_rotation = rotation.y
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -91,4 +95,9 @@ func do_purge():
 		var result = space_state.intersect_ray(query)
 		if not result.is_empty():
 			reticle.global_position = result.position
-			if result.collider.has_method("trigger_vaporize"): result.collider.trigger_vaporize()
+			if result.collider.has_method("trigger_vaporize"):
+				result.collider.trigger_vaporize()
+				destroyed_count += 1
+	
+	if destroyed_count > 0:
+		destroyed_npcs.emit(destroyed_count)
