@@ -1,4 +1,4 @@
-extends RichTextLabel
+extends Label
 
 @export var time_left: int = 30
 @export var interval: int = 30

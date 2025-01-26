@@ -17,8 +17,7 @@ offset_bottom = 19.0
 grow_horizontal = 2
 texture = ExtResource("1_vllf5")
 
-[node name="PlayerCountdown" type="RichTextLabel" parent="."]
-clip_contents = false
+[node name="PlayerCountdown" type="Label" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -28,9 +27,6 @@ offset_right = 24.0
 offset_bottom = 16.0
 grow_horizontal = 2
 theme = ExtResource("1_76c4b")
-theme_override_colors/default_color = Color(0.952941, 0.784314, 0.576471, 1)
-
-bbcode_enabled = true
 text = "T-0:00"
 script = ExtResource("2_s65er")
 
