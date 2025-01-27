@@ -122,6 +122,12 @@ layout_mode = 2
 theme = ExtResource("1_qsy5g")
 text = "Quit"
 
+[node name="Quit2" type="Button" parent="CanvasLayer2/PanelContainer/ButtonsLayout"]
+layout_mode = 2
+theme = ExtResource("1_qsy5g")
+disabled = true
+text = "Levels"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_02x0u")
@@ -133,3 +139,4 @@ root_path = NodePath("../CanvasLayer2/PanelContainer/ButtonsLayout")
 [connection signal="pressed" from="CanvasLayer2/PanelContainer/ButtonsLayout/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="CanvasLayer2/PanelContainer/ButtonsLayout/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="CanvasLayer2/PanelContainer/ButtonsLayout/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer2/PanelContainer/ButtonsLayout/Quit2" to="." method="_on_quit_pressed"]

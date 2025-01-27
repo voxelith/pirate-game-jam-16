@@ -25,6 +25,7 @@ func _ready() -> void:
 	
 	change_level(preload("res://scenes/levels/town_square.tscn"))
 	#change_level(preload("res://scenes/levels/LevelLayOut.tscn")) #This is for testing.
+	#change_level(preload("res://scenes/levels/LevelLayOut.tscn")) #This is for testing.
 
 
 func _on_player_destroyed_npcs(destroyed_count: int) -> void:
