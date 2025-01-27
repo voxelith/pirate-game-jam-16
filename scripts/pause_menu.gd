@@ -10,6 +10,10 @@ func resume(): #Function to resume the game
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) #Capture the mouse for gameplay
 	$AnimationPlayer.play_backwards("blur") #Play the blur animation in reverse to remove the blur effect
 	mouse_filter = Control.MOUSE_FILTER_PASS; #Allow mouse events to pass through the control
+	
+	# If we don't manually release focus, the buttons will continue to make UI noises when the stick is moved
+	for child in $CanvasLayer2/PanelContainer/ButtonsLayout.get_children():
+		child.release_focus()
 
 func pause(): #Function to pause the game
 	get_tree().paused = true #Pause the game
