@@ -2,6 +2,16 @@ extends SubViewportContainer
 
 var _current_level: Node = null
 
+func enter_paused_state() -> void:
+	get_tree().paused = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	mouse_filter = Control.MOUSE_FILTER_STOP
+
+func exit_paused_state() -> void:
+	get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	mouse_filter = Control.MOUSE_FILTER_PASS
+
 func change_level(new_level: Resource) -> void:
 	# TODO: begin loading screen
 	
@@ -30,6 +40,13 @@ func _ready() -> void:
 func _on_player_destroyed_npcs(destroyed_count: int) -> void:
 	var dialog = preload("res://components/DetonateQueryScreen.tscn").instantiate()
 	dialog.death_count = destroyed_count
-	dialog.accepted.connect(func(): $SubViewport.remove_child(dialog))
-	dialog.rejected.connect(func(): $SubViewport.remove_child(dialog))
+	dialog.accepted.connect(func():
+		$SubViewport.remove_child(dialog)
+		exit_paused_state()
+	)
+	dialog.rejected.connect(func():
+		$SubViewport.remove_child(dialog)
+		exit_paused_state()
+	)
+	enter_paused_state()
 	$SubViewport.add_child(dialog)
