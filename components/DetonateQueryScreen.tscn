@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://ca3al2qegkmwp"]
+[gd_scene load_steps=3 format=3 uid="uid://bph6tm1n74xap"]
 
 [ext_resource type="Theme" uid="uid://buyj7atvoig18" path="res://assets/ui/theme.tres" id="1_ritjf"]
 [ext_resource type="Script" path="res://scripts/detonate_query_screen.gd" id="1_uguiu"]
@@ -19,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.121569, 0.12549, 0.145098, 1)
+color = Color(0.113725, 0.117647, 0.137255, 1)
 
 [node name="HBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -34,6 +34,7 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("1_ritjf")
+theme_override_colors/font_color = Color(0.447059, 0.2, 0.298039, 1)
 text = "Death Count: 0"
 
 [node name="Label" type="Label" parent="HBoxContainer"]
@@ -41,6 +42,7 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("1_ritjf")
+theme_override_colors/font_color = Color(0.796078, 0.368627, 0.360784, 1)
 text = "Detonate?"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
@@ -54,6 +56,10 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 theme = ExtResource("1_ritjf")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_hover_color = Color(0.796078, 0.368627, 0.360784, 1)
+theme_override_colors/font_focus_color = Color(0.796078, 0.368627, 0.360784, 1)
+theme_override_colors/font_color = Color(0.447059, 0.196078, 0.298039, 1)
 text = "Yes"
 
 [node name="No" type="Button" parent="HBoxContainer/HBoxContainer"]
@@ -62,4 +68,8 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 theme = ExtResource("1_ritjf")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_hover_color = Color(0.796078, 0.368627, 0.360784, 1)
+theme_override_colors/font_focus_color = Color(0.796078, 0.368627, 0.360784, 1)
+theme_override_colors/font_color = Color(0.447059, 0.196078, 0.298039, 1)
 text = "No"

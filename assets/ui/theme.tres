@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://buyj7atvoig18"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://buyj7atvoig18"]
 
 [ext_resource type="FontFile" uid="uid://cnlqd0344lnoy" path="res://assets/ui/Hyperlight.woff" id="2_3opr5"]
 [ext_resource type="Texture2D" uid="uid://bpmqx1uyn1q4h" path="res://assets/ui/button.png" id="4_smdw4"]
@@ -76,6 +76,24 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 region_rect = Rect2(112, 0, 28, 26)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_swrv2"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4llym"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.51)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
 [resource]
 default_font = ExtResource("2_3opr5")
 default_font_size = 8
@@ -89,6 +107,10 @@ Button/styles/hover = SubResource("StyleBoxTexture_w25a1")
 Button/styles/hover_pressed = SubResource("StyleBoxTexture_6vx7u")
 Button/styles/normal = SubResource("StyleBoxTexture_1jiu1")
 Button/styles/pressed = SubResource("StyleBoxTexture_0y06p")
+FlatButton/styles/disabled = SubResource("StyleBoxEmpty_swrv2")
+FlatButton/styles/hover = SubResource("StyleBoxEmpty_swrv2")
+FlatButton/styles/normal = SubResource("StyleBoxEmpty_swrv2")
+FlatButton/styles/pressed = SubResource("StyleBoxFlat_4llym")
 ProgressBar/colors/font_color = Color(0, 0, 0, 1)
 ProgressBar/colors/font_outline_color = Color(1, 1, 1, 1)
 ProgressBar/constants/outline_size = 1
