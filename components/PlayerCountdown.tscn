@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://scripts/player_countdown.gd" id="2_s65er"]
 
 [node name="PlayerCountdown" type="CanvasLayer"]
+script = ExtResource("2_s65er")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 5
@@ -17,7 +18,9 @@ offset_bottom = 19.0
 grow_horizontal = 2
 texture = ExtResource("1_vllf5")
 
-[node name="PlayerCountdown" type="Label" parent="."]
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Label" type="Label" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -28,6 +31,3 @@ offset_bottom = 16.0
 grow_horizontal = 2
 theme = ExtResource("1_76c4b")
 text = "T-0:00"
-script = ExtResource("2_s65er")
-
-[node name="Timer" type="Timer" parent="PlayerCountdown"]

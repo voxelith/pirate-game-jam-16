@@ -59,3 +59,7 @@ func _on_player_destroyed_npcs(destroyed_count: int) -> void:
 	)
 	enter_paused_state()
 	$SubViewport.add_child(dialog)
+
+
+func _on_player_countdown_time_ran_out() -> void:
+	%Player.do_purge()
