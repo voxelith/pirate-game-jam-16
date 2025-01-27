@@ -15,6 +15,9 @@ func exit_paused_state() -> void:
 func change_level(new_level: Resource) -> void:
 	# TODO: begin loading screen
 	
+	# TODO: we might want to set up spawn triggers instead of assuming spawn is (0, 0, 0)
+	%Player.position = Vector3(0, 0, 0)
+	
 	if _current_level != null:
 		$SubViewport.remove_child(_current_level)
 	_current_level = new_level.instantiate()
@@ -42,7 +45,13 @@ func _on_player_destroyed_npcs(destroyed_count: int) -> void:
 	dialog.death_count = destroyed_count
 	dialog.accepted.connect(func():
 		$SubViewport.remove_child(dialog)
-		exit_paused_state()
+		var end_screen = preload("res://components/GameOverScreen.tscn").instantiate()
+		end_screen.restart_requested.connect(func():
+			$SubViewport.remove_child(end_screen)
+			change_level(preload("res://scenes/levels/town_square.tscn"))
+			exit_paused_state()
+		)
+		$SubViewport.add_child(end_screen)
 	)
 	dialog.rejected.connect(func():
 		$SubViewport.remove_child(dialog)

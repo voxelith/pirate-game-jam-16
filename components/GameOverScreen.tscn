@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnxgkqblldumf"]
+
+[ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_apmhh"]
+[ext_resource type="Theme" uid="uid://buyj7atvoig18" path="res://assets/ui/theme.tres" id="2_8qdni"]
+
+[node name="GameOverScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_apmhh")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.121569, 0.12549, 0.145098, 1)
+
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EndQuote" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("2_8qdni")
+text = "<Quote goes here>"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="DeathCount" type="Label" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("2_8qdni")
+text = "Death Count: 0"
+
+[node name="TimeElapsed" type="Label" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("2_8qdni")
+text = "Time elapsed: 0:00"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="Restart" type="Button" parent="HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme = ExtResource("2_8qdni")
+text = "Restart"
+
+[node name="Quit" type="Button" parent="HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme = ExtResource("2_8qdni")
+text = "Quit"
