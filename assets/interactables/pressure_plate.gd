@@ -7,7 +7,7 @@ extends Node3D
 signal triggered
 signal untriggered
 
-@onready var player = get_tree().current_scene.get_node("%Player")
+@onready var player = get_tree().current_scene.get_node("%MainViewportContainer").player
 
 func _ready() -> void:
 	$Area3D.body_entered.connect(func(body):
