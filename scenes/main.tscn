@@ -24,6 +24,9 @@ offset_bottom = 512.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="MainViewportContainer/SubViewport/SceneContents" index="1"]
 environment = SubResource("Environment_fjecj")
 
+[node name="PauseMenu" parent="MainViewportContainer/SubViewport" index="1"]
+visible = false
+
 [connection signal="time_ran_out" from="MainViewportContainer/SubViewport/SceneContents/PlayerCountdown" to="MainViewportContainer" method="_on_player_countdown_time_ran_out"]
 
 [editable path="MainViewportContainer"]

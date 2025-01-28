@@ -14,6 +14,16 @@ func exit_paused_state() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	mouse_filter = Control.MOUSE_FILTER_PASS
 
+func show_dialogue(dialogue: PackedStringArray) -> void:
+	enter_paused_state()
+	var dialogue_box = preload("res://components/CharacterDialogue.tscn").instantiate()
+	dialogue_box.dialogue = dialogue
+	$SubViewport/SceneContents.add_child(dialogue_box)
+	dialogue_box.completed.connect(func():
+		$SubViewport/SceneContents.remove_child(dialogue_box)
+		exit_paused_state()
+	)
+
 func change_level(new_level_name: String) -> void:
 	if player != null:
 		player.destroyed_npcs.disconnect(_on_player_destroyed_npcs)
