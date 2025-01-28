@@ -1,6 +1,7 @@
 extends SubViewportContainer
 
-var _current_level: Node = null
+var current_level: String
+var _current_level_node: Node = null
 @export var player: Node = null
 
 func enter_paused_state() -> void:
@@ -13,7 +14,7 @@ func exit_paused_state() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	mouse_filter = Control.MOUSE_FILTER_PASS
 
-func change_level(new_level: Resource) -> void:
+func change_level(new_level_name: String) -> void:
 	if player != null:
 		player.destroyed_npcs.disconnect(_on_player_destroyed_npcs)
 		$SubViewport/SceneContents.remove_child(player)
@@ -21,10 +22,11 @@ func change_level(new_level: Resource) -> void:
 	player.destroyed_npcs.connect(_on_player_destroyed_npcs)
 	$SubViewport/SceneContents.add_child(player)
 	
-	if _current_level != null:
-		$SubViewport.remove_child(_current_level)
-	_current_level = new_level.instantiate()
-	$SubViewport.add_child(_current_level)
+	if _current_level_node != null:
+		$SubViewport.remove_child(_current_level_node)
+	current_level = new_level_name
+	_current_level_node = load("res://scenes/levels/%s.tscn" % current_level).instantiate()
+	$SubViewport.add_child(_current_level_node)
 	
 	update_subviewport()
 
@@ -36,9 +38,7 @@ func update_subviewport() -> void:
 	$SubViewport.get_camera_3d().size = camera_size
 
 func _ready() -> void:
-	change_level(preload("res://scenes/levels/town_square.tscn"))
-	#change_level(preload("res://scenes/levels/LevelLayOut.tscn")) #This is for testing.
-	#change_level(preload("res://scenes/levels/town_small.tscn")) #This is for testing.
+	change_level("town_square")
 	
 	update_subviewport()
 	get_viewport().size_changed.connect(update_subviewport)
@@ -53,7 +53,7 @@ func _on_player_destroyed_npcs(destroyed_count: int) -> void:
 		end_screen.time_elapsed = $SubViewport/SceneContents/PlayerCountdown.total_activations * 30
 		end_screen.restart_requested.connect(func():
 			$SubViewport.remove_child(end_screen)
-			change_level(preload("res://scenes/levels/town_square.tscn"))
+			change_level("town_square")
 			$SubViewport/SceneContents/PlayerCountdown.reset_to_default()
 			exit_paused_state()
 		)
