@@ -42,19 +42,20 @@ func _physics_process(delta: float) -> void:
 	#################
 	# PLAYER MOTION #
 	#################
-	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	var target = Vector3(0.0, velocity.y, 0.0)
-	if direction:
-		target += direction * SPEED
-	
-	velocity = lerp(velocity, target, pow(0.5, delta / FRICTION))
-	
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-	
-	$GnomonBody.rotation.y = atan2(velocity.x, velocity.z) - rotation.y
+	if not anim.is_playing():
+		var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
+		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		var target = Vector3(0.0, velocity.y, 0.0)
+		if direction:
+			target += direction * SPEED
+		
+		velocity = lerp(velocity, target, pow(0.5, delta / FRICTION))
+		
+		# Add the gravity.
+		if not is_on_floor():
+			velocity += get_gravity() * delta
+		
+		$GnomonBody.rotation.y = atan2(velocity.x, velocity.z) - rotation.y
 	
 	#################
 	# CAMERA MOTION #
