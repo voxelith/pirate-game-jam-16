@@ -13,7 +13,6 @@ func _onTimerTick() -> void:
 		time_left -= 1
 	else:
 		time_ran_out.emit()
-		time_left = interval
 		total_activations += 1
 
 # Hook into this when damage is taken
@@ -30,6 +29,9 @@ func _process(_delta: float) -> void:
 	$Label.text = "T-%d:%02d" % [int(time_left / 60.), time_left % 60]
 	pass
 
+func restart() -> void:
+	time_left = interval
+
 func reset_to_default() -> void:
-	time_left = 30
+	time_left = interval
 	total_activations = 0

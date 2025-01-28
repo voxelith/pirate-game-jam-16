@@ -58,6 +58,7 @@ func _on_player_destroyed_npcs(destroyed_count: int) -> void:
 		$SubViewport.add_child(end_screen)
 	)
 	dialog.rejected.connect(func():
+		$SubViewport/SceneContents/PlayerCountdown.restart()
 		$SubViewport.remove_child(dialog)
 		exit_paused_state()
 	)
@@ -66,4 +67,4 @@ func _on_player_destroyed_npcs(destroyed_count: int) -> void:
 
 
 func _on_player_countdown_time_ran_out() -> void:
-	%Player.do_purge()
+	%Player.trigger_purge()
