@@ -14,6 +14,7 @@ func _onTimerTick() -> void:
 	else:
 		time_ran_out.emit()
 		total_activations += 1
+		restart()
 
 # Hook into this when damage is taken
 func applyDamage() -> void:
