@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://cbuilohnmua0j"]
+
+[ext_resource type="PackedScene" uid="uid://d25p4sg208shl" path="res://assets/environment/pillar-angled.glb" id="1_glab5"]
+[ext_resource type="Shader" path="res://shaders/pixelart_stylizer_object.gdshader" id="2_syjo2"]
+[ext_resource type="Texture2D" uid="uid://clu86ynwb6m8p" path="res://palettes/stone-5.png" id="3_i8ocq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g5n06"]
+render_priority = 0
+shader = ExtResource("2_syjo2")
+shader_parameter/dither_strength = 0.99
+shader_parameter/edge_strength = 1.0
+shader_parameter/PALETTE_TEXTURE = ExtResource("3_i8ocq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43ojf"]
+next_pass = SubResource("ShaderMaterial_g5n06")
+albedo_color = Color(0.571836, 0.571836, 0.571836, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1kajg"]
+size = Vector3(1, 4, 1)
+
+[node name="PillarAngled" instance=ExtResource("1_glab5")]
+
+[node name="PillarAngled" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_43ojf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_1kajg")
