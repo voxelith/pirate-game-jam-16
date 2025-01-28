@@ -38,7 +38,7 @@ func update_subviewport() -> void:
 	$SubViewport.get_camera_3d().size = camera_size
 
 func _ready() -> void:
-	change_level("town_square")
+	change_level("bunker")
 	
 	update_subviewport()
 	get_viewport().size_changed.connect(update_subviewport)
@@ -53,7 +53,7 @@ func _on_player_destroyed_npcs(destroyed_count: int) -> void:
 		end_screen.time_elapsed = $SubViewport/SceneContents/PlayerCountdown.total_activations * 30
 		end_screen.restart_requested.connect(func():
 			$SubViewport.remove_child(end_screen)
-			change_level("town_square")
+			change_level("bunker")
 			$SubViewport/SceneContents/PlayerCountdown.reset_to_default()
 			exit_paused_state()
 		)

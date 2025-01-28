@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://btrsxhhwvbtmq"]
+
+[ext_resource type="PackedScene" uid="uid://bwg7gvmdd57bb" path="res://assets/environment/tunnel.glb" id="1_buily"]
+[ext_resource type="Shader" path="res://shaders/pixelart_stylizer_object_nocull.gdshader" id="2_ci7jx"]
+[ext_resource type="Texture2D" uid="uid://clu86ynwb6m8p" path="res://palettes/stone-5.png" id="3_34bey"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hiicd"]
+render_priority = 0
+shader = ExtResource("2_ci7jx")
+shader_parameter/dither_strength = 0.99
+shader_parameter/edge_strength = 1.0
+shader_parameter/PALETTE_TEXTURE = ExtResource("3_34bey")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q30j5"]
+next_pass = SubResource("ShaderMaterial_hiicd")
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.50103, 0.50103, 0.50103, 1)
+
+[node name="tunnel" instance=ExtResource("1_buily")]
+
+[node name="Tunnel" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_q30j5")
