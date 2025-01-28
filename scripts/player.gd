@@ -98,6 +98,10 @@ func do_purge():
 			if result.collider.has_method("trigger_vaporize"):
 				result.collider.trigger_vaporize()
 				destroyed_count += 1
-	
-	if destroyed_count > 0:
-		destroyed_npcs.emit(destroyed_count)
+
+func do_time_slowdown(value: float):
+	Engine.time_scale = clamp(value, 0.01, 100.0)
+
+func do_detation_screen():
+	Engine.time_scale = 1.0
+	if(destroyed_count > 0): destroyed_npcs.emit(destroyed_count)

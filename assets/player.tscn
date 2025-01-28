@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bqibs67j86o33"]
+[gd_scene load_steps=10 format=3 uid="uid://bqibs67j86o33"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_muvjw"]
+[ext_resource type="AudioStream" uid="uid://qbfp5r6p78sw" path="res://sfx/vaporize.ogg" id="3_rskdw"]
 [ext_resource type="PackedScene" uid="uid://bu2yk7fhrxsnt" path="res://assets/player/gnomon_body.tscn" id="4_0vcg8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nw5lh"]
@@ -32,7 +33,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_0t2nf"]
 resource_name = "purge"
-length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -40,7 +40,7 @@ tracks/0/path = NodePath("PurgeLight:light_energy")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 5),
+"times": PackedFloat32Array(0, 0.0333333, 1),
 "transitions": PackedFloat32Array(1, 0.133972, 0.25),
 "update": 0,
 "values": [0.0, 16.0, 0.0]
@@ -52,13 +52,34 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.0333333),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.0333333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": [],
 "method": &"do_purge"
+}, {
+"args": [0.1],
+"method": &"do_time_slowdown"
+}, {
+"args": [],
+"method": &"do_detation_screen"
 }]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_rskdw")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3c0qm"]
 _data = {
@@ -107,3 +128,6 @@ omni_attenuation = 0.5
 libraries = {
 "": SubResource("AnimationLibrary_3c0qm")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Sfx"
