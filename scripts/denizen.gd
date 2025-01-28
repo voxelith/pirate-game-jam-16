@@ -23,7 +23,7 @@ var velocity_spring := SpringVector3.new(1.0, 2.0, 0.0)
 var nav_distance_threshold := 2.0
 
 @onready var nav = $NavigationAgent3D
-@onready var moving_target = get_tree().current_scene.get_node("%Player")
+@onready var player = get_tree().current_scene.get_node("%Player")
 
 func trigger_vaporize():
 	if(behavior != Behavior.DEAD): $AnimationPlayer.play("vaporize");
@@ -41,10 +41,15 @@ func do_death():
 
 var last_offset := 0.0
 
+func do_panic(_number):
+	if behavior != Behavior.DEAD:
+		behavior = Behavior.PANIC
+
 func _ready():
 	if cloak_material != null:
 		cloak.set_surface_override_material(0, cloak_material)
 	
+	player.destroyed_npcs.connect(do_panic)
 	# Make the navigation server happy
 	set_physics_process(false)
 	call_deferred("actor_setup")
@@ -55,17 +60,17 @@ func actor_setup():
 	set_physics_process(true)
 
 var current_target_position: Vector3
+var current_path_target := Vector3.ZERO
+var path_distance_threshold = 10.0
 
 func _physics_process(delta: float) -> void:
 	var velocity_target := Vector3.ZERO
 	var current_speed: float = 0.0
 	
 	if behavior == Behavior.STANDING:
-		if standing_target != null:
-			var stand: Node3D = get_node(standing_target)
-			if stand != null:
-				current_target_position = stand.global_position
-			current_speed = normal_speed
+		velocity = Vector3i.ZERO
+		move_and_slide()
+		return
 	
 	elif behavior == Behavior.PATH_FOLLOW:
 		var path: Path3D = get_node(path_target)
@@ -80,7 +85,7 @@ func _physics_process(delta: float) -> void:
 			current_speed = normal_speed
 	
 	elif behavior == Behavior.CURIOUS:
-		var curious_direction: Vector3 = global_position - moving_target.global_position
+		var curious_direction: Vector3 = global_position - player.global_position
 		var current_dist = curious_direction.length();
 		var walk_direction = curious_direction.normalized() * (curious_distance - current_dist)
 		
@@ -88,7 +93,7 @@ func _physics_process(delta: float) -> void:
 		current_speed = normal_speed
 	
 	elif behavior == Behavior.PANIC:
-		var flee_direction: Vector3 = (global_position - moving_target.global_position).normalized() * FLEE_DIST
+		var flee_direction: Vector3 = (global_position - player.global_position).normalized() * FLEE_DIST
 		
 		current_target_position = global_position + flee_direction
 		current_speed = panic_speed
@@ -102,7 +107,10 @@ func _physics_process(delta: float) -> void:
 	if (nav.target_position - current_target_position).length() > nav_distance_threshold:
 		nav.target_position = current_target_position
 	
-	direction = nav.get_next_path_position() - global_position
+	if (current_path_target - global_position).length() < path_distance_threshold:
+		current_path_target = nav.get_next_path_position()
+	
+	direction = current_path_target - global_position
 	direction = direction.normalized()
 	direction.y = 0.
 	
