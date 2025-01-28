@@ -29,3 +29,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	$Label.text = "T-%d:%02d" % [int(time_left / 60.), time_left % 60]
 	pass
+
+func reset_to_default() -> void:
+	time_left = 30
+	total_activations = 0

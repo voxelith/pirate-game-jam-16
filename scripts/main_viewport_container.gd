@@ -51,6 +51,8 @@ func _on_player_destroyed_npcs(destroyed_count: int) -> void:
 		end_screen.restart_requested.connect(func():
 			$SubViewport.remove_child(end_screen)
 			change_level(preload("res://scenes/levels/town_square.tscn"))
+			$SubViewport/SceneContents/PlayerCountdown.reset_to_default()
+			%Player.reset_to_default()
 			exit_paused_state()
 		)
 		$SubViewport.add_child(end_screen)

@@ -25,6 +25,13 @@ var destroyed_count: int = 0
 
 signal destroyed_npcs
 
+func reset_to_default() -> void:
+	destroyed_count = 0
+	look_rotation = 0
+	mouse_dir = 0
+	mouse_move_last = 0
+	# TODO: figure out how to reset the camera
+
 func _ready() -> void:
 	look_rotation = rotation.y
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
