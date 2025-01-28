@@ -81,7 +81,7 @@ func _physics_process(delta: float) -> void:
 func trigger_purge():
 	anim.play("purge")
 
-func do_purge():
+func find_and_destroy():
 	###############
 	# RAY CASTING #
 	###############
