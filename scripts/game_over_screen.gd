@@ -2,6 +2,9 @@ extends Control
 
 signal restart_requested
 
+@export var destroyed_count: int
+@export var time_elapsed: int
+
 # TODO: replace these with some actual game quotes
 var quotes = [
 	"So long and thanks for all the fish!",
@@ -15,8 +18,10 @@ var quotes = [
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$HBoxContainer/EndQuote.text = quotes.pick_random()
-	$HBoxContainer/HBoxContainer/Restart.grab_focus()
+	$HBoxContainer/GridContainer/DeathCount.text = "Death count: %d" % destroyed_count
+	$HBoxContainer/GridContainer/TimeElapsed.text = "Time elapsed: %d:%02d" % [int(time_elapsed / 60.), time_elapsed % 60]
 	
+	$HBoxContainer/HBoxContainer/Restart.grab_focus()
 	$HBoxContainer/HBoxContainer/Restart.pressed.connect(func(): restart_requested.emit())
 	# TODO: this should drop to the title screen
 	$HBoxContainer/HBoxContainer/Quit.pressed.connect(func(): get_tree().quit())

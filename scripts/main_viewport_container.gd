@@ -46,6 +46,8 @@ func _on_player_destroyed_npcs(destroyed_count: int) -> void:
 	dialog.accepted.connect(func():
 		$SubViewport.remove_child(dialog)
 		var end_screen = preload("res://components/GameOverScreen.tscn").instantiate()
+		end_screen.destroyed_count = destroyed_count
+		end_screen.time_elapsed = $SubViewport/SceneContents/PlayerCountdown.total_activations * 30
 		end_screen.restart_requested.connect(func():
 			$SubViewport.remove_child(end_screen)
 			change_level(preload("res://scenes/levels/town_square.tscn"))
