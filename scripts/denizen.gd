@@ -23,7 +23,7 @@ var velocity_spring := SpringVector3.new(1.0, 2.0, 0.0)
 var nav_distance_threshold := 2.0
 
 @onready var nav = $NavigationAgent3D
-@onready var player = get_tree().current_scene.get_node("%Player")
+@onready var player = get_tree().current_scene.get_node("%MainViewportContainer").player
 
 func trigger_vaporize():
 	if(behavior != Behavior.DEAD): $AnimationPlayer.play("vaporize");

@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgb440m4f3nra"]
+[gd_scene load_steps=4 format=3 uid="uid://cgb440m4f3nra"]
 
 [ext_resource type="PackedScene" uid="uid://ciuh2o8xpgmvg" path="res://assets/main_viewport_container.tscn" id="1_6xtqw"]
-[ext_resource type="PackedScene" uid="uid://bqibs67j86o33" path="res://assets/player.tscn" id="4_vw1ur"]
 [ext_resource type="PackedScene" uid="uid://d352p1s1v1tcf" path="res://components/PlayerCountdown.tscn" id="9_h46ff"]
 
 [sub_resource type="Environment" id="Environment_fjecj"]
@@ -22,14 +21,9 @@ offset_bottom = 512.0
 
 [node name="PlayerCountdown" parent="MainViewportContainer/SubViewport/SceneContents" index="0" instance=ExtResource("9_h46ff")]
 
-[node name="Player" parent="MainViewportContainer/SubViewport/SceneContents" index="1" instance=ExtResource("4_vw1ur")]
-unique_name_in_owner = true
-process_mode = 1
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="MainViewportContainer/SubViewport/SceneContents" index="2"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="MainViewportContainer/SubViewport/SceneContents" index="1"]
 environment = SubResource("Environment_fjecj")
 
 [connection signal="time_ran_out" from="MainViewportContainer/SubViewport/SceneContents/PlayerCountdown" to="MainViewportContainer" method="_on_player_countdown_time_ran_out"]
-[connection signal="destroyed_npcs" from="MainViewportContainer/SubViewport/SceneContents/Player" to="MainViewportContainer" method="_on_player_destroyed_npcs"]
 
 [editable path="MainViewportContainer"]
