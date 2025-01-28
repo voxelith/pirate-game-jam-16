@@ -2,8 +2,8 @@ extends Control
 
 signal restart_requested
 
-@export var destroyed_count: int
-@export var time_elapsed: int
+@export var destroyed_count: int = 0
+@export var time_elapsed: int = 0
 
 # TODO: replace these with some actual game quotes
 var quotes = [

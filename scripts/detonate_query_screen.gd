@@ -1,6 +1,6 @@
 extends Control
 
-@export var death_count: int
+@export var death_count: int = 0
 
 signal accepted
 signal rejected
