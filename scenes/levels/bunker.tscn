@@ -1,5 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://bdg5gnd3o2cda"]
+[gd_scene load_steps=24 format=3 uid="uid://bdg5gnd3o2cda"]
 
+[ext_resource type="Script" path="res://scenes/levels/bunker.gd" id="1_8n83k"]
 [ext_resource type="PackedScene" uid="uid://ddpaulnqle7sj" path="res://assets/interactables/gate.tscn" id="2_awxy5"]
 [ext_resource type="Material" uid="uid://cntv5faog3hs2" path="res://materials/pillar_stone.tres" id="3_7v24y"]
 [ext_resource type="PackedScene" uid="uid://ic7fspxmsosq" path="res://assets/interactables/chest.tscn" id="3_o0gek"]
@@ -48,6 +49,7 @@ size = Vector3(1, 1.38074, 8.06361)
 size = Vector3(4.18945, 2.41101, 1)
 
 [node name="Bunker" type="Node"]
+script = ExtResource("1_8n83k")
 
 [node name="gate" parent="." instance=ExtResource("2_awxy5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
@@ -219,8 +221,15 @@ shape = SubResource("BoxShape3D_b44lv")
 
 [node name="LevelTransition" parent="." instance=ExtResource("10_6ue84")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9756, -3.8147e-06, -56.4518)
-target_level = "town_small"
+target_level = "town_square"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelTransition"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.705505, 6.33563)
 shape = SubResource("BoxShape3D_6j0a2")
+
+[node name="DetonateInfoTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="DetonateInfoTimer" to="." method="_on_detonate_info_timer_timeout"]
