@@ -3,6 +3,7 @@ extends SubViewportContainer
 var current_level: String
 var _current_level_node: Node = null
 @export var player: Node = null
+var _pause_menu: Node = null
 
 func enter_paused_state() -> void:
 	get_tree().paused = true
@@ -79,3 +80,19 @@ func _on_player_destroyed_npcs(destroyed_count: int) -> void:
 
 func _on_player_countdown_time_ran_out() -> void:
 	player.trigger_purge()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause_menu"):
+		get_viewport().set_input_as_handled()
+		if _pause_menu == null:
+			print("pause spawn")
+			_pause_menu = preload("res://assets/pause_menu.tscn").instantiate()
+			_pause_menu.set_anchors_preset(Control.PRESET_FULL_RECT)
+			_pause_menu.resumed.connect(func():
+				print("resume received")
+				$SubViewport.remove_child(_pause_menu)
+				_pause_menu = null
+				self.grab_focus()
+			)
+			$SubViewport.add_child(_pause_menu)
+			_pause_menu.pause()
