@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://i76xx3olhrji" path="res://materials/dark_body.tres" id="4_sq5o0"]
 [ext_resource type="Material" uid="uid://26dsbuiffw84" path="res://materials/denizen_cloak_brown.tres" id="5_tm3hi"]
 [ext_resource type="Texture2D" uid="uid://r8d0b7ibxfmw" path="res://assets/enemies/denizen-head.png" id="6_2ydow"]
-[ext_resource type="Script" path="res://scripts/head.gd" id="7_ub04q"]
+[ext_resource type="Script" path="res://scripts/head_denizen.gd" id="6_m86ok"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dul2i"]
 resource_local_to_scene = true
@@ -43,6 +43,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DenizenBodyMedium/Head:disintegrate_stage")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DenizenBodyMedium/Head:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_hlm80"]
@@ -155,6 +179,30 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DenizenBodyMedium/Head:disintegrate_stage")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0666667, 0.633333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [6, 0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DenizenBodyMedium/Head:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_w3iyj"]
@@ -379,7 +427,7 @@ bones/0/parent = -1
 bones/0/rest = Transform3D(1, -7.10543e-15, 2.38419e-07, -7.10543e-15, 1, 5.96046e-08, -2.38419e-07, -5.96046e-08, 1, 0, 0, 0)
 bones/0/enabled = true
 bones/0/position = Vector3(0, 0, 0)
-bones/0/rotation = Quaternion(-3.08709e-08, 0.0864908, -4.77907e-09, 0.996253)
+bones/0/rotation = Quaternion(-3.20179e-08, 0.0354957, 3.33448e-09, 0.99937)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "Shoulder.L"
 bones/1/parent = 0
@@ -393,14 +441,14 @@ bones/2/parent = 1
 bones/2/rest = Transform3D(0.95403, -0.299711, 7.64346e-08, 0.299711, 0.95403, -8.36268e-08, -4.78571e-08, 1.02691e-07, 1, 3.8743e-07, 1.58704, 2.20268e-13)
 bones/2/enabled = true
 bones/2/position = Vector3(3.8743e-07, 1.58704, 2.20268e-13)
-bones/2/rotation = Quaternion(0.0486611, 0.0595379, 0.467561, 0.88061)
+bones/2/rotation = Quaternion(0.0418182, 0.0556396, 0.470209, 0.879806)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "ForeArm.L"
 bones/3/parent = 2
 bones/3/rest = Transform3D(0.999911, -0.0133527, 1.50146e-08, 0.0133527, 0.999911, -3.52553e-09, -1.49662e-08, 3.7257e-09, 1, 1.19209e-07, 1.92281, 7.10543e-14)
 bones/3/enabled = true
 bones/3/position = Vector3(1.19209e-07, 1.92281, 7.10543e-14)
-bones/3/rotation = Quaternion(-0.0437639, -0.0386537, 0.00404331, 0.998286)
+bones/3/rotation = Quaternion(-0.0504717, -0.0414112, 0.0050229, 0.997854)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "Shoulder.R"
 bones/4/parent = 0
@@ -414,14 +462,14 @@ bones/5/parent = 4
 bones/5/rest = Transform3D(0.95403, 0.299711, -7.64347e-08, -0.299711, 0.95403, -8.36268e-08, 4.78572e-08, 1.02691e-07, 1, -3.8743e-07, 1.58704, 9.59233e-14)
 bones/5/enabled = true
 bones/5/position = Vector3(-3.8743e-07, 1.58704, 9.59233e-14)
-bones/5/rotation = Quaternion(-0.0176451, 0.0215795, -0.47642, 0.878776)
+bones/5/rotation = Quaternion(-0.0136333, 0.0166733, -0.477131, 0.878568)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "ForeArm.R"
 bones/6/parent = 5
 bones/6/rest = Transform3D(0.999911, 0.0133527, -1.50146e-08, -0.0133527, 0.999911, -3.52556e-09, 1.49662e-08, 3.72573e-09, 1, -1.19209e-07, 1.92281, -1.27898e-13)
 bones/6/enabled = true
 bones/6/position = Vector3(-1.19209e-07, 1.92281, -1.27898e-13)
-bones/6/rotation = Quaternion(-0.0694703, 0.00417435, -0.00841555, 0.99754)
+bones/6/rotation = Quaternion(-0.0754405, 0.00644674, -0.00763146, 0.9971)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/name = "BackLower"
 bones/7/parent = -1
@@ -494,7 +542,8 @@ texture_filter = 2
 render_priority = 4
 texture = ExtResource("6_2ydow")
 hframes = 8
-script = ExtResource("7_ub04q")
+vframes = 7
+script = ExtResource("6_m86ok")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeBlendTree_5kvkt")
