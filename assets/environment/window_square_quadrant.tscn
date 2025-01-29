@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://5l3vbegtap42"]
+
+[ext_resource type="PackedScene" uid="uid://ckn3mupk4y24u" path="res://assets/environment/window_square_quadrant.glb" id="1_yvkqp"]
+[ext_resource type="Material" uid="uid://b3t0mas2inweg" path="res://materials/basic_brown.tres" id="2_yd1fs"]
+[ext_resource type="Material" uid="uid://nmhvgpbongh1" path="res://materials/shiny_stone.tres" id="3_iutdi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uvhnl"]
+size = Vector3(3, 3, 0.299744)
+
+[node name="WindowSquareQuadrant" instance=ExtResource("1_yvkqp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.197828)
+
+[node name="Plane" parent="." index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0.390228)
+surface_material_override/0 = ExtResource("2_yd1fs")
+surface_material_override/1 = ExtResource("3_iutdi")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.342682)
+shape = SubResource("BoxShape3D_uvhnl")

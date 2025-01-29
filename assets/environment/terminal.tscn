@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://i8iwkhnk1r7r"]
+
+[ext_resource type="PackedScene" uid="uid://ca4j82bt3kug1" path="res://assets/environment/terminal.glb" id="1_10bc4"]
+[ext_resource type="Material" uid="uid://dm72p5fit2xrk" path="res://materials/metal_a_stone.tres" id="2_uganq"]
+[ext_resource type="Material" uid="uid://p6etv0rt8dyt" path="res://materials/glowing_green.tres" id="3_773qs"]
+[ext_resource type="Material" uid="uid://c7juiw36lvl8i" path="res://materials/basic_stone.tres" id="4_3a48c"]
+
+[node name="Terminal" instance=ExtResource("1_10bc4")]
+
+[node name="terminal" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_uganq")
+surface_material_override/1 = ExtResource("3_773qs")
+surface_material_override/2 = ExtResource("4_3a48c")
+surface_material_override/3 = ExtResource("3_773qs")
