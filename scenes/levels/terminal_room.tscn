@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dsbt0beq8u1c2"]
+[gd_scene load_steps=9 format=3 uid="uid://dsbt0beq8u1c2"]
 
 [ext_resource type="Material" uid="uid://c7juiw36lvl8i" path="res://materials/basic_stone.tres" id="1_a3wc7"]
+[ext_resource type="Script" path="res://scenes/levels/terminal_room.gd" id="1_r2fy1"]
 [ext_resource type="PackedScene" path="res://assets/environment/pillar_tall.tscn" id="2_avieu"]
 [ext_resource type="PackedScene" uid="uid://i8iwkhnk1r7r" path="res://assets/environment/terminal.tscn" id="3_ybevh"]
 [ext_resource type="PackedScene" path="res://assets/environment/lantern_brighter.tscn" id="4_h75fq"]
@@ -15,8 +16,10 @@ size = Vector3(21, 1, 1)
 radius = 1.0
 
 [node name="TerminalRoom" type="Node"]
+script = ExtResource("1_r2fy1")
 
 [node name="NavigationRegion3D" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.76837e-07, 0, 6)
 
 [node name="Floor" type="CSGBox3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.5, 0)
@@ -75,16 +78,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, 4)
 shape = SubResource("BoxShape3D_bw5kc")
 
 [node name="LanternBrighter" parent="." instance=ExtResource("4_h75fq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 5, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.76837e-07, 5, -6)
 
 [node name="LanternBrighter2" parent="." instance=ExtResource("4_h75fq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 5, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 5, 2)
 
 [node name="LanternBrighter3" parent="." instance=ExtResource("4_h75fq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 5, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 5, -2)
 
-[node name="FinalSceneTrigger" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.2866, 0, 0)
+[node name="FinalSceneTrigger" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.287)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FinalSceneTrigger"]
 shape = SubResource("CylinderShape3D_ifop8")

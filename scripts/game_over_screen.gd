@@ -7,12 +7,12 @@ signal restart_requested
 
 # TODO: replace these with some actual game quotes
 var quotes = [
-	"So long and thanks for all the fish!",
-	"In the beginning the Universe was created. This has made a lot of people very angry and been widely regarded as a bad move.",
-	"The ships hung in the sky in much the same way that bricks don’t.",
-	"I'd far rather be happy than right any day.",
-	"Ford, you're turning into a penguin. Stop it.",
-	"The first ten million years were the worst, and the second ten million years, they were the worst too. The third ten million years I didn't enjoy at all. After that I went into a bit of a decline."
+	"… And so, Gnomon detonated. But it was not the end...",
+	"...Gnomon awoke...",
+	"...All around Gnomon was a desolate wasteland...",
+	"...Gnomon knew that this was what its creators had wanted...",
+	"...Gnomon had exacted their petty judgment on humanity...",
+	"...Now, only Gnomon remained..."
 ]
 
 # Called when the node enters the scene tree for the first time.
