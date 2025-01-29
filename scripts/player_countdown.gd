@@ -11,6 +11,7 @@ signal time_ran_out
 func _onTimerTick() -> void:
 	if time_left > 0:
 		time_left -= 1
+		$AudioStreamPlayer.play()
 	else:
 		time_ran_out.emit()
 		total_activations += 1
