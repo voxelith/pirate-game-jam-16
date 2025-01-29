@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=3 uid="uid://cck7tbhfphaa0"]
+
+[ext_resource type="Material" uid="uid://c7juiw36lvl8i" path="res://materials/basic_stone.tres" id="2_irj07"]
+[ext_resource type="PackedScene" uid="uid://dch67f77x0gde" path="res://assets/environment/tree.tscn" id="3_7ichm"]
+[ext_resource type="PackedScene" uid="uid://cuwvk2k32qt2d" path="res://assets/environment/lamp_globe.tscn" id="4_s80c3"]
+[ext_resource type="Material" uid="uid://bf1ajwinvt4td" path="res://materials/basic_green.tres" id="6_edh58"]
+[ext_resource type="PackedScene" uid="uid://13bthvf1m60l" path="res://assets/environment/trash-can.glb" id="7_krtt2"]
+[ext_resource type="PackedScene" uid="uid://cv7nfm1r6yfd7" path="res://assets/environment/bench.tscn" id="8_6kdxl"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_8o884"]
+
+[node name="TownSquare" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 250.333)
+navigation_mesh = SubResource("NavigationMesh_8o884")
+
+[node name="Floors" type="Node3D" parent="NavigationRegion3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0256577, 0, -216.654)
+
+[node name="Floor" type="CSGBox3D" parent="NavigationRegion3D/Floors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0907801, -0.765556, 23.6068)
+use_collision = true
+size = Vector3(9.99902, 1, 15.0201)
+material = ExtResource("2_irj07")
+
+[node name="Floor2" type="CSGBox3D" parent="NavigationRegion3D/Floors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6853, -0.765556, -22.7529)
+use_collision = true
+size = Vector3(73.7008, 1, 78.32)
+material = ExtResource("2_irj07")
+
+[node name="Floor3" type="CSGBox3D" parent="NavigationRegion3D/Floors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.207, -0.765556, -61.0658)
+use_collision = true
+size = Vector3(13.8291, 1, 15.0201)
+material = ExtResource("2_irj07")
+
+[node name="Trees" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="Tree" parent="NavigationRegion3D/Trees" instance=ExtResource("3_7ichm")]
+transform = Transform3D(0.629605, 0, 0.776915, 0, 1, 0, -0.776915, 0, 0.629605, 1.18115, -0.279328, -289.328)
+
+[node name="Lamps" type="Node3D" parent="NavigationRegion3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0256577, 0, -216.654)
+
+[node name="LampGlobe" parent="NavigationRegion3D/Lamps" instance=ExtResource("4_s80c3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.86174, -0.275627, 76.7851)
+
+[node name="Hedges" type="Node3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -225.102, 0, 32)
+
+[node name="Hedge4" type="CSGBox3D" parent="NavigationRegion3D/Hedges"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 207.836, 0.5, -317.116)
+use_collision = true
+size = Vector3(1, 2, 25.8569)
+material = ExtResource("6_edh58")
+
+[node name="HedgeGroupD" type="Node3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -257.102, 0, 32)
+
+[node name="Fences" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="Fence" type="CSGBox3D" parent="NavigationRegion3D/Fences"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -14.0749, 0.094, -298.88)
+use_collision = true
+size = Vector3(0.16, 0.804, 14.4626)
+material = ExtResource("6_edh58")
+
+[node name="Benchs" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="Bench" parent="NavigationRegion3D/Benchs" instance=ExtResource("8_6kdxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.6172, -0.260824, -293.509)
+
+[node name="TrashCans" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="TrashCan" parent="NavigationRegion3D/TrashCans" instance=ExtResource("7_krtt2")]
+transform = Transform3D(0.716801, 0, -0.697278, 0, 1, 0, 0.697278, 0, 0.716801, -19.6932, -0.582, -292.2)
