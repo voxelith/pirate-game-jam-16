@@ -1,5 +1,6 @@
-[gd_scene load_steps=28 format=3 uid="uid://cw8pbh60234d5"]
+[gd_scene load_steps=30 format=3 uid="uid://cw8pbh60234d5"]
 
+[ext_resource type="Script" path="res://scenes/levels/town_small.gd" id="1_fxhd1"]
 [ext_resource type="Material" uid="uid://c7juiw36lvl8i" path="res://materials/basic_stone.tres" id="1_xemta"]
 [ext_resource type="PackedScene" uid="uid://cuwvk2k32qt2d" path="res://assets/environment/lamp_globe.tscn" id="2_48jf5"]
 [ext_resource type="Material" uid="uid://b3t0mas2inweg" path="res://materials/basic_brown.tres" id="2_eubr5"]
@@ -57,8 +58,16 @@ shader = ExtResource("8_sho8s")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/opacity = 0.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3758p"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("8_sho8s")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/opacity = 0.0
+
 [node name="TownSquare" type="Node3D"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 7)
+script = ExtResource("1_fxhd1")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 250.333)
@@ -178,6 +187,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9716, 4.49093, 11.4053)
 use_collision = true
 size = Vector3(13.3203, 12.1498, 12.6111)
 material = ExtResource("2_eubr5")
+
+[node name="SecurityDoor" parent="NavigationRegion3D/TownBuildings/Building12" instance=ExtResource("7_sd2b8")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -6.94594, -4.49093, 2.27369)
 
 [node name="Building3" type="CSGBox3D" parent="NavigationRegion3D/TownBuildings"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.761, 4.26806, -14.3429)
@@ -470,9 +482,6 @@ transform = Transform3D(0.940745, 0, -0.339116, 0, 1, 0, 0.339116, 0, 0.940745, 
 [node name="CrateMedium3" parent="NavigationRegion3D" instance=ExtResource("16_inw1s")]
 transform = Transform3D(0.939725, -0.0110308, -0.341753, 0.0115909, 0.999933, -0.000403193, 0.341734, -0.00358233, 0.93979, -6.67718, 1.91583, -143.852)
 
-[node name="MonumentDenizensA" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -225.102, 0, 0)
-
 [node name="HedgeDenizensA" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -205.102, 0, -13)
 
@@ -513,5 +522,32 @@ cloak_material = ExtResource("10_pdtd6")
 [node name="TrashCan" parent="." instance=ExtResource("7_ciu3g")]
 transform = Transform3D(1.145, 0, 0, 0, 1.145, 0, 0, 0, 1.145, 3.59471, -0.234619, 64.6909)
 
-[node name="SecurityDoor" parent="." instance=ExtResource("7_sd2b8")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, 20)
+[node name="Denizen" parent="." instance=ExtResource("7_lkcs2")]
+transform = Transform3D(-0.0985905, 0, 0.995128, 0, 1, 0, -0.995128, 0, -0.0985905, -3.25344, -0.234621, 15.3794)
+behavior = 0
+vaporize_material = SubResource("ShaderMaterial_3758p")
+
+[node name="Denizen2" parent="." instance=ExtResource("7_lkcs2")]
+transform = Transform3D(-0.911504, 0, 0.411291, 0, 1, 0, -0.411291, 0, -0.911504, 2.36062, -0.234621, 50.1871)
+behavior = 0
+vaporize_material = SubResource("ShaderMaterial_3758p")
+cloak_material = ExtResource("4_gqk7b")
+
+[node name="Denizen3" parent="." instance=ExtResource("7_lkcs2")]
+transform = Transform3D(0.514843, 0, 0.857284, 0, 1, 0, -0.857284, 0, 0.514843, -12.1162, -0.234621, 29.195)
+behavior = 0
+vaporize_material = SubResource("ShaderMaterial_3758p")
+
+[node name="Denizen4" parent="." instance=ExtResource("7_lkcs2")]
+transform = Transform3D(0.934919, 0, -0.354862, 0, 1, 0, 0.354862, 0, 0.934919, -0.716999, -0.234621, 97.5562)
+panic_speed = 6.0
+behavior = 0
+vaporize_material = SubResource("ShaderMaterial_3758p")
+cloak_material = ExtResource("1_xemta")
+
+[node name="Denizen5" parent="." instance=ExtResource("7_lkcs2")]
+transform = Transform3D(0.748435, 0, 0.663208, 0, 1, 0, -0.663208, 0, 0.748435, -21.5909, -0.234623, 106.861)
+panic_speed = 6.0
+behavior = 0
+vaporize_material = SubResource("ShaderMaterial_3758p")
+cloak_material = ExtResource("1_xemta")

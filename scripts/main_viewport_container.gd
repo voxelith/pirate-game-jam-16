@@ -14,11 +14,12 @@ func exit_paused_state() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	mouse_filter = Control.MOUSE_FILTER_PASS
 
-func show_dialogue(dialogue: PackedStringArray) -> void:
+func show_dialogue(dialogue: PackedStringArray, final: bool = false) -> void:
 	enter_paused_state()
 	var dialogue_box = preload("res://components/CharacterDialogue.tscn").instantiate()
 	dialogue_box.dialogue = dialogue
 	$SubViewport/SceneContents.add_child(dialogue_box)
+	# TODO: roll credits after completed if final is `true`
 	dialogue_box.completed.connect(func():
 		$SubViewport/SceneContents.remove_child(dialogue_box)
 		exit_paused_state()
