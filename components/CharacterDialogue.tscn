@@ -9,6 +9,7 @@ process_mode = 3
 script = ExtResource("1_fuxnu")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+process_mode = 3
 custom_minimum_size = Vector2(310, 70)
 anchors_preset = 7
 anchor_left = 0.5
