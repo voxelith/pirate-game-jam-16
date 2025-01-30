@@ -1,9 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://crxqgs73uh5cw"]
+[gd_scene load_steps=4 format=3 uid="uid://crxqgs73uh5cw"]
 
 [ext_resource type="PackedScene" uid="uid://13bthvf1m60l" path="res://assets/environment/trash-can.glb" id="1_24fl4"]
 [ext_resource type="Material" uid="uid://nmhvgpbongh1" path="res://materials/shiny_stone.tres" id="2_iefdm"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_l0sib"]
+radius = 0.378694
 
 [node name="TrashCan" instance=ExtResource("1_24fl4")]
 
 [node name="Trash can" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_iefdm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Trash can" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trash can/StaticBody3D" index="0"]
+shape = SubResource("CylinderShape3D_l0sib")

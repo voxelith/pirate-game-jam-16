@@ -11,6 +11,8 @@ height = 1.52153
 [node name="Rock 3" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_44a58")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Rock 3" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Rock 3" index="0"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Rock 3/StaticBody3D" index="0"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0.383186, 0)
 shape = SubResource("CapsuleShape3D_6q8vc")
