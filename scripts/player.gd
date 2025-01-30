@@ -56,6 +56,9 @@ func _physics_process(delta: float) -> void:
 			velocity += get_gravity() * delta
 		
 		$GnomonBody.rotation.y = atan2(velocity.x, velocity.z) - rotation.y
+		
+	else:
+		velocity = Vector3(0, 0, 0)
 	
 	#################
 	# CAMERA MOTION #
