@@ -7,6 +7,18 @@ var _pause_menu: Node = null
 var dialogue_box: Node = null
 var _credits_screen: Node = null
 
+var total_destroyed_npcs: int = 0
+
+#############
+# SAVE DATA #
+#############
+var fewest_deaths_run: int = -1
+
+func save_fewest_deaths() -> void:
+	if fewest_deaths_run >= 0:
+		var save_file = FileAccess.open("user://savedata.save", FileAccess.WRITE)
+		save_file.store_32(fewest_deaths_run)
+
 func enter_paused_state() -> void:
 	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -56,18 +68,24 @@ func update_subviewport() -> void:
 	$SubViewport.get_camera_3d().size = camera_size
 
 func _ready() -> void:
+	if FileAccess.file_exists("user://savedata.save"):
+		var save_file = FileAccess.open("user://savedata.save", FileAccess.READ)
+		fewest_deaths_run = save_file.get_32()
+	
 	change_level("bunker")
 	
 	update_subviewport()
 	get_viewport().size_changed.connect(update_subviewport)
 
 func _on_player_destroyed_npcs(destroyed_count: int) -> void:
+	total_destroyed_npcs += destroyed_count
+	
 	var dialog = preload("res://components/DetonateQueryScreen.tscn").instantiate()
-	dialog.death_count = destroyed_count
+	dialog.death_count = total_destroyed_npcs
 	dialog.accepted.connect(func():
 		$SubViewport.remove_child(dialog)
 		var end_screen = preload("res://components/GameOverScreen.tscn").instantiate()
-		end_screen.destroyed_count = destroyed_count
+		end_screen.destroyed_count = total_destroyed_npcs
 		end_screen.time_elapsed = $SubViewport/SceneContents/PlayerCountdown.total_activations * 30
 		end_screen.restart_requested.connect(func():
 			$SubViewport.remove_child(end_screen)
@@ -116,6 +134,10 @@ func _input(event: InputEvent) -> void:
 
 func show_credits() -> void:
 	enter_paused_state()
+	
+	if fewest_deaths_run == -1 or total_destroyed_npcs < fewest_deaths_run:
+		fewest_deaths_run = total_destroyed_npcs
+		save_fewest_deaths()
 	
 	_credits_screen = preload("res://assets/credits_screen.tscn").instantiate()
 	$SubViewport.add_child(_credits_screen)
