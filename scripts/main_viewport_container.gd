@@ -19,10 +19,11 @@ func save_fewest_deaths() -> void:
 		var save_file = FileAccess.open("user://savedata.save", FileAccess.WRITE)
 		save_file.store_32(fewest_deaths_run)
 
-func enter_paused_state() -> void:
+func enter_paused_state(show_cursor: bool = true) -> void:
 	get_tree().paused = true
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	mouse_filter = Control.MOUSE_FILTER_STOP
+	if show_cursor:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		mouse_filter = Control.MOUSE_FILTER_STOP
 
 func exit_paused_state() -> void:
 	get_tree().paused = false
@@ -31,7 +32,7 @@ func exit_paused_state() -> void:
 	grab_focus()
 
 func show_dialogue(dialogue: PackedStringArray, is_final: bool = false) -> void:
-	enter_paused_state()
+	enter_paused_state(false)
 	dialogue_box = preload("res://components/CharacterDialogue.tscn").instantiate()
 	dialogue_box.dialogue = dialogue
 	$SubViewport/SceneContents.add_child(dialogue_box)

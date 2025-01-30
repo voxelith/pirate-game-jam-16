@@ -5,7 +5,6 @@ signal restart_requested
 @export var destroyed_count: int = 0
 @export var time_elapsed: int = 0
 
-# TODO: replace these with some actual game quotes
 var quotes = [
 	"...And so, Gnomon detonated. But it was not the end...",
 	"...Gnomon awoke...",
@@ -23,5 +22,9 @@ func _ready() -> void:
 	
 	$HBoxContainer/HBoxContainer/Restart.grab_focus()
 	$HBoxContainer/HBoxContainer/Restart.pressed.connect(func(): restart_requested.emit())
-	# TODO: this should drop to the title screen
-	$HBoxContainer/HBoxContainer/Quit.pressed.connect(func(): get_tree().quit())
+	
+	if OS.get_name() == "Web":
+		$HBoxContainer/HBoxContainer.remove_child($HBoxContainer/HBoxContainer/Quit)
+	else:
+		# TODO: this should drop to the title screen
+		$HBoxContainer/HBoxContainer/Quit.pressed.connect(func(): get_tree().quit())

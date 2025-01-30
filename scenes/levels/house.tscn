@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://xde3nwf0knco" path="res://assets/environment/crate_small.tscn" id="5_x2tr3"]
 [ext_resource type="PackedScene" path="res://assets/environment/desk.tscn" id="6_gett1"]
 [ext_resource type="PackedScene" uid="uid://dbqej2atgrug1" path="res://assets/environment/crate_medium.tscn" id="6_s53wh"]
+[ext_resource type="PackedScene" uid="uid://bxb4ll538buv0" path="res://assets/environment/lantern.tscn" id="7_2b3e7"]
 [ext_resource type="PackedScene" uid="uid://cf14ha24y7vd8" path="res://assets/interactables/level_transition.tscn" id="7_gsnvb"]
 [ext_resource type="PackedScene" uid="uid://clq3fx47xi6tu" path="res://assets/environment/lantern_cluster.tscn" id="9_l3og2"]
 [ext_resource type="Material" uid="uid://d3esp33fbrjwr" path="res://materials/wood_brown.tres" id="10_av3gc"]
