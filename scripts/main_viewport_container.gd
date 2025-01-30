@@ -143,3 +143,7 @@ func show_credits() -> void:
 	
 	_credits_screen = preload("res://assets/credits_screen.tscn").instantiate()
 	$SubViewport.add_child(_credits_screen)
+
+
+func _on_audio_stream_player_finished() -> void:
+	$SubViewport/AudioStreamPlayer.play()
