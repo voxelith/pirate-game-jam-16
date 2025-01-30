@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1jkd0jx5lwd2"]
+
+[ext_resource type="PackedScene" uid="uid://bggiygb0svk3y" path="res://assets/environment/swingset.glb" id="1_dnrmq"]
+[ext_resource type="Material" uid="uid://bf1ajwinvt4td" path="res://materials/basic_green.tres" id="2_v1p3q"]
+[ext_resource type="Material" uid="uid://i76xx3olhrji" path="res://materials/dark_body.tres" id="3_31d3n"]
+[ext_resource type="Material" uid="uid://cstpcrycja5wa" path="res://materials/basic_gold.tres" id="4_lrayd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f3apu"]
+size = Vector3(6.22754, 3.90668, 3.22461)
+
+[node name="Swingset" instance=ExtResource("1_dnrmq")]
+
+[node name="Cylinder" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.27978, 0)
+surface_material_override/0 = ExtResource("2_v1p3q")
+surface_material_override/1 = ExtResource("3_31d3n")
+surface_material_override/2 = ExtResource("4_lrayd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.27978, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.19791, 0)
+shape = SubResource("BoxShape3D_f3apu")

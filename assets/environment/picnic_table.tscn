@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://rlmd2q2n3235"]
+
+[ext_resource type="PackedScene" uid="uid://dlkwjnecc7xun" path="res://assets/environment/picnic_table.glb" id="1_on4pa"]
+[ext_resource type="Material" uid="uid://b3t0mas2inweg" path="res://materials/basic_brown.tres" id="2_2xnk1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ca0xv"]
+size = Vector3(4.02441, 1.27887, 2.51196)
+
+[node name="PicnicTable" instance=ExtResource("1_on4pa")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_2xnk1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.636078, 0)
+shape = SubResource("BoxShape3D_ca0xv")
