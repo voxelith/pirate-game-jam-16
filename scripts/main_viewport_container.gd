@@ -16,6 +16,7 @@ func exit_paused_state() -> void:
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	mouse_filter = Control.MOUSE_FILTER_PASS
+	grab_focus()
 
 func show_dialogue(dialogue: PackedStringArray, is_final: bool = false) -> void:
 	enter_paused_state()
