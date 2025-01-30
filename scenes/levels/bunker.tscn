@@ -5,10 +5,10 @@
 [ext_resource type="Material" uid="uid://cntv5faog3hs2" path="res://materials/pillar_stone.tres" id="3_7v24y"]
 [ext_resource type="PackedScene" uid="uid://ic7fspxmsosq" path="res://assets/interactables/chest.tscn" id="3_o0gek"]
 [ext_resource type="PackedScene" uid="uid://dbqej2atgrug1" path="res://assets/environment/crate_medium.tscn" id="6_co385"]
-[ext_resource type="PackedScene" path="res://assets/environment/desk.tscn" id="6_l62h1"]
+[ext_resource type="PackedScene" uid="uid://bdroahcdlw3ki" path="res://assets/environment/desk.tscn" id="6_l62h1"]
 [ext_resource type="PackedScene" uid="uid://cbuilohnmua0j" path="res://assets/environment/pillar_angled.tscn" id="7_hbjs4"]
 [ext_resource type="PackedScene" uid="uid://xde3nwf0knco" path="res://assets/environment/crate_small.tscn" id="7_wnatn"]
-[ext_resource type="PackedScene" path="res://assets/environment/lantern_cluster.tscn" id="8_28v1m"]
+[ext_resource type="PackedScene" uid="uid://bskjqfxlxso1x" path="res://assets/environment/lantern_cluster.tscn" id="8_28v1m"]
 [ext_resource type="PackedScene" uid="uid://btrsxhhwvbtmq" path="res://assets/environment/tunnel.tscn" id="9_8d17s"]
 [ext_resource type="PackedScene" uid="uid://cf14ha24y7vd8" path="res://assets/interactables/level_transition.tscn" id="10_6ue84"]
 
@@ -221,7 +221,7 @@ shape = SubResource("BoxShape3D_b44lv")
 
 [node name="LevelTransition" parent="." instance=ExtResource("10_6ue84")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9756, -3.8147e-06, -56.4518)
-target_level = "town_small"
+target_level = "park"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelTransition"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.705505, 6.33563)

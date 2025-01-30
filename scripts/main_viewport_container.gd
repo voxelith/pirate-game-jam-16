@@ -3,7 +3,6 @@ extends SubViewportContainer
 var current_level: String
 var _current_level_node: Node = null
 @export var player: Node = null
-var _pause_menu: Node = null
 
 func enter_paused_state() -> void:
 	get_tree().paused = true
@@ -15,12 +14,11 @@ func exit_paused_state() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	mouse_filter = Control.MOUSE_FILTER_PASS
 
-func show_dialogue(dialogue: PackedStringArray, final: bool = false) -> void:
+func show_dialogue(dialogue: PackedStringArray) -> void:
 	enter_paused_state()
 	var dialogue_box = preload("res://components/CharacterDialogue.tscn").instantiate()
 	dialogue_box.dialogue = dialogue
 	$SubViewport/SceneContents.add_child(dialogue_box)
-	# TODO: roll credits after completed if final is `true`
 	dialogue_box.completed.connect(func():
 		$SubViewport/SceneContents.remove_child(dialogue_box)
 		exit_paused_state()
@@ -54,7 +52,6 @@ func _ready() -> void:
 	
 	update_subviewport()
 	get_viewport().size_changed.connect(update_subviewport)
-	grab_focus()
 
 func _on_player_destroyed_npcs(destroyed_count: int) -> void:
 	var dialog = preload("res://components/DetonateQueryScreen.tscn").instantiate()
@@ -82,18 +79,3 @@ func _on_player_destroyed_npcs(destroyed_count: int) -> void:
 
 func _on_player_countdown_time_ran_out() -> void:
 	player.trigger_purge()
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause_menu"):
-		get_viewport().set_input_as_handled()
-		if _pause_menu == null:
-			enter_paused_state()
-			_pause_menu = preload("res://assets/pause_menu.tscn").instantiate()
-			_pause_menu.resume.connect(func():
-				exit_paused_state()
-				$SubViewport.remove_child(_pause_menu)
-				_pause_menu = null
-				self.grab_focus()
-			)
-			_pause_menu.visible = true
-			$SubViewport.add_child(_pause_menu)
