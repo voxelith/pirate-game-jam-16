@@ -16,5 +16,5 @@ func _ready() -> void:
 	advance()
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and not get_tree().paused:
 		advance()
