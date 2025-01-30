@@ -1,6 +1,6 @@
-[gd_scene load_steps=30 format=3 uid="uid://cw8pbh60234d5"]
+[gd_scene load_steps=34 format=3 uid="uid://cw8pbh60234d5"]
 
-[ext_resource type="Script" path="res://scenes/levels/town_small.gd" id="1_fxhd1"]
+[ext_resource type="Script" path="res://scripts/town_small.gd" id="1_fxhd1"]
 [ext_resource type="Material" uid="uid://c7juiw36lvl8i" path="res://materials/basic_stone.tres" id="1_xemta"]
 [ext_resource type="PackedScene" uid="uid://cuwvk2k32qt2d" path="res://assets/environment/lamp_globe.tscn" id="2_48jf5"]
 [ext_resource type="Material" uid="uid://b3t0mas2inweg" path="res://materials/basic_brown.tres" id="2_eubr5"]
@@ -59,6 +59,34 @@ shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/opacity = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3758p"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("8_sho8s")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6wdpo"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("8_sho8s")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oed01"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("8_sho8s")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_28mg2"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("8_sho8s")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xase0"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("8_sho8s")
@@ -530,24 +558,24 @@ vaporize_material = SubResource("ShaderMaterial_3758p")
 [node name="Denizen2" parent="." instance=ExtResource("7_lkcs2")]
 transform = Transform3D(-0.911504, 0, 0.411291, 0, 1, 0, -0.411291, 0, -0.911504, 2.36062, -0.234621, 50.1871)
 behavior = 0
-vaporize_material = SubResource("ShaderMaterial_3758p")
+vaporize_material = SubResource("ShaderMaterial_6wdpo")
 cloak_material = ExtResource("4_gqk7b")
 
 [node name="Denizen3" parent="." instance=ExtResource("7_lkcs2")]
 transform = Transform3D(0.514843, 0, 0.857284, 0, 1, 0, -0.857284, 0, 0.514843, -12.1162, -0.234621, 29.195)
 behavior = 0
-vaporize_material = SubResource("ShaderMaterial_3758p")
+vaporize_material = SubResource("ShaderMaterial_oed01")
 
 [node name="Denizen4" parent="." instance=ExtResource("7_lkcs2")]
 transform = Transform3D(0.934919, 0, -0.354862, 0, 1, 0, 0.354862, 0, 0.934919, -0.716999, -0.234621, 97.5562)
 panic_speed = 6.0
 behavior = 0
-vaporize_material = SubResource("ShaderMaterial_3758p")
+vaporize_material = SubResource("ShaderMaterial_28mg2")
 cloak_material = ExtResource("1_xemta")
 
 [node name="Denizen5" parent="." instance=ExtResource("7_lkcs2")]
 transform = Transform3D(0.748435, 0, 0.663208, 0, 1, 0, -0.663208, 0, 0.748435, -21.5909, -0.234623, 106.861)
 panic_speed = 6.0
 behavior = 0
-vaporize_material = SubResource("ShaderMaterial_3758p")
+vaporize_material = SubResource("ShaderMaterial_xase0")
 cloak_material = ExtResource("1_xemta")

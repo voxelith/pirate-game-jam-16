@@ -1,14 +1,14 @@
 [gd_scene load_steps=24 format=3 uid="uid://bdg5gnd3o2cda"]
 
-[ext_resource type="Script" path="res://scenes/levels/bunker.gd" id="1_8n83k"]
+[ext_resource type="Script" path="res://scripts/bunker.gd" id="1_8n83k"]
 [ext_resource type="PackedScene" uid="uid://ddpaulnqle7sj" path="res://assets/interactables/gate.tscn" id="2_awxy5"]
 [ext_resource type="Material" uid="uid://cntv5faog3hs2" path="res://materials/pillar_stone.tres" id="3_7v24y"]
 [ext_resource type="PackedScene" uid="uid://ic7fspxmsosq" path="res://assets/interactables/chest.tscn" id="3_o0gek"]
 [ext_resource type="PackedScene" uid="uid://dbqej2atgrug1" path="res://assets/environment/crate_medium.tscn" id="6_co385"]
-[ext_resource type="PackedScene" uid="uid://bdroahcdlw3ki" path="res://assets/environment/desk.tscn" id="6_l62h1"]
+[ext_resource type="PackedScene" path="res://assets/environment/desk.tscn" id="6_l62h1"]
 [ext_resource type="PackedScene" uid="uid://cbuilohnmua0j" path="res://assets/environment/pillar_angled.tscn" id="7_hbjs4"]
 [ext_resource type="PackedScene" uid="uid://xde3nwf0knco" path="res://assets/environment/crate_small.tscn" id="7_wnatn"]
-[ext_resource type="PackedScene" uid="uid://bskjqfxlxso1x" path="res://assets/environment/lantern_cluster.tscn" id="8_28v1m"]
+[ext_resource type="PackedScene" path="res://assets/environment/lantern_cluster.tscn" id="8_28v1m"]
 [ext_resource type="PackedScene" uid="uid://btrsxhhwvbtmq" path="res://assets/environment/tunnel.tscn" id="9_8d17s"]
 [ext_resource type="PackedScene" uid="uid://cf14ha24y7vd8" path="res://assets/interactables/level_transition.tscn" id="10_6ue84"]
 
