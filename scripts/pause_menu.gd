@@ -4,6 +4,9 @@ signal resume
 
 func _ready():
 	$CanvasLayer2/PanelContainer/ButtonsLayout/Resume.grab_focus()
+	
+	if OS.get_name() == "Web":
+		$CanvasLayer2/PanelContainer/ButtonsLayout.remove_child($CanvasLayer2/PanelContainer/ButtonsLayout/Quit)
 
 func _on_resume_pressed() -> void: #Callback function when the resume button is pressed
 	resume.emit()
