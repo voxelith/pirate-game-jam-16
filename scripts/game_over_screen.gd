@@ -25,7 +25,3 @@ func _ready() -> void:
 	$HBoxContainer/HBoxContainer/Restart.pressed.connect(func(): restart_requested.emit())
 	# TODO: this should drop to the title screen
 	$HBoxContainer/HBoxContainer/Quit.pressed.connect(func(): get_tree().quit())
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
