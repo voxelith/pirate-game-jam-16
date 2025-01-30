@@ -35,9 +35,3 @@ vertex_color_use_as_albedo = true
 cast_shadow = 0
 surface_material_override/0 = SubResource("StandardMaterial3D_57auc")
 surface_material_override/1 = SubResource("StandardMaterial3D_vhvyo")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-light_energy = 0.2
-shadow_enabled = true
-omni_range = 30.0

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfe76lne0uu21"]
+
+[ext_resource type="PackedScene" uid="uid://bxb4ll538buv0" path="res://assets/environment/lantern.tscn" id="1_4kqb0"]
+
+[node name="LanternSingle" type="Node3D"]
+
+[node name="lantern" parent="." instance=ExtResource("1_4kqb0")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+light_energy = 0.6
+shadow_enabled = true
+omni_range = 30.0
