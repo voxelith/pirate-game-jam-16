@@ -3,52 +3,24 @@
 [ext_resource type="Script" path="res://scripts/credits_screen.gd" id="1_65uuj"]
 [ext_resource type="Theme" uid="uid://buyj7atvoig18" path="res://assets/ui/theme.tres" id="1_pxp12"]
 
-[sub_resource type="Animation" id="Animation_4m6qx"]
-resource_name = "credits"
-length = 40.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/AllCredits:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 36.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(246.5, 651), Vector2(246.5, -1000)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/ThankYou:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.233333, 31.0667, 36.1667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_jo470"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/AllCredits:position")
+tracks/0/path = NodePath("CanvasLayer/ThankYou:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(246.5, 651)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/ThankYou:modulate")
+tracks/1/path = NodePath("CanvasLayer/Creative Director:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -56,6 +28,190 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Creative Director:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/LevelDesign:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Art:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Story:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/Music:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/Programming:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CanvasLayer/ExternalCredits:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4m6qx"]
+resource_name = "credits"
+length = 40.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ThankYou:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.233333, 32.7, 36.1667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Creative Director:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.928059, 2.38412, 3.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/LevelDesign:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4.43333, 5.3, 7.03333, 8.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Art:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(8.96667, 9.86667, 11.4667, 12.5333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Story:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(13.4667, 14.3333, 16.1, 17.1667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Music:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(17.9333, 18.9, 20.6333, 21.7667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/Programming:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(22.3667, 23.2667, 25.1, 26.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/ExternalCredits:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(26.9, 27.7667, 30, 31.0333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xcpab"]
@@ -83,44 +239,52 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.121569, 0.12549, 0.145098, 1)
 
-[node name="AllCredits" type="VBoxContainer" parent="CanvasLayer"]
-anchors_preset = 7
+[node name="Creative Director" type="VBoxContainer" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -233.5
-offset_top = 11.0
-offset_right = 233.5
-offset_bottom = 785.0
+anchor_bottom = 0.5
+offset_left = -233.0
+offset_top = -18.0
+offset_right = 233.0
+offset_bottom = 18.0
 grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/separation = 80
-
-[node name="Creative Director" type="VBoxContainer" parent="CanvasLayer/AllCredits"]
-layout_mode = 2
+grow_vertical = 2
 theme = ExtResource("1_pxp12")
 theme_override_constants/separation = 15
 
-[node name="Heading" type="Label" parent="CanvasLayer/AllCredits/Creative Director"]
+[node name="Heading" type="Label" parent="CanvasLayer/Creative Director"]
 layout_mode = 2
 theme = ExtResource("1_pxp12")
 theme_override_font_sizes/font_size = 16
 text = "Creative Director"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="CanvasLayer/AllCredits/Creative Director"]
+[node name="Label2" type="Label" parent="CanvasLayer/Creative Director"]
 layout_mode = 2
 text = "Voxelith"
 horizontal_alignment = 1
 
-[node name="LevelDesign" type="VBoxContainer" parent="CanvasLayer/AllCredits"]
-layout_mode = 2
+[node name="LevelDesign" type="VBoxContainer" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -18.0
+offset_right = 96.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_pxp12")
 theme_override_constants/separation = 15
 
-[node name="Heading" type="Label" parent="CanvasLayer/AllCredits/LevelDesign"]
+[node name="Heading" type="Label" parent="CanvasLayer/LevelDesign"]
 layout_mode = 2
 theme = ExtResource("1_pxp12")
 theme_override_font_sizes/font_size = 16
@@ -128,101 +292,158 @@ text = "Level Design
 "
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="CanvasLayer/AllCredits/LevelDesign"]
+[node name="Label2" type="Label" parent="CanvasLayer/LevelDesign"]
 layout_mode = 2
 text = "MR Slim Jim"
 horizontal_alignment = 1
 
-[node name="Art" type="VBoxContainer" parent="CanvasLayer/AllCredits"]
-layout_mode = 2
+[node name="Art" type="VBoxContainer" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -29.0
+offset_right = 56.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_pxp12")
 theme_override_constants/separation = 15
 
-[node name="Heading" type="Label" parent="CanvasLayer/AllCredits/Art"]
+[node name="Heading" type="Label" parent="CanvasLayer/Art"]
 layout_mode = 2
 theme = ExtResource("1_pxp12")
 theme_override_font_sizes/font_size = 16
 text = "Art"
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="CanvasLayer/AllCredits/Art"]
+[node name="Label3" type="Label" parent="CanvasLayer/Art"]
 layout_mode = 2
 text = "OrigamiPenguin"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="CanvasLayer/AllCredits/Art"]
+[node name="Label2" type="Label" parent="CanvasLayer/Art"]
 layout_mode = 2
 text = "Voxelith"
 horizontal_alignment = 1
 
-[node name="Story" type="VBoxContainer" parent="CanvasLayer/AllCredits"]
-layout_mode = 2
+[node name="Story" type="VBoxContainer" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -18.0
+offset_right = 60.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_pxp12")
 theme_override_constants/separation = 15
 
-[node name="Heading" type="Label" parent="CanvasLayer/AllCredits/Story"]
+[node name="Heading" type="Label" parent="CanvasLayer/Story"]
 layout_mode = 2
 theme = ExtResource("1_pxp12")
 theme_override_font_sizes/font_size = 16
-text = "Story"
+text = "Writing"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="CanvasLayer/AllCredits/Story"]
+[node name="Label2" type="Label" parent="CanvasLayer/Story"]
 layout_mode = 2
 text = "TechnetiumShade"
 horizontal_alignment = 1
 
-[node name="Music" type="VBoxContainer" parent="CanvasLayer/AllCredits"]
-layout_mode = 2
+[node name="Music" type="VBoxContainer" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -18.0
+offset_right = 40.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_pxp12")
 theme_override_constants/separation = 15
 
-[node name="Heading" type="Label" parent="CanvasLayer/AllCredits/Music"]
+[node name="Heading" type="Label" parent="CanvasLayer/Music"]
 layout_mode = 2
 theme = ExtResource("1_pxp12")
 theme_override_font_sizes/font_size = 16
 text = "Music"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="CanvasLayer/AllCredits/Music"]
+[node name="Label2" type="Label" parent="CanvasLayer/Music"]
 layout_mode = 2
 text = "Voxelith"
 horizontal_alignment = 1
 
-[node name="Programming" type="VBoxContainer" parent="CanvasLayer/AllCredits"]
-layout_mode = 2
+[node name="Programming" type="VBoxContainer" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -233.0
+offset_top = -40.0
+offset_right = 233.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("1_pxp12")
 theme_override_constants/separation = 15
 
-[node name="Heading" type="Label" parent="CanvasLayer/AllCredits/Programming"]
+[node name="Heading" type="Label" parent="CanvasLayer/Programming"]
 layout_mode = 2
 theme = ExtResource("1_pxp12")
 theme_override_font_sizes/font_size = 16
 text = "Programming"
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="CanvasLayer/AllCredits/Programming"]
+[node name="Label3" type="Label" parent="CanvasLayer/Programming"]
 layout_mode = 2
 text = "LorenDB"
 horizontal_alignment = 1
 
-[node name="Label4" type="Label" parent="CanvasLayer/AllCredits/Programming"]
+[node name="Label4" type="Label" parent="CanvasLayer/Programming"]
 layout_mode = 2
 text = "MR Slim Jim"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="CanvasLayer/AllCredits/Programming"]
+[node name="Label2" type="Label" parent="CanvasLayer/Programming"]
 layout_mode = 2
 text = "Voxelith"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/AllCredits"]
-layout_mode = 2
+[node name="ExternalCredits" type="Label" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -233.0
+offset_top = -6.0
+offset_right = 233.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("1_pxp12")
-text = "Font \"Hyperlight\" by DamienG · Palette \"H16DA\" by RABBITKNG"
+text = "Font \"Hyperlight\" by DamienG 
+
+Palette \"H16DA\" by RABBITKNG"
 horizontal_alignment = 1
 
 [node name="ThankYou" type="VBoxContainer" parent="CanvasLayer"]
