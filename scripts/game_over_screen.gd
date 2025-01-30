@@ -4,6 +4,7 @@ signal restart_requested
 
 @export var destroyed_count: int = 0
 @export var time_elapsed: int = 0
+@export var best_run: int = -1
 
 var quotes = [
 	"...And so, Gnomon detonated. But it was not the end...",
@@ -17,8 +18,10 @@ var quotes = [
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$HBoxContainer/EndQuote.text = quotes.pick_random()
-	$HBoxContainer/GridContainer/DeathCount.text = "Death count: %d" % destroyed_count
-	$HBoxContainer/GridContainer/TimeElapsed.text = "Time elapsed: %d:%02d" % [int(time_elapsed / 60.), time_elapsed % 60]
+	$HBoxContainer/DeathCount.text = "Death count: %d" % destroyed_count
+	if best_run >= 0:
+		$HBoxContainer/DeathCount.text += " (best full run: %d)" % best_run
+	$HBoxContainer/TimeElapsed.text = "Time elapsed: %d:%02d" % [int(time_elapsed / 60.), time_elapsed % 60]
 	
 	$HBoxContainer/HBoxContainer/Restart.grab_focus()
 	$HBoxContainer/HBoxContainer/Restart.pressed.connect(func(): restart_requested.emit())
