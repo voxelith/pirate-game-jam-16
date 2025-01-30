@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8rssser444so"]
+
+[ext_resource type="PackedScene" uid="uid://by5y1nvym4ss7" path="res://assets/environment/rock_3.glb" id="1_r6pbg"]
+[ext_resource type="Material" uid="uid://c7juiw36lvl8i" path="res://materials/basic_stone.tres" id="2_44a58"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6q8vc"]
+height = 1.52153
+
+[node name="RockC" instance=ExtResource("1_r6pbg")]
+
+[node name="Rock 3" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_44a58")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rock 3" index="0"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0.383186, 0)
+shape = SubResource("CapsuleShape3D_6q8vc")

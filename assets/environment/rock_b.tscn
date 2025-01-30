@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhqeupj81bnhl"]
+
+[ext_resource type="PackedScene" uid="uid://blb00gk8a5iaq" path="res://assets/environment/rock_2.glb" id="1_td0c4"]
+[ext_resource type="Material" uid="uid://c7juiw36lvl8i" path="res://materials/basic_stone.tres" id="2_5nymr"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hn2ya"]
+radius = 0.921813
+
+[node name="RockB" instance=ExtResource("1_td0c4")]
+
+[node name="Rock 2" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_5nymr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rock 2" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rock 2/StaticBody3D" index="0"]
+shape = SubResource("CylinderShape3D_hn2ya")
