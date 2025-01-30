@@ -5,6 +5,7 @@ var _current_level_node: Node = null
 @export var player: Node = null
 var _pause_menu: Node = null
 var dialogue_box: Node = null
+var _credits_screen: Node = null
 
 func enter_paused_state() -> void:
 	get_tree().paused = true
@@ -16,7 +17,7 @@ func exit_paused_state() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	mouse_filter = Control.MOUSE_FILTER_PASS
 
-func show_dialogue(dialogue: PackedStringArray) -> void:
+func show_dialogue(dialogue: PackedStringArray, is_final: bool = false) -> void:
 	enter_paused_state()
 	dialogue_box = preload("res://components/CharacterDialogue.tscn").instantiate()
 	dialogue_box.dialogue = dialogue
@@ -25,6 +26,9 @@ func show_dialogue(dialogue: PackedStringArray) -> void:
 		$SubViewport/SceneContents.remove_child(dialogue_box)
 		exit_paused_state()
 		dialogue_box = null
+		
+		if is_final:
+			show_credits()
 	)
 
 func change_level(new_level_name: String) -> void:
@@ -84,8 +88,17 @@ func _on_player_countdown_time_ran_out() -> void:
 	player.trigger_purge()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("jump") and not dialogue_box == null:
-		dialogue_box.advance()
+	if event.is_action_pressed("jump"):
+		if _credits_screen != null:
+			$SubViewport.remove_child(_credits_screen)
+			_credits_screen = null
+			
+			# TODO: replace this with dropping to the start screen
+			exit_paused_state()
+		
+		elif dialogue_box != null:
+			dialogue_box.advance()
+	
 	if event.is_action_pressed("pause_menu"):
 		get_viewport().set_input_as_handled()
 		if _pause_menu == null and get_tree().paused == false:
@@ -99,3 +112,9 @@ func _input(event: InputEvent) -> void:
 			)
 			_pause_menu.visible = true
 			$SubViewport.add_child(_pause_menu)
+
+func show_credits() -> void:
+	enter_paused_state()
+	
+	_credits_screen = preload("res://assets/credits_screen.tscn").instantiate()
+	$SubViewport.add_child(_credits_screen)

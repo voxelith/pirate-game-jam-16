@@ -2,9 +2,17 @@
 
 [ext_resource type="Theme" uid="uid://buyj7atvoig18" path="res://assets/ui/theme.tres" id="1_pxp12"]
 
-[node name="CreditsScreen" type="CanvasLayer"]
+[node name="CreditsScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -12,50 +20,44 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.121569, 0.12549, 0.145098, 1)
 
-[node name="AllCredits" type="VBoxContainer" parent="."]
+[node name="AllCredits" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -136.0
-offset_top = -225.0
-offset_right = 136.0
-offset_bottom = 225.0
+offset_left = -233.5
+offset_top = 125.5
+offset_right = 233.5
+offset_bottom = 896.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 80
 
-[node name="Creative Director" type="VBoxContainer" parent="AllCredits"]
+[node name="Creative Director" type="VBoxContainer" parent="CanvasLayer/AllCredits"]
 layout_mode = 2
 theme = ExtResource("1_pxp12")
 theme_override_constants/separation = 15
 
-[node name="Heading" type="Label" parent="AllCredits/Creative Director"]
+[node name="Heading" type="Label" parent="CanvasLayer/AllCredits/Creative Director"]
 layout_mode = 2
 theme = ExtResource("1_pxp12")
 theme_override_font_sizes/font_size = 16
 text = "Creative Director"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="AllCredits/Creative Director"]
+[node name="Label2" type="Label" parent="CanvasLayer/AllCredits/Creative Director"]
 layout_mode = 2
 text = "Voxelith"
 horizontal_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="AllCredits"]
-layout_mode = 2
-theme_override_constants/h_separation = 80
-theme_override_constants/v_separation = 50
-columns = 2
-
-[node name="LevelDesign" type="VBoxContainer" parent="AllCredits/GridContainer"]
+[node name="LevelDesign" type="VBoxContainer" parent="CanvasLayer/AllCredits"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_pxp12")
 theme_override_constants/separation = 15
 
-[node name="Heading" type="Label" parent="AllCredits/GridContainer/LevelDesign"]
+[node name="Heading" type="Label" parent="CanvasLayer/AllCredits/LevelDesign"]
 layout_mode = 2
 theme = ExtResource("1_pxp12")
 theme_override_font_sizes/font_size = 16
@@ -63,99 +65,98 @@ text = "Level Design
 "
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="AllCredits/GridContainer/LevelDesign"]
+[node name="Label2" type="Label" parent="CanvasLayer/AllCredits/LevelDesign"]
 layout_mode = 2
-text = "MrSlimJim"
+text = "MR Slim Jim"
 horizontal_alignment = 1
 
-[node name="Art" type="VBoxContainer" parent="AllCredits/GridContainer"]
+[node name="Art" type="VBoxContainer" parent="CanvasLayer/AllCredits"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_pxp12")
 theme_override_constants/separation = 15
 
-[node name="Heading" type="Label" parent="AllCredits/GridContainer/Art"]
+[node name="Heading" type="Label" parent="CanvasLayer/AllCredits/Art"]
 layout_mode = 2
 theme = ExtResource("1_pxp12")
 theme_override_font_sizes/font_size = 16
 text = "Art"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="AllCredits/GridContainer/Art"]
+[node name="Label2" type="Label" parent="CanvasLayer/AllCredits/Art"]
 layout_mode = 2
 text = "Voxelith"
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="AllCredits/GridContainer/Art"]
+[node name="Label3" type="Label" parent="CanvasLayer/AllCredits/Art"]
 layout_mode = 2
 text = "OrigamiPenguin"
 horizontal_alignment = 1
 
-[node name="Story" type="VBoxContainer" parent="AllCredits/GridContainer"]
+[node name="Story" type="VBoxContainer" parent="CanvasLayer/AllCredits"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_pxp12")
 theme_override_constants/separation = 15
 
-[node name="Heading" type="Label" parent="AllCredits/GridContainer/Story"]
+[node name="Heading" type="Label" parent="CanvasLayer/AllCredits/Story"]
 layout_mode = 2
 theme = ExtResource("1_pxp12")
 theme_override_font_sizes/font_size = 16
 text = "Story"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="AllCredits/GridContainer/Story"]
+[node name="Label2" type="Label" parent="CanvasLayer/AllCredits/Story"]
 layout_mode = 2
-text = "Bradstein"
+text = "TechnetiumShade"
 horizontal_alignment = 1
 
-[node name="Music" type="VBoxContainer" parent="AllCredits/GridContainer"]
+[node name="Music" type="VBoxContainer" parent="CanvasLayer/AllCredits"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_pxp12")
 theme_override_constants/separation = 15
 
-[node name="Heading" type="Label" parent="AllCredits/GridContainer/Music"]
+[node name="Heading" type="Label" parent="CanvasLayer/AllCredits/Music"]
 layout_mode = 2
 theme = ExtResource("1_pxp12")
 theme_override_font_sizes/font_size = 16
 text = "Music"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="AllCredits/GridContainer/Music"]
+[node name="Label2" type="Label" parent="CanvasLayer/AllCredits/Music"]
 layout_mode = 2
 text = "Voxelith"
 horizontal_alignment = 1
 
-[node name="Programming" type="VBoxContainer" parent="AllCredits"]
+[node name="Programming" type="VBoxContainer" parent="CanvasLayer/AllCredits"]
 layout_mode = 2
 theme = ExtResource("1_pxp12")
 theme_override_constants/separation = 15
 
-[node name="Heading" type="Label" parent="AllCredits/Programming"]
+[node name="Heading" type="Label" parent="CanvasLayer/AllCredits/Programming"]
 layout_mode = 2
 theme = ExtResource("1_pxp12")
 theme_override_font_sizes/font_size = 16
 text = "Programming"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="AllCredits/Programming"]
+[node name="Label2" type="Label" parent="CanvasLayer/AllCredits/Programming"]
 layout_mode = 2
 text = "Voxelith"
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="AllCredits/Programming"]
+[node name="Label3" type="Label" parent="CanvasLayer/AllCredits/Programming"]
 layout_mode = 2
 text = "LorenDB"
 horizontal_alignment = 1
 
-[node name="Label4" type="Label" parent="AllCredits/Programming"]
+[node name="Label4" type="Label" parent="CanvasLayer/AllCredits/Programming"]
 layout_mode = 2
-text = "MrSlimJim
-"
+text = "MR Slim Jim"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="AllCredits"]
+[node name="Label" type="Label" parent="CanvasLayer/AllCredits"]
 layout_mode = 2
 theme = ExtResource("1_pxp12")
 text = "Font \"Hyperlight\" by DamienG · Palette \"H16DA\" by RABBITKNG"
