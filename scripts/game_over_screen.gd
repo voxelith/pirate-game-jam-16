@@ -7,7 +7,7 @@ signal restart_requested
 
 # TODO: replace these with some actual game quotes
 var quotes = [
-	"… And so, Gnomon detonated. But it was not the end...",
+	"...And so, Gnomon detonated. But it was not the end...",
 	"...Gnomon awoke...",
 	"...All around Gnomon was a desolate wasteland...",
 	"...Gnomon knew that this was what its creators had wanted...",

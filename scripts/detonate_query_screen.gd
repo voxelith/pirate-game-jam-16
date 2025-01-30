@@ -9,7 +9,7 @@ func trigger_accepted():
 	accepted.emit()
 
 func _ready() -> void:
-	$HBoxContainer/DeathCount.text = "Death count: %d" % death_count
+	$HBoxContainer/DeathCount.text = "Entities Purged: %d" % death_count
 	
 	$HBoxContainer/HBoxContainer/Yes.grab_focus()
 	$HBoxContainer/HBoxContainer/Yes.pressed.connect(func(): $AnimationPlayer.play("detonate"))
