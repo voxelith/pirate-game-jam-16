@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bskjqfxlxso1x"]
+[gd_scene load_steps=2 format=3 uid="uid://clq3fx47xi6tu"]
 
 [ext_resource type="PackedScene" uid="uid://bxb4ll538buv0" path="res://assets/environment/lantern.tscn" id="1_686ow"]
 
@@ -11,3 +11,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.635826, -0.387469, 0.225244
 
 [node name="lantern3" parent="." instance=ExtResource("1_686ow")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.478126, 0.187924, -0.518657)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+light_energy = 0.6
+shadow_enabled = true
+omni_range = 30.0

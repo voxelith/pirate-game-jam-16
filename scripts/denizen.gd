@@ -53,6 +53,7 @@ func _ready():
 	# Make the navigation server happy
 	set_physics_process(false)
 	call_deferred("actor_setup")
+	nav_refresh_interval = randf_range(1.0, 2.0)
 
 func actor_setup():
 	# Wait for the first physics frame so the NavigationServer can sync.
@@ -61,7 +62,8 @@ func actor_setup():
 
 var current_target_position: Vector3
 var current_path_target := Vector3.ZERO
-var path_distance_threshold = 10.0
+var nav_refresh_interval: float = 1.0
+var nav_refresh_time: = 0.0
 
 func _physics_process(delta: float) -> void:
 	var velocity_target := Vector3.ZERO
@@ -104,10 +106,12 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	var direction := Vector3.ZERO
-	if (nav.target_position - current_target_position).length() > nav_distance_threshold:
-		nav.target_position = current_target_position
 	
-	if (current_path_target - global_position).length() < path_distance_threshold:
+	nav_refresh_time += delta
+	
+	if nav_refresh_time > nav_refresh_interval:
+		nav_refresh_time = 0.0;
+		nav.target_position = current_target_position
 		current_path_target = nav.get_next_path_position()
 	
 	direction = current_path_target - global_position
