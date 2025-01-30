@@ -13,7 +13,7 @@
 [ext_resource type="Material" uid="uid://dgkixbn7yproa" path="res://materials/metal_a_gold.tres" id="10_g4nfg"]
 [ext_resource type="PackedScene" uid="uid://cv7nfm1r6yfd7" path="res://assets/environment/bench.tscn" id="10_rwwb0"]
 [ext_resource type="PackedScene" uid="uid://c23rckq4lk2b4" path="res://assets/environment/bridge.tscn" id="13_qnqwx"]
-[ext_resource type="PackedScene" uid="uid://bd5381ny5765m" path="res://assets/environment/mansion_facade.tscn" id="14_dpa3d"]
+[ext_resource type="PackedScene" path="res://assets/environment/mansion_facade.tscn" id="14_dpa3d"]
 [ext_resource type="PackedScene" uid="uid://cf14ha24y7vd8" path="res://assets/interactables/level_transition.tscn" id="14_li8fp"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_8o884"]
