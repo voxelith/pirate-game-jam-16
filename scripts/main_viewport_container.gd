@@ -5,6 +5,7 @@ var _current_level_node: Node = null
 @export var player: Node = null
 var _pause_menu: Node = null
 var dialogue_box: Node = null
+var _precredits_dialogue: Node = null
 var _credits_screen: Node = null
 
 @export var total_destroyed_npcs: int = 0
@@ -114,7 +115,13 @@ func _on_player_countdown_time_ran_out() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
-		if _credits_screen != null:
+		if _precredits_dialogue != null:
+			$SubViewport.remove_child(_precredits_dialogue)
+			_precredits_dialogue = null
+			_credits_screen = preload("res://assets/credits_screen.tscn").instantiate()
+			$SubViewport.add_child(_credits_screen)
+		
+		elif _credits_screen != null:
 			$SubViewport.remove_child(_credits_screen)
 			_credits_screen = null
 			change_level("bunker")
@@ -146,8 +153,8 @@ func show_credits() -> void:
 		fewest_deaths_run = total_destroyed_npcs
 		save_fewest_deaths()
 	
-	_credits_screen = preload("res://assets/credits_screen.tscn").instantiate()
-	$SubViewport.add_child(_credits_screen)
+	_precredits_dialogue = preload("res://components/precredit_dialogue.tscn").instantiate()
+	$SubViewport.add_child(_precredits_dialogue)
 
 
 func _on_audio_stream_player_finished() -> void:

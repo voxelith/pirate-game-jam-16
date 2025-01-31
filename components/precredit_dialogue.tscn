@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbk4o8nj1u82i"]
+
+[ext_resource type="Theme" uid="uid://buyj7atvoig18" path="res://assets/ui/theme.tres" id="1_8qsd0"]
+[ext_resource type="Script" path="res://scripts/precredit_dialogue.gd" id="1_pw5ei"]
+
+[node name="PrecreditDialogue" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_pw5ei")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -17.0
+offset_right = 44.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_8qsd0")
+theme_override_constants/separation = 20
+
+[node name="Dialogue" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_8qsd0")
+text = "Lorem ipsum"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeathCount" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_8qsd0")
+text = "Entities purged: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
