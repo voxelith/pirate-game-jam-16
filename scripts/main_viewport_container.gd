@@ -113,6 +113,7 @@ func _input(event: InputEvent) -> void:
 		if _credits_screen != null:
 			$SubViewport.remove_child(_credits_screen)
 			_credits_screen = null
+			change_level("bunker")
 			
 			# TODO: replace this with dropping to the start screen
 			exit_paused_state()
