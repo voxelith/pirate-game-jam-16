@@ -7,7 +7,7 @@ var _pause_menu: Node = null
 var dialogue_box: Node = null
 var _credits_screen: Node = null
 
-var total_destroyed_npcs: int = 0
+@export var total_destroyed_npcs: int = 0
 
 #############
 # SAVE DATA #
@@ -120,6 +120,7 @@ func _input(event: InputEvent) -> void:
 			change_level("bunker")
 			exit_paused_state()
 			$SubViewport/SceneContents/PlayerCountdown.reset_to_default()
+			total_destroyed_npcs = 0
 		
 		elif dialogue_box != null:
 			dialogue_box.advance()
