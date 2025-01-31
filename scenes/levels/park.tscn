@@ -55,7 +55,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0256
 [node name="Floor" type="CSGBox3D" parent="NavigationRegion3D/Floors"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0907801, -0.765556, 24.4807)
 use_collision = true
-size = Vector3(9.99902, 1, 16.768)
+size = Vector3(13.1208, 1, 16.768)
 material = ExtResource("6_edh58")
 
 [node name="Floor2" type="CSGBox3D" parent="NavigationRegion3D/Floors"]
@@ -86,7 +86,7 @@ shape = SubResource("BoxShape3D_d3q60")
 [node name="Trees" type="Node3D" parent="NavigationRegion3D"]
 
 [node name="Tree" parent="NavigationRegion3D/Trees" instance=ExtResource("3_7ichm")]
-transform = Transform3D(0.999702, 0, -0.0244147, 0, 1, 0, 0.0244147, 0, 0.999702, 3.58899, -0.279328, -235.669)
+transform = Transform3D(0.999702, 0, -0.0244147, 0, 1, 0, 0.0244147, 0, 0.999702, 5.95829, -0.279328, -238.57)
 
 [node name="Tree9" parent="NavigationRegion3D/Trees" instance=ExtResource("3_7ichm")]
 transform = Transform3D(0.889097, 0, -0.457719, 0, 1, 0, 0.457719, 0, 0.889097, 9.45125, -0.279328, -228.056)
