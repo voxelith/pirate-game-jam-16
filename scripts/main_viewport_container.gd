@@ -117,9 +117,8 @@ func _input(event: InputEvent) -> void:
 			$SubViewport.remove_child(_credits_screen)
 			_credits_screen = null
 			change_level("bunker")
-			
-			# TODO: replace this with dropping to the start screen
 			exit_paused_state()
+			$SubViewport/SceneContents/PlayerCountdown.reset_to_default()
 		
 		elif dialogue_box != null:
 			dialogue_box.advance()
