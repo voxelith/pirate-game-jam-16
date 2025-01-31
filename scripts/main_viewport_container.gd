@@ -36,6 +36,7 @@ func exit_paused_state() -> void:
 
 func show_dialogue(dialogue: PackedStringArray, is_final: bool = false) -> void:
 	enter_paused_state(false, false)
+	if dialogue_box != null: dialogue_box.queue_free()
 	dialogue_box = preload("res://components/CharacterDialogue.tscn").instantiate()
 	dialogue_box.dialogue = dialogue
 	$SubViewport/SceneContents.add_child(dialogue_box)
