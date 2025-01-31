@@ -11,7 +11,7 @@ var quotes = [
 	"...Gnomon awoke...",
 	"...All around Gnomon was a desolate wasteland...",
 	"...Gnomon knew that this was what its creators had wanted...",
-	"...Gnomon had exacted their petty judgment on humanity...",
+	"...Gnomon had exacted the creators' petty judgment on humanity...",
 	"...Now, only Gnomon remained..."
 ]
 
