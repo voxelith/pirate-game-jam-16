@@ -38,7 +38,7 @@ func update_vaporize_material():
 func do_death():
 	behavior = Behavior.DEAD
 	$CollisionShape3D.disabled = true
-	$DenizenBodyMedium.remove_child($DenizenBodyMedium/Head)
+	queue_free()
 
 var last_offset := 0.0
 

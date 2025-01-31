@@ -938,7 +938,13 @@ transform = Transform3D(0.999997, 0, 2.38651e-09, 0, 1, 0, -2.38651e-09, 0, 0.99
 shape = SubResource("BoxShape3D_t5rxt")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5275, 20.9395, -38.0433)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.83487, 21.5938, -35.8843)
+light_energy = 13.576
+shadow_enabled = true
+omni_range = 63.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.1537, 21.7429, -39.0347)
 light_energy = 13.576
 shadow_enabled = true
 omni_range = 63.0
@@ -948,21 +954,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0777, 2.55751, 21.9853)
 
 [node name="LanternSingle5" parent="Lights" instance=ExtResource("12_2r2ga")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0493, 0, -31.2399)
-
-[node name="LanternSingle" parent="Lights" instance=ExtResource("12_2r2ga")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.739789, 0, -31.1362)
-
-[node name="LanternSingle2" parent="Lights" instance=ExtResource("12_2r2ga")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.37339, 0, -54.7409)
-
-[node name="LanternSingle3" parent="Lights" instance=ExtResource("12_2r2ga")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5537, 0, -66.8411)
-
-[node name="LanternSingle6" parent="Lights" instance=ExtResource("12_2r2ga")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5537, 0, -46.5726)
-
-[node name="LanternSingle4" parent="Lights" instance=ExtResource("12_2r2ga")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.9951, 0, -23.794)
 
 [node name="LanternCluster" parent="Lights" instance=ExtResource("9_l3og2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5365, 0, -30.3579)
@@ -975,6 +966,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.71753, 0, -68.6085)
 
 [node name="Denizen" parent="." instance=ExtResource("14_c6ls3")]
 transform = Transform3D(0.741145, 0, -0.671346, 0, 1, 0, 0.671346, 0, 0.741145, 56.1548, 9.53674e-07, -38.8853)
+vaporize_material = SubResource("ShaderMaterial_mrypk")
+cloak_material = ExtResource("16_eb10u")
+
+[node name="Denizen4" parent="." instance=ExtResource("14_c6ls3")]
+transform = Transform3D(0.741145, 0, -0.671346, 0, 1, 0, 0.671346, 0, 0.741145, 32.8116, 9.53674e-07, -33.245)
+vaporize_material = SubResource("ShaderMaterial_mrypk")
+cloak_material = ExtResource("16_eb10u")
+
+[node name="Denizen5" parent="." instance=ExtResource("14_c6ls3")]
+transform = Transform3D(0.741145, 0, -0.671346, 0, 1, 0, 0.671346, 0, 0.741145, 12.1327, 9.53674e-07, -9.85807)
+vaporize_material = SubResource("ShaderMaterial_mrypk")
+cloak_material = ExtResource("16_eb10u")
+
+[node name="Denizen6" parent="." instance=ExtResource("14_c6ls3")]
+transform = Transform3D(0.741145, 0, -0.671346, 0, 1, 0, 0.671346, 0, 0.741145, 16.0905, 9.53674e-07, -47.8951)
+vaporize_material = SubResource("ShaderMaterial_mrypk")
+cloak_material = ExtResource("16_eb10u")
+
+[node name="Denizen7" parent="." instance=ExtResource("14_c6ls3")]
+transform = Transform3D(0.741145, 0, -0.671346, 0, 1, 0, 0.671346, 0, 0.741145, -0.863142, 9.53674e-07, -12.6904)
 vaporize_material = SubResource("ShaderMaterial_mrypk")
 cloak_material = ExtResource("16_eb10u")
 
