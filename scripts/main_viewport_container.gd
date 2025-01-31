@@ -19,20 +19,23 @@ func save_fewest_deaths() -> void:
 		var save_file = FileAccess.open("user://savedata.save", FileAccess.WRITE)
 		save_file.store_32(fewest_deaths_run)
 
-func enter_paused_state(show_cursor: bool = true) -> void:
+func enter_paused_state(hide_timer: bool, show_cursor: bool) -> void:
 	get_tree().paused = true
 	if show_cursor:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		mouse_filter = Control.MOUSE_FILTER_STOP
+	if hide_timer:
+		$SubViewport/SceneContents/PlayerCountdown.visible = false
 
 func exit_paused_state() -> void:
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	mouse_filter = Control.MOUSE_FILTER_PASS
+	$SubViewport/SceneContents/PlayerCountdown.visible = true
 	grab_focus()
 
 func show_dialogue(dialogue: PackedStringArray, is_final: bool = false) -> void:
-	enter_paused_state(false)
+	enter_paused_state(false, false)
 	dialogue_box = preload("res://components/CharacterDialogue.tscn").instantiate()
 	dialogue_box.dialogue = dialogue
 	$SubViewport/SceneContents.add_child(dialogue_box)
@@ -102,7 +105,7 @@ func _on_player_destroyed_npcs(destroyed_count: int) -> void:
 		$SubViewport.remove_child(dialog)
 		exit_paused_state()
 	)
-	enter_paused_state()
+	enter_paused_state(true, true)
 	$SubViewport.add_child(dialog)
 
 func _on_player_countdown_time_ran_out() -> void:
@@ -124,7 +127,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause_menu"):
 		get_viewport().set_input_as_handled()
 		if _pause_menu == null and get_tree().paused == false:
-			enter_paused_state()
+			enter_paused_state(false, true)
 			_pause_menu = preload("res://assets/pause_menu.tscn").instantiate()
 			_pause_menu.resume.connect(func():
 				exit_paused_state()
@@ -136,7 +139,7 @@ func _input(event: InputEvent) -> void:
 			$SubViewport.add_child(_pause_menu)
 
 func show_credits() -> void:
-	enter_paused_state()
+	enter_paused_state(true, true)
 	
 	if fewest_deaths_run == -1 or total_destroyed_npcs < fewest_deaths_run:
 		fewest_deaths_run = total_destroyed_npcs
