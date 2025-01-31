@@ -14,3 +14,9 @@ func _ready() -> void:
 	$HBoxContainer/HBoxContainer/Yes.grab_focus()
 	$HBoxContainer/HBoxContainer/Yes.pressed.connect(func(): $AnimationPlayer.play("detonate"))
 	$HBoxContainer/HBoxContainer/No.pressed.connect(func(): rejected.emit())
+
+func haptics_strong() -> void:
+	Input.start_joy_vibration(0, 0, 1, 2)
+
+func haptics_weak() -> void:
+	Input.start_joy_vibration(0, 1, 0, 3)
