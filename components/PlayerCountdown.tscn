@@ -31,7 +31,7 @@ offset_right = 24.0
 offset_bottom = 16.0
 grow_horizontal = 2
 theme = ExtResource("1_76c4b")
-text = "T-0:00"
+text = "T-0:30"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_14wm1")
