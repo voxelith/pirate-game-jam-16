@@ -6,12 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://dq1p87s2f2f3x" path="res://assets/environment/pot_tree.tscn" id="4_vlpwx"]
 [ext_resource type="PackedScene" uid="uid://sywwttipgos2" path="res://assets/enemies/denizen.tscn" id="5_2mh57"]
 [ext_resource type="Shader" path="res://shaders/vaporize.gdshader" id="6_hp7r6"]
-[ext_resource type="PackedScene" path="res://assets/environment/tree.tscn" id="6_qmpwj"]
+[ext_resource type="PackedScene" uid="uid://dch67f77x0gde" path="res://assets/environment/tree.tscn" id="6_qmpwj"]
 [ext_resource type="Material" uid="uid://brfgknlm3r0qg" path="res://materials/denizen_cloak_green.tres" id="7_p5r7t"]
 [ext_resource type="Material" uid="uid://cnhhkdi6wsi66" path="res://materials/denizen_cloak_stone.tres" id="8_88ot6"]
 [ext_resource type="Material" uid="uid://cstpcrycja5wa" path="res://materials/basic_gold.tres" id="9_npx4b"]
 [ext_resource type="Material" uid="uid://dgkixbn7yproa" path="res://materials/metal_a_gold.tres" id="10_g4nfg"]
-[ext_resource type="PackedScene" path="res://assets/environment/bench.tscn" id="10_rwwb0"]
+[ext_resource type="PackedScene" uid="uid://cv7nfm1r6yfd7" path="res://assets/environment/bench.tscn" id="10_rwwb0"]
 [ext_resource type="PackedScene" uid="uid://c23rckq4lk2b4" path="res://assets/environment/bridge.tscn" id="13_qnqwx"]
 [ext_resource type="PackedScene" path="res://assets/environment/mansion_facade.tscn" id="14_dpa3d"]
 [ext_resource type="PackedScene" uid="uid://cf14ha24y7vd8" path="res://assets/interactables/level_transition.tscn" id="14_li8fp"]
@@ -158,7 +158,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -41)
 navigation_mesh = SubResource("NavigationMesh_8o884")
 
 [node name="Floor" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.143177, -0.5, -1.132)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.143177, -0.5, -1.132)
 use_collision = true
 size = Vector3(64, 1, 59)
 material = ExtResource("1_386wp")
