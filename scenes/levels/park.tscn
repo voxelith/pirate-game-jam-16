@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cxrtnguq07qk1"]
+[gd_scene load_steps=25 format=3 uid="uid://cxrtnguq07qk1"]
 
 [ext_resource type="Script" path="res://scenes/levels/park.gd" id="1_owxqx"]
 [ext_resource type="Material" uid="uid://c7juiw36lvl8i" path="res://materials/basic_stone.tres" id="2_irj07"]
@@ -34,6 +34,9 @@ polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Arr
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d3q60"]
 size = Vector3(11, 3.81445, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nqt2s"]
+radius = 2.16925
 
 [node name="Park" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
@@ -127,6 +130,12 @@ transform = Transform3D(0.304199, 0, -0.952608, 0, 1, 0, 0.952608, 0, 0.304199, 
 [node name="Tree21" parent="NavigationRegion3D/Trees" instance=ExtResource("3_7ichm")]
 transform = Transform3D(0.407167, 0, -0.913354, 0, 1, 0, 0.913354, 0, 0.407167, -9.98282, -2.88529, -210.654)
 
+[node name="Area3D" type="Area3D" parent="NavigationRegion3D/Trees/Tree21"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Trees/Tree21/Area3D"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0.0675983, 3.94033, -0.0490093)
+shape = SubResource("SphereShape3D_nqt2s")
+
 [node name="Tree22" parent="NavigationRegion3D/Trees" instance=ExtResource("3_7ichm")]
 transform = Transform3D(-0.0537476, 0, -0.998554, 0, 1, 0, 0.998554, 0, -0.0537476, -2.78711, -0.279328, -206.98)
 
@@ -151,6 +160,12 @@ transform = Transform3D(0.539564, 0, 0.841944, 0, 1, 0, -0.841944, 0, 0.539564, 
 [node name="Tree42" parent="NavigationRegion3D/Trees" instance=ExtResource("3_7ichm")]
 transform = Transform3D(0.320133, 0, 0.947373, 0, 1, 0, -0.947373, 0, 0.320133, -43.6665, -4.26684, -180.162)
 
+[node name="Area3D" type="Area3D" parent="NavigationRegion3D/Trees/Tree42"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Trees/Tree42/Area3D"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0.0675983, 3.94033, -0.0490093)
+shape = SubResource("SphereShape3D_nqt2s")
+
 [node name="Tree43" parent="NavigationRegion3D/Trees" instance=ExtResource("3_7ichm")]
 transform = Transform3D(0.320133, 0, 0.947373, 0, 1, 0, -0.947373, 0, 0.320133, -35.7279, -0.279328, -169.412)
 
@@ -169,6 +184,12 @@ transform = Transform3D(0.996227, 0, 0.0867907, 0, 1, 0, -0.0867907, 0, 0.996227
 [node name="Tree47" parent="NavigationRegion3D/Trees" instance=ExtResource("3_7ichm")]
 transform = Transform3D(0.996227, 0, 0.0867907, 0, 1, 0, -0.0867907, 0, 0.996227, -13.1146, -3.86305, -191.076)
 
+[node name="Area3D" type="Area3D" parent="NavigationRegion3D/Trees/Tree47"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Trees/Tree47/Area3D"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0.0675983, 3.94033, -0.0490093)
+shape = SubResource("SphereShape3D_nqt2s")
+
 [node name="Tree48" parent="NavigationRegion3D/Trees" instance=ExtResource("3_7ichm")]
 transform = Transform3D(0.996227, 0, 0.0867907, 0, 1, 0, -0.0867907, 0, 0.996227, -7.97092, -0.279328, -180.179)
 
@@ -178,8 +199,20 @@ transform = Transform3D(0.845336, 0, 0.534234, 0, 1, 0, -0.534234, 0, 0.845336, 
 [node name="Tree50" parent="NavigationRegion3D/Trees" instance=ExtResource("3_7ichm")]
 transform = Transform3D(0.996677, 0, 0.0814515, 0, 1, 0, -0.0814515, 0, 0.996677, -26.564, -3.03283, -159.819)
 
+[node name="Area3D" type="Area3D" parent="NavigationRegion3D/Trees/Tree50"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Trees/Tree50/Area3D"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0.0675983, 3.94033, -0.0490093)
+shape = SubResource("SphereShape3D_nqt2s")
+
 [node name="Tree51" parent="NavigationRegion3D/Trees" instance=ExtResource("3_7ichm")]
 transform = Transform3D(0.950543, 7.07655e-09, -0.310593, 0.283394, 0.409238, 0.867302, 0.127107, -0.912428, 0.388998, -25.6605, -1.40466, -179.395)
+
+[node name="Area3D" type="Area3D" parent="NavigationRegion3D/Trees/Tree51"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Trees/Tree51/Area3D"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0.0675983, 3.94033, -0.0490093)
+shape = SubResource("SphereShape3D_nqt2s")
 
 [node name="Tree52" parent="NavigationRegion3D/Trees" instance=ExtResource("3_7ichm")]
 transform = Transform3D(0.949228, 0, -0.314589, 0, 1, 0, 0.314589, 0, 0.949228, 1.97903, -0.279328, -200.898)
@@ -228,6 +261,12 @@ transform = Transform3D(0.999702, 0, -0.0244147, 0, 1, 0, 0.0244147, 0, 0.999702
 
 [node name="Tree7" parent="NavigationRegion3D/Trees" instance=ExtResource("3_7ichm")]
 transform = Transform3D(-0.331058, 0, 0.94361, 0, 1, 0, -0.94361, 0, -0.331058, -3.36405, -3.33015, -235.165)
+
+[node name="Area3D" type="Area3D" parent="NavigationRegion3D/Trees/Tree7"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Trees/Tree7/Area3D"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0.0675983, 3.94033, -0.0490093)
+shape = SubResource("SphereShape3D_nqt2s")
 
 [node name="Tree2" parent="NavigationRegion3D/Trees" instance=ExtResource("3_7ichm")]
 transform = Transform3D(0.629605, 0, 0.776915, 0, 1, 0, -0.776915, 0, 0.629605, -3.55309, -2.64211, -244.238)
