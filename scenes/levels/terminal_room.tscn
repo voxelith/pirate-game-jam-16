@@ -2,9 +2,9 @@
 
 [ext_resource type="Material" uid="uid://c7juiw36lvl8i" path="res://materials/basic_stone.tres" id="1_a3wc7"]
 [ext_resource type="Script" path="res://scripts/terminal_room.gd" id="1_r2fy1"]
-[ext_resource type="PackedScene" path="res://assets/environment/pillar_tall.tscn" id="2_avieu"]
+[ext_resource type="PackedScene" uid="uid://baatuddwm8ksx" path="res://assets/environment/pillar_tall.tscn" id="2_avieu"]
 [ext_resource type="PackedScene" uid="uid://i8iwkhnk1r7r" path="res://assets/environment/terminal.tscn" id="3_ybevh"]
-[ext_resource type="PackedScene" path="res://assets/environment/lantern_brighter.tscn" id="4_h75fq"]
+[ext_resource type="PackedScene" uid="uid://d3u22mbrm5h8b" path="res://assets/environment/lantern_brighter.tscn" id="4_h75fq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h0h88"]
 size = Vector3(1, 1, 9)
