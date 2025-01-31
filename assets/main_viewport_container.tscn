@@ -20,7 +20,6 @@ process_mode = 1
 stream = ExtResource("2_yu16d")
 autoplay = true
 bus = &"Music"
-playback_type = 2
 parameters/looping = true
 
 [connection signal="finished" from="SubViewport/AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
