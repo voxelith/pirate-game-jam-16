@@ -84,6 +84,7 @@ func _physics_process(delta: float) -> void:
 
 func trigger_purge():
 	anim.play("purge")
+	Input.start_joy_vibration(0, 1, 1, 1)
 
 func find_and_destroy():
 	###############
